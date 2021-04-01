@@ -37,6 +37,12 @@ public class Subscription {
     public void setPrice(long Price) {
         this.Price = Price;
     }
+
+    public Subscription(String SubscriptionID, String Name, long Price) {
+        this.SubscriptionID = SubscriptionID;
+        this.Name = Name;
+        this.Price = Price;
+    }
     
     
 }

@@ -46,4 +46,13 @@ public class Finance {
     public void setUserEmail(String UserEmail) {
         this.UserEmail = UserEmail;
     }
+
+    public Finance(String idPayment, String Type, long Nominal, String UserEmail) {
+        this.idPayment = idPayment;
+        this.Type = Type;
+        this.Nominal = Nominal;
+        this.UserEmail = UserEmail;
+    }
+    
+    
 }

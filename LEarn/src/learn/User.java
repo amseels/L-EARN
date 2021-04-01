@@ -37,4 +37,12 @@ public class User {
     public void setAccountType(String AccountType) {
         this.AccountType = AccountType;
     }
+
+    public User(String Email, String Password, String AccountType) {
+        this.Email = Email;
+        this.Password = Password;
+        this.AccountType = AccountType;
+    }
+    
+    
 }
