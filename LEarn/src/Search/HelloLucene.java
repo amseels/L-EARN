@@ -1,6 +1,9 @@
 package Search;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -21,7 +24,17 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 
 public class HelloLucene {
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args)  {
+        try {
+            HelloLuceneTest(args);
+        } catch (IOException | ParseException ex) {
+            Logger.getLogger(HelloLucene.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Test();
+    }
+    
+    public static void HelloLuceneTest(String[] args)throws IOException, ParseException{
         // 0. Specify the analyzer for tokenizing text.
         //    The same analyzer should be used for indexing and searching
         StandardAnalyzer analyzer = new StandardAnalyzer();
@@ -63,6 +76,22 @@ public class HelloLucene {
         // reader can only be closed when there
         // is no need to access the documents any more.
         reader.close();
+    }
+    
+    public static void Test(){
+        LuceneManager manager = LuceneManager.getInstance();
+        
+        ArrayList<String> Question = new ArrayList<>();
+        Question.add("Lucene in Action");
+        Question.add("Lucene for Dummies");
+        Question.add("Managing Gigabytes");
+        Question.add("The Art of Computer Science");
+        
+        manager.AddItemToSearch(Question);
+        if(manager.SearchResult("Lucene"))
+            manager.ShowResult();
+        
+        
     }
 
     private static void addDoc(IndexWriter w, String title, String isbn) throws IOException {
