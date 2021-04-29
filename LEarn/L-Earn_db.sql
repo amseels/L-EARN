@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2021 at 08:22 AM
+-- Generation Time: Apr 29, 2021 at 09:27 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -40,17 +40,6 @@ CREATE TABLE `answer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `member`
---
-
-CREATE TABLE `member` (
-  `member_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `membership`
 --
 
@@ -60,8 +49,8 @@ CREATE TABLE `membership` (
   `start_date` datetime NOT NULL,
   `payment_proof` varchar(45) NOT NULL,
   `expired_date` datetime NOT NULL,
-  `member_id` int(11) NOT NULL,
-  `subs_id` int(11) NOT NULL
+  `subs_id` int(11) NOT NULL,
+  `user_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -75,7 +64,7 @@ CREATE TABLE `question` (
   `category` varchar(45) NOT NULL,
   `content` varchar(45) NOT NULL,
   `time` datetime NOT NULL,
-  `member_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -86,7 +75,7 @@ CREATE TABLE `question` (
 
 CREATE TABLE `subscription` (
   `subs_id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
+  `name` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `validity_periode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -115,9 +104,8 @@ CREATE TABLE `tutor_payment` (
   `payment_id` int(11) NOT NULL,
   `input_time` datetime NOT NULL,
   `payment_time` datetime DEFAULT NULL,
-  `payment_status` enum('pending','paid','rejected') NOT NULL,
+  `payment_status` enum('requested','paid','rejected') NOT NULL,
   `amount` int(11) NOT NULL,
-  `answer_id` int(11) NOT NULL,
   `tutor_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -129,10 +117,11 @@ CREATE TABLE `tutor_payment` (
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `bio` text DEFAULT NULL,
-  `name` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `bio` text NOT NULL,
+  `name` varchar(225) NOT NULL,
+  `username` varchar(225) NOT NULL,
+  `role` enum('admin','member','tutor') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -144,30 +133,23 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `answer`
   ADD PRIMARY KEY (`answer_id`),
-  ADD KEY `fkIdx_39` (`tutor_id`),
-  ADD KEY `fkIdx_45` (`question_id`);
-
---
--- Indexes for table `member`
---
-ALTER TABLE `member`
-  ADD PRIMARY KEY (`member_id`),
-  ADD KEY `fkIdx_21` (`user_id`);
+  ADD KEY `FK_01` (`tutor_id`),
+  ADD KEY `FK_02` (`question_id`);
 
 --
 -- Indexes for table `membership`
 --
 ALTER TABLE `membership`
   ADD PRIMARY KEY (`membership_id`),
-  ADD KEY `fkIdx_64` (`member_id`),
-  ADD KEY `fkIdx_95` (`subs_id`);
+  ADD KEY `FK_03` (`subs_id`),
+  ADD KEY `FK_04` (`user_id`);
 
 --
 -- Indexes for table `question`
 --
 ALTER TABLE `question`
   ADD PRIMARY KEY (`question_id`),
-  ADD KEY `fkIdx_30` (`member_id`);
+  ADD KEY `FK_05` (`user_id`);
 
 --
 -- Indexes for table `subscription`
@@ -180,14 +162,13 @@ ALTER TABLE `subscription`
 --
 ALTER TABLE `tutor`
   ADD PRIMARY KEY (`tutor_id`),
-  ADD KEY `fkIdx_15` (`user_id`);
+  ADD KEY `FK_06` (`user_id`);
 
 --
 -- Indexes for table `tutor_payment`
 --
 ALTER TABLE `tutor_payment`
   ADD PRIMARY KEY (`payment_id`),
-  ADD KEY `fkIdx_77` (`answer_id`),
   ADD KEY `fkIdx_80` (`tutor_id`);
 
 --
@@ -197,6 +178,22 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `subscription`
+--
+ALTER TABLE `subscription`
+  MODIFY `subs_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -204,39 +201,32 @@ ALTER TABLE `user`
 -- Constraints for table `answer`
 --
 ALTER TABLE `answer`
-  ADD CONSTRAINT `FK_38` FOREIGN KEY (`tutor_id`) REFERENCES `tutor` (`tutor_id`),
-  ADD CONSTRAINT `FK_44` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`);
-
---
--- Constraints for table `member`
---
-ALTER TABLE `member`
-  ADD CONSTRAINT `FK_20` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `FK_01` FOREIGN KEY (`tutor_id`) REFERENCES `tutor` (`tutor_id`),
+  ADD CONSTRAINT `FK_02` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`);
 
 --
 -- Constraints for table `membership`
 --
 ALTER TABLE `membership`
-  ADD CONSTRAINT `FK_63` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`),
-  ADD CONSTRAINT `FK_94` FOREIGN KEY (`subs_id`) REFERENCES `subscription` (`subs_id`);
+  ADD CONSTRAINT `FK_03` FOREIGN KEY (`subs_id`) REFERENCES `subscription` (`subs_id`),
+  ADD CONSTRAINT `FK_04` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `question`
 --
 ALTER TABLE `question`
-  ADD CONSTRAINT `FK_29` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`);
+  ADD CONSTRAINT `FK_05` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `tutor`
 --
 ALTER TABLE `tutor`
-  ADD CONSTRAINT `FK_14` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `FK_06` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `tutor_payment`
 --
 ALTER TABLE `tutor_payment`
-  ADD CONSTRAINT `FK_76` FOREIGN KEY (`answer_id`) REFERENCES `answer` (`answer_id`),
   ADD CONSTRAINT `FK_79` FOREIGN KEY (`tutor_id`) REFERENCES `tutor` (`tutor_id`);
 COMMIT;
 

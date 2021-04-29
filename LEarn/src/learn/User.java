@@ -10,39 +10,62 @@ package learn;
  * @author ASUS
  */
 public class User {
-    private String Email;
-    private String Password;
-    private String AccountType;
+    private String password;
+    private String bio;
+    private String name;
+    private String username;
+    private String role;
 
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public User() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getAccountType() {
-        return AccountType;
+    public String getBio() {
+        return bio;
     }
 
-    public void setAccountType(String AccountType) {
-        this.AccountType = AccountType;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
-    public User(String Email, String Password, String AccountType) {
-        this.Email = Email;
-        this.Password = Password;
-        this.AccountType = AccountType;
+    public String getName() {
+        return name;
     }
-    
-    
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public User(String password, String bio, String name, String username, String role) {
+        this.password = password;
+        this.bio = bio;
+        this.name = name;
+        this.username = username;
+        this.role = role;
+    }
+        
 }
