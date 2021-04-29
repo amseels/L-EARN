@@ -10,13 +10,13 @@ package learn;
  * @author ASUS
  */
 public class LoginController {
-    private Login model;
-    private LoginView view;
-
-    public LoginController(Login model, LoginView view) {
-        this.model = model;
-        this.view = view;
-    }
+//    private Login model;
+//    private LoginView view;
+//
+//    public LoginController(Login model, LoginView view) {
+//        this.model = model;
+//        this.view = view;
+//    }
     
     
 }

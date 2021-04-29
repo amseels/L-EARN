@@ -78,7 +78,7 @@ public class UIData {
     }
     
     // Custom Font Data
-    public static final CustomFont FONT1 = new CustomFont(32, "Roboto-Regular.ttf");
+    public static final CustomFont FONT1 = new CustomFont(18, "Roboto-Regular.ttf");
     public static final CustomFont FONT2 = new CustomFont(32, "Roboto-Thin.ttf");
     
     // Custom Window Data
