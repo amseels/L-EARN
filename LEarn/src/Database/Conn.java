@@ -14,11 +14,14 @@ import learn.User;
  * @author ASUS
  */
 public class Conn {
+    public final static String path = "jdbc:mysql://localhost:3306/l-earn";
+    public final static String username = "root";
+    public final static String password = "";
     public static Connection getConnection(){
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/l-earn","root","root");
+            con = DriverManager.getConnection(path, username,password);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

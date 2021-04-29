@@ -17,7 +17,7 @@ public class User {
     private String role;
 
     public User() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public String getPassword() {

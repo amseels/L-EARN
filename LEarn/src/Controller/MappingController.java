@@ -25,18 +25,20 @@ public class MappingController {
         Member,
         Tutor
     }
-    public void Move(User user, Role role){
+    public void Move(User user){
         
         this.user = user;
         if("admin".equals(user.getRole())){
+            activeController.Hide();
             activeController = new AdminController();
         }
         if("member".equals(user.getRole())){
+            activeController.Hide();
             activeController = new MemberController();
         }
         if("tutor".equals(user.getRole())){
+            activeController.Hide();
             activeController = new MentorController();
         }
-        
     }
 }
