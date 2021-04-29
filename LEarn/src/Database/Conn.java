@@ -6,7 +6,6 @@
 package Database;
 
 import java.sql.*;
-import java.util.*;
 
 
 /**
@@ -25,5 +24,22 @@ public class Conn {
         
         return con;
     }
+    
+    public ResultSet getUserById(String uid) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from user where user_id=?");
+        st.setString(1, uid);
+        ResultSet rs = st.executeQuery();
+        
+        return rs;
+    }
+    
+    public ResultSet getUserByUsername(String uname) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from user where username=?");
+        st.setString(1, uname);
+        ResultSet rs = st.executeQuery();
+        
+        return rs;
+    }
 }  
-
