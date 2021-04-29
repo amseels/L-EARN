@@ -5,6 +5,8 @@
  */
 package learn;
 
+import Controller.MappingController;
+
 /**
  *
  * @author hp
@@ -17,6 +19,8 @@ public class LEarn {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Test");
+        
+        MappingController controller = new MappingController();
     }
     
 }

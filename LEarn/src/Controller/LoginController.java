@@ -6,6 +6,7 @@
 package Controller;
 
 import Database.Conn;
+import View.Login;
 import javax.swing.JFrame;
 
 /**
@@ -18,11 +19,13 @@ public class LoginController implements IController{
     
     public LoginController(MappingController mappingController) {
         this.mappingController = mappingController;
+        view = new Login(this);
         Show();
     }
     
     public void Login(String username, String password){
-                
+        System.out.println(username);
+        System.out.println(password);
     }
 
     @Override

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Controller.LoginController;
 import Utility.UIData;
 /**
  *
@@ -11,6 +12,13 @@ import Utility.UIData;
  */
 public class Login extends javax.swing.JFrame {
 
+    private Controller.LoginController controller;
+    
+    public Login(LoginController controller) {
+        this.controller = controller;
+        initComponents();
+    }
+    
     /**
      * Creates new form Login
      */
@@ -31,8 +39,8 @@ public class Login extends javax.swing.JFrame {
         jButton3_MEmber = new javax.swing.JButton();
         jButton1_SignIn = new javax.swing.JButton();
         jButton2_Tutor = new javax.swing.JButton();
-        jTextField1_Password = new javax.swing.JTextField();
         jTextField2_Username = new javax.swing.JTextField();
+        jPasswordField_password = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,13 +61,20 @@ public class Login extends javax.swing.JFrame {
         jButton2_Tutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (3).png"))); // NOI18N
         jPanel1.add(jButton2_Tutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 100, 40));
 
-        jTextField1_Password.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField1_Password.setOpaque(false);
-        jPanel1.add(jTextField1_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 320, 50));
-
         jTextField2_Username.setBackground(new java.awt.Color(224, 187, 218));
+        jTextField2_Username.setMaximumSize(new java.awt.Dimension(6, 22));
         jTextField2_Username.setOpaque(false);
-        jPanel1.add(jTextField2_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 320, 50));
+        jPanel1.add(jTextField2_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 210, 300, 30));
+
+        jPasswordField_password.setBackground(new java.awt.Color(224, 187, 218));
+        jPasswordField_password.setMaximumSize(new java.awt.Dimension(6, 22));
+        jPasswordField_password.setOpaque(false);
+        jPasswordField_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField_passwordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jPasswordField_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 290, 300, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Sign in (1).png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -80,8 +95,15 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1_SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_SignInActionPerformed
-        // TODO add your handling code here:
+        String username = jTextField2_Username.getText();
+        String password = jPasswordField_password.getText();
+        if(!username.isEmpty() && !password.isEmpty())
+            controller.Login(username, password);
     }//GEN-LAST:event_jButton1_SignInActionPerformed
+
+    private void jPasswordField_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,7 +146,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton3_MEmber;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1_Password;
+    private javax.swing.JPasswordField jPasswordField_password;
     private javax.swing.JTextField jTextField2_Username;
     // End of variables declaration//GEN-END:variables
 }

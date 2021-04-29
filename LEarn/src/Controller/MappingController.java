@@ -13,8 +13,8 @@ import learn.User;
  */
 public class MappingController {
 
-    public MappingController(IController activeController) {
-        this.activeController = activeController;
+    public MappingController() {
+        this.activeController = new LoginController(this);
     }
     
     private User user;
