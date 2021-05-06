@@ -6,10 +6,18 @@
 package Controller;
 
 /**
- *
+ * Sebuah interface yang berfungsi untuk mendeskripsikan suatu class adalah class controller
  * @author Anas
  */
 public interface IController {
+
+    /**
+     * Method untuk menampilkan view / UI pada saat ini
+     */
     public void Show();
+
+    /**
+     * Method untuk menyembunyikan view / UI pada saat ini
+     */
     public void Hide();
 }

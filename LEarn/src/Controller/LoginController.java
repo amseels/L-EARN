@@ -14,19 +14,29 @@ import javax.swing.JFrame;
 import learn.User;
 
 /**
- *
+ * Class controller yang mengatur login dari aplikasi
  * @author Anas
  */
 public class LoginController implements IController{
     private MappingController mappingController;
     private JFrame view;
     
+    /**
+     * Constructor dari kelas ini
+     * @param mappingController : global mapping controller
+     */
     public LoginController(MappingController mappingController) {
         this.mappingController = mappingController;
         view = new Login(this);
         Show();
     }
     
+    /**
+     * Method yang berfungsi untuk melakukan login.
+     * Apabila berhasil akan berindah UI sesuai dengan tipe role dari user
+     * @param username : string username
+     * @param password : string password
+     */
     public void Login(String username, String password){       
         try {
             User user = UserConn.getUserByUsernameAndPassword(username, password);

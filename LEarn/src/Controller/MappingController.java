@@ -9,11 +9,14 @@ import View.TBA;
 import learn.User;
 
 /**
- *
+ *  Class controller yang mengatur perpindahan antar controller
  * @author Anas
  */
 public class MappingController {
 
+    /**
+     * Constructor dari kelas mapping controller
+     */
     public MappingController() {
         this.activeController = new LoginController(this);
     }
@@ -21,6 +24,10 @@ public class MappingController {
     private User user;
     private IController activeController;
     
+    /**
+     * method yang berfungsi untuk melakukan perpindahan controller
+     * @param user : user yang telah login
+     */
     public void Move(User user){
         
         this.user = user;

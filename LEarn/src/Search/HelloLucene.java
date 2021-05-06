@@ -23,6 +23,10 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 
+/**
+ * Sebuah contoh class yang menjalankan Lucene Manager
+ * @author Anas
+ */
 public class HelloLucene {
     public static void main(String[] args)  {
         try {
@@ -34,6 +38,12 @@ public class HelloLucene {
         Test();
     }
     
+    /**
+     * Method untuk melakukan percobaan Hello Lucene.
+     * @param args : argumen yang diberikan
+     * @throws IOException : IO Error
+     * @throws ParseException : Luecene Manager Error
+     */
     public static void HelloLuceneTest(String[] args)throws IOException, ParseException{
         // 0. Specify the analyzer for tokenizing text.
         //    The same analyzer should be used for indexing and searching
@@ -78,6 +88,9 @@ public class HelloLucene {
         reader.close();
     }
     
+    /**
+     * Method untuk mengetest apakah lucene search manager berfungsi
+     */
     public static void Test(){
         LuceneManager manager = LuceneManager.getInstance();
         

@@ -6,7 +6,7 @@
 package Controller;
 
 /**
- *
+ *  Class controller yang mengatur tentor page
  * @author Anas
  */
 public class MentorController implements IController {

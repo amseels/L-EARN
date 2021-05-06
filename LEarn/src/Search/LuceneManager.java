@@ -33,7 +33,8 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 
 /**
- *
+ * Sebuah class yang menangani pencarian pertanyaan berdasarakan kata yang dimasukan.
+ * Kelas ini menggunakan singelton pattern untuk mendapatkan instancenya.
  * @author Anas
  */
 public class LuceneManager {
@@ -52,6 +53,10 @@ public class LuceneManager {
         instance = this;
     }    
 
+    /**
+     * Mendapatkan static instance object dari kelas ini
+     * @return instance dari kelas
+     */
     public static LuceneManager getInstance() {
         return instance;
     }
@@ -67,6 +72,10 @@ public class LuceneManager {
         }
     }
     
+    /**
+     * Method untuk memasukan text text question yang akan dilakukan pencarian
+     * @param item : sebuah list yang berisi text question
+     */
     public void AddItemToSearch(ArrayList<String> item){
         index = new RAMDirectory();
         for(int i = 0; i < item.size(); i++){
@@ -74,6 +83,11 @@ public class LuceneManager {
         }
     }
     
+    /**
+     * Method untuk melakukan pencarian kata pada file yang telah didaftarkan
+     * @param querystr : kata yang ingin dicari
+     * @return true jika kata yang dicari berada pada text yang telah didaftarkan, false jika kata yang dicari tidak ada pada text yang telah didaftarkan
+     */
     public boolean SearchResult(String querystr){
         boolean isFound = false;
         try {
@@ -106,6 +120,9 @@ public class LuceneManager {
         }
     }
         
+    /**
+     * Menampilkan data yang ditemukan pada pencarian sebelumnya.
+     */
     public void ShowResult(){
         
         result.forEach((res) -> 

@@ -6,7 +6,7 @@
 package Controller;
 
 /**
- *
+ * Class controller yang mengatur member page
  * @author Anas
  */
 public class MemberController implements IController{

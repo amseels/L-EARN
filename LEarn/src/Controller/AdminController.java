@@ -6,7 +6,7 @@
 package Controller;
 
 /**
- *
+ * Class controller yang mengatur laman admin
  * @author Anas
  */
 public class AdminController implements IController{
