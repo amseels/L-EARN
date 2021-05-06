@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Database.Conn;
+import Database.*;
 import View.Login;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -29,7 +29,7 @@ public class LoginController implements IController{
     
     public void Login(String username, String password){       
         try {
-            User user = Conn.getUserByUsernameAndPassword(username, password);
+            User user = UserConn.getUserByUsernameAndPassword(username, password);
             mappingController.Move(user);
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,6 +46,4 @@ public class LoginController implements IController{
         view.hide();
         view.dispose();
     }
-    
-    
 }

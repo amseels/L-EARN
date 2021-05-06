@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import View.TBA;
 import learn.User;
 
 /**
@@ -20,25 +21,26 @@ public class MappingController {
     private User user;
     private IController activeController;
     
-    enum Role{
-        Admin,
-        Member,
-        Tutor
-    }
     public void Move(User user){
         
         this.user = user;
         if("admin".equals(user.getRole())){
             activeController.Hide();
             activeController = new AdminController();
+            TBA tmp = new TBA();
+            tmp.show();
         }
         if("member".equals(user.getRole())){
             activeController.Hide();
             activeController = new MemberController();
+            TBA tmp = new TBA();
+            tmp.show();
         }
         if("tutor".equals(user.getRole())){
             activeController.Hide();
             activeController = new MentorController();
+            TBA tmp = new TBA();
+            tmp.show();
         }
     }
 }
