@@ -6,7 +6,7 @@
 package Controller;
 
 import View.TBA;
-import learn.User;
+import Model.User;
 
 /**
  *  Class controller yang mengatur perpindahan antar controller

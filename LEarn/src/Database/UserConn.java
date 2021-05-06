@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import learn.User;
+import Model.User;
 
 /**
  * Berisi function get yang berkaitan dengan class User
@@ -92,8 +92,8 @@ public class UserConn {
         st.setString(1, u.getPassword());
         st.setString(2, u.getBio());
         st.setString(3, u.getName());
-        st.setString(2, u.getUsername());
-        st.setString(2, u.getRole());
+        st.setString(4, u.getUsername());
+        st.setString(5, u.getRole());
         ResultSet rs = st.executeQuery();
     }
     
