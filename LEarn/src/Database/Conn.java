@@ -6,17 +6,21 @@
 package Database;
 
 import java.sql.*;
-import learn.User;
 
 
 /**
- *
+ * 
  * @author ASUS
  */
 public class Conn {
     public final static String path = "jdbc:mysql://localhost:3306/l-earn";
     public final static String username = "root";
     public final static String password = "";
+
+    /**
+     * Untuk melakukan koneksi ke database
+     * @return
+     */
     public static Connection getConnection(){
         Connection con = null;
         try {

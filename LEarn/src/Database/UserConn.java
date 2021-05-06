@@ -13,10 +13,17 @@ import java.sql.SQLException;
 import learn.User;
 
 /**
- *
+ * Berisi function get yang berkaitan dengan class User
  * @author Anas
  */
 public class UserConn {
+
+    /**
+     * Untuk mencari user menggunakan user id, output berupa object user
+     * @param uid
+     * @return
+     * @throws SQLException
+     */
     public static User getUserById(String uid) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from user where user_id=?");
@@ -33,6 +40,12 @@ public class UserConn {
         return user;
     }
     
+    /**
+     * Untuk mencari user menggunakan username, output berupa object user
+     * @param uname
+     * @return
+     * @throws SQLException
+     */
     public static User getUserByUsername(String uname) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from user where username=?");
@@ -49,6 +62,13 @@ public class UserConn {
         return user;
     }
     
+    /**
+     * Untuk mencari user menggunakan username dan password, output berupa object user
+     * @param uname
+     * @param pass
+     * @return
+     * @throws SQLException
+     */
     public static User getUserByUsernameAndPassword(String uname, String pass) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from user where username=? and password=?");
