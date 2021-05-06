@@ -85,4 +85,17 @@ public class UserConn {
         }
         return user;
     }
+    
+    public static void postUser(User u) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("insert into user (password, bio, name, username, role)"+" valuse(?,?,?,?,?");
+        st.setString(1, u.getPassword());
+        st.setString(2, u.getBio());
+        st.setString(3, u.getName());
+        st.setString(2, u.getUsername());
+        st.setString(2, u.getRole());
+        ResultSet rs = st.executeQuery();
+    }
+    
+    
 }
