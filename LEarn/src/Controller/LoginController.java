@@ -60,4 +60,11 @@ public class LoginController extends Controller{
         
         return state != StateTransition.Login;
     }
+    
+    public void MoveToSignUp(boolean member){
+        if(member)
+            mappingController.Move(StateTransition.SignUpMember);
+        else
+            mappingController.Move(StateTransition.SignUpTutor);
+    }
 }

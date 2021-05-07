@@ -61,11 +61,10 @@ public class MappingController {
         (
                 new Transition(StateTransition.Login, StateTransition.SignUpMember),
                 new Transition(StateTransition.Login, StateTransition.SignUpTutor),
-                new Transition(StateTransition.SignUpTutor, StateTransition.Login),
-                new Transition(StateTransition.SignUpMember, StateTransition.Login),
+                new Transition(StateTransition.Login, StateTransition.LandpageAdmin),
                 new Transition(StateTransition.Login, StateTransition.LandpageMember),
                 new Transition(StateTransition.Login, StateTransition.LandpageTutor),
-                new Transition(StateTransition.Login, StateTransition.LandpageAdmin)
+                new Transition(StateTransition.SignUpMember, StateTransition.LandpageMember)
         )
         );
     
@@ -81,6 +80,12 @@ public class MappingController {
                 this.user = user;
                 break;
             case ProfileTutor:
+                this.user = user;
+                break;
+            case SignUpMember:
+                this.user = user;
+                break;
+            case SignUpTutor:
                 this.user = user;
                 break;
             default:
@@ -121,6 +126,7 @@ public class MappingController {
             case SignUpTutor:
                 break;
             case SignUpMember:
+                activeController = new SignUpMemberController(this);
                 break;
             case LandpageMember:
                 activeController = new MemberController(this);

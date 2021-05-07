@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -48,7 +48,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="220" width="270" height="40"/>
+              <AbsoluteConstraints x="400" y="229" width="255" height="22"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -61,33 +61,33 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="190" width="270" height="30"/>
+              <AbsoluteConstraints x="400" y="193" width="255" height="22"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4_RetypePasswordMember">
+        <Component class="javax.swing.JPasswordField" name="jPasswordField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="da" green="bb" red="e0" type="rgb"/>
             </Property>
-            <Property name="opaque" type="boolean" value="false"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="300" width="270" height="40"/>
+              <AbsoluteConstraints x="400" y="309" width="255" height="22"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3_PasswordMember">
+        <Component class="javax.swing.JPasswordField" name="jPasswordField_retype">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="da" green="bb" red="e0" type="rgb"/>
             </Property>
-            <Property name="opaque" type="boolean" value="false"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="260" width="270" height="40"/>
+              <AbsoluteConstraints x="400" y="269" width="255" height="22"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -97,6 +97,9 @@
               <Image iconType="3" name="/View/Group 14 (3).png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1_CreatAccountMemberActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="460" y="430" width="140" height="50"/>
@@ -122,7 +125,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="340" width="270" height="80"/>
+              <AbsoluteConstraints x="400" y="347" width="255" height="70"/>
             </Constraint>
           </Constraints>
 
@@ -134,8 +137,8 @@
                   <Color blue="da" green="bb" red="e0" type="rgb"/>
                 </Property>
                 <Property name="columns" type="int" value="20"/>
-                <Property name="rows" type="int" value="5"/>
-                <Property name="opaque" type="boolean" value="false"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="3"/>
               </Properties>
             </Component>
           </SubComponents>

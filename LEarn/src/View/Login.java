@@ -48,6 +48,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3_MEmber.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (2).png"))); // NOI18N
+        jButton3_MEmber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3_MEmberActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3_MEmber, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 90, 40));
 
         jButton1_SignIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 10 (1).png"))); // NOI18N
@@ -59,6 +64,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jButton1_SignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 341, 110, -1));
 
         jButton2_Tutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (3).png"))); // NOI18N
+        jButton2_Tutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2_TutorActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2_Tutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 100, 40));
 
         jTextField2_Username.setBackground(new java.awt.Color(224, 187, 218));
@@ -104,6 +114,14 @@ public class Login extends javax.swing.JFrame {
     private void jPasswordField_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField_passwordActionPerformed
+
+    private void jButton3_MEmberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3_MEmberActionPerformed
+       controller.MoveToSignUp(true);
+    }//GEN-LAST:event_jButton3_MEmberActionPerformed
+
+    private void jButton2_TutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_TutorActionPerformed
+        controller.MoveToSignUp(false);
+    }//GEN-LAST:event_jButton2_TutorActionPerformed
 
     /**
      * @param args the command line arguments

@@ -20,7 +20,7 @@ public class Controller {
     }
     
     public void Show(){
-        view.show();
+        view.setVisible(true);
     };
     public void Hide(){
         view.dispose();

@@ -5,6 +5,9 @@
  */
 package View;
 
+import Controller.SignUpMemberController;
+import java.util.Arrays;
+
 /**
  *
  * @author nabillaaura
@@ -15,6 +18,12 @@ public class Register_Member extends javax.swing.JFrame {
      * Creates new form Register_Member
      */
     public Register_Member() {
+        initComponents();
+    }
+    
+    SignUpMemberController controller;
+    public Register_Member(SignUpMemberController controller) {
+        this.controller = controller;
         initComponents();
     }
 
@@ -30,8 +39,8 @@ public class Register_Member extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTextField2_UsernameMember = new javax.swing.JTextField();
         jTextField1_NamaLengkapMember = new javax.swing.JTextField();
-        jTextField4_RetypePasswordMember = new javax.swing.JTextField();
-        jTextField3_PasswordMember = new javax.swing.JTextField();
+        jPasswordField = new javax.swing.JPasswordField();
+        jPasswordField_retype = new javax.swing.JPasswordField();
         jButton1_CreatAccountMember = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -44,21 +53,26 @@ public class Register_Member extends javax.swing.JFrame {
 
         jTextField2_UsernameMember.setBackground(new java.awt.Color(224, 187, 218));
         jTextField2_UsernameMember.setOpaque(false);
-        jPanel1.add(jTextField2_UsernameMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 270, 40));
+        jPanel1.add(jTextField2_UsernameMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 229, 255, 22));
 
         jTextField1_NamaLengkapMember.setBackground(new java.awt.Color(224, 187, 218));
         jTextField1_NamaLengkapMember.setOpaque(false);
-        jPanel1.add(jTextField1_NamaLengkapMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 270, 30));
+        jPanel1.add(jTextField1_NamaLengkapMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 193, 255, 22));
 
-        jTextField4_RetypePasswordMember.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField4_RetypePasswordMember.setOpaque(false);
-        jPanel1.add(jTextField4_RetypePasswordMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 270, 40));
+        jPasswordField.setBackground(new java.awt.Color(224, 187, 218));
+        jPasswordField.setToolTipText("");
+        jPanel1.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 309, 255, 22));
 
-        jTextField3_PasswordMember.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField3_PasswordMember.setOpaque(false);
-        jPanel1.add(jTextField3_PasswordMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 270, 40));
+        jPasswordField_retype.setBackground(new java.awt.Color(224, 187, 218));
+        jPasswordField_retype.setToolTipText("");
+        jPanel1.add(jPasswordField_retype, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 269, 255, 22));
 
         jButton1_CreatAccountMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 14 (3).png"))); // NOI18N
+        jButton1_CreatAccountMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_CreatAccountMemberActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1_CreatAccountMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 140, 50));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
@@ -67,11 +81,11 @@ public class Register_Member extends javax.swing.JFrame {
 
         jTextArea1.setBackground(new java.awt.Color(224, 187, 218));
         jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setOpaque(false);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(3);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 270, 80));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 347, 255, 70));
 
         jLabel1.setBackground(new java.awt.Color(224, 187, 218));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Register Member.png"))); // NOI18N
@@ -81,7 +95,7 @@ public class Register_Member extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,6 +104,19 @@ public class Register_Member extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1_CreatAccountMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_CreatAccountMemberActionPerformed
+        String username = jTextField2_UsernameMember.getText();
+        String nama = jTextField1_NamaLengkapMember.getText();
+        String password = jPasswordField.getText();
+        String rePassword = jPasswordField_retype.getText();
+        String bio = jTextArea1.getText();
+        
+        boolean isValid = !username.isEmpty() && !nama.isEmpty() 
+                && (password.compareTo(rePassword) == 0);
+        if(isValid)
+            controller.RegisterUser(username, nama, password, bio);
+    }//GEN-LAST:event_jButton1_CreatAccountMemberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,11 +158,11 @@ public class Register_Member extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JPasswordField jPasswordField_retype;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1_NamaLengkapMember;
     private javax.swing.JTextField jTextField2_UsernameMember;
-    private javax.swing.JTextField jTextField3_PasswordMember;
-    private javax.swing.JTextField jTextField4_RetypePasswordMember;
     // End of variables declaration//GEN-END:variables
 }
