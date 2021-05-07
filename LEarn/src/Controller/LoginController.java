@@ -12,23 +12,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import Model.User;
+import Controller.MappingController.StateTransition;
+import java.util.Arrays;
 
 /**
  * Class controller yang mengatur login dari aplikasi
  * @author Anas
  */
-public class LoginController implements IController{
-    private MappingController mappingController;
-    private JFrame view;
+public class LoginController extends Controller{
+    
+    String[] roles = new String[]{"admin", "member", "tutor"};
+    StateTransition[] states = new StateTransition[]
+    {
+        StateTransition.LandpageAdmin,
+        StateTransition.LandpageMember,
+        StateTransition.LandpageTutor
+    };
     
     /**
      * Constructor dari kelas ini
      * @param mappingController : global mapping controller
      */
     public LoginController(MappingController mappingController) {
-        this.mappingController = mappingController;
+        super(mappingController);
         view = new Login(this);
-        Show();
+        Hide();
     }
     
     /**
@@ -37,23 +45,19 @@ public class LoginController implements IController{
      * @param username : string username
      * @param password : string password
      */
-    public void Login(String username, String password){       
+    public boolean Login(String username, String password){
+        StateTransition state = StateTransition.Login;
         try {
             User user = UserConn.getUserByUsernameAndPassword(username, password);
-            mappingController.Move(user);
-        } catch (SQLException ex) {
+            
+            int index = Arrays.asList(roles).indexOf(user.getRole());
+            state = index != -1 ? states[index] : state;
+            
+            mappingController.Move(state, user);
+        } catch (Exception ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public void Show() {
-        view.show();
-    }
-
-    @Override
-    public void Hide() {
-        view.hide();
-        view.dispose();
+        
+        return state != StateTransition.Login;
     }
 }

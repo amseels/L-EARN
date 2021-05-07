@@ -5,20 +5,19 @@
  */
 package Controller;
 
+import View.TBA;
+import javax.swing.JFrame;
+
 /**
  * Class controller yang mengatur member page
  * @author Anas
  */
-public class MemberController implements IController{
-    
-    @Override
-    public void Show() {
-        
+public class MemberController extends Controller{
+
+    public MemberController(MappingController mappingController) {
+        super(mappingController);
+        super.view = new TBA();
     }
 
-    @Override
-    public void Hide() {
-        
-    }
     
 }
