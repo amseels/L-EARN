@@ -5,7 +5,7 @@
  */
 package Search;
 
-import java.awt.List;
+import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -42,6 +42,7 @@ public class LuceneManager {
     private final StandardAnalyzer analyzer;
     private Directory index;
     private ArrayList<Pair<Integer, String>> result;
+    private boolean hasSeacrh = false;
     
     private static LuceneManager instance = new LuceneManager();
 
@@ -72,12 +73,26 @@ public class LuceneManager {
         }
     }
     
+    public void AddItem(String question, int indexQuestion){
+        if(hasSeacrh){
+            index = new RAMDirectory();
+            hasSeacrh = false;
+        }
+            
+        AddItem(question, indexQuestion);
+    }
+    
     /**
      * Method untuk memasukan text text question yang akan dilakukan pencarian
      * @param item : sebuah list yang berisi text question
      */
     public void AddItemToSearch(ArrayList<String> item){
-        index = new RAMDirectory();
+        
+        if(hasSeacrh){
+            index = new RAMDirectory();
+            hasSeacrh = false;
+        }
+        
         for(int i = 0; i < item.size(); i++){
             AddItemToSearch(item.get(i), i);
         }
@@ -109,6 +124,7 @@ public class LuceneManager {
         } catch (ParseException | IOException ex) {
             Logger.getLogger(LuceneManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+        hasSeacrh = true;
         return isFound;
     }
     
@@ -123,15 +139,19 @@ public class LuceneManager {
     /**
      * Menampilkan data yang ditemukan pada pencarian sebelumnya.
      */
-    public void ShowResult(){
+    public List<Integer> ShowResult(){
         
+        List<Integer> idQuestion = new ArrayList<>();
         result.forEach((res) -> 
         {
-            String value = res.getValue();
+            //String value = res.getValue();
             Integer key = res.getKey();
-            System.out.println(key + " " + value);
+            //System.out.println(key + " " + value);
+            idQuestion.add(key);
         }
         );
+        
+        return idQuestion;
     }
     
     private void addDoc(IndexWriter w, String question, int index) throws IOException {

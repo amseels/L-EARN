@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Question;
 import Model.User;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +16,8 @@ import java.util.List;
  * @author Anas
  */
 public class MappingController {
+
+    private List<Question> questions;
 
     /**
      * Constructor dari kelas mapping controller
@@ -89,6 +92,11 @@ public class MappingController {
             default:
                 
         }
+        Move(state);
+    }
+    
+    public void Move(StateTransition state, List<Question> questions){
+        this.questions = questions;
         Move(state);
     }
     
