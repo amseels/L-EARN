@@ -64,7 +64,8 @@ public class MappingController {
                 new Transition(StateTransition.Login, StateTransition.LandpageAdmin),
                 new Transition(StateTransition.Login, StateTransition.LandpageMember),
                 new Transition(StateTransition.Login, StateTransition.LandpageTutor),
-                new Transition(StateTransition.SignUpMember, StateTransition.LandpageMember)
+                new Transition(StateTransition.SignUpMember, StateTransition.LandpageMember),
+                new Transition(StateTransition.SignUpTutor, StateTransition.Login)
         )
         );
     
@@ -83,9 +84,6 @@ public class MappingController {
                 this.user = user;
                 break;
             case SignUpMember:
-                this.user = user;
-                break;
-            case SignUpTutor:
                 this.user = user;
                 break;
             default:
@@ -126,7 +124,7 @@ public class MappingController {
             case SignUpTutor:
                 break;
             case SignUpMember:
-                activeController = new SignUpMemberController(this);
+                activeController = new SignUpController(this);
                 break;
             case LandpageMember:
                 activeController = new MemberController(this);
@@ -150,6 +148,11 @@ public class MappingController {
             case ProfileTutor:
                 break;
             case LandpageAdmin:
+                break;
+            case Login:
+                activeController = new LoginController(this);
+                break;
+            case Quit:
                 break;
             default:
                 throw new AssertionError(currentState.name());

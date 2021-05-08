@@ -5,8 +5,7 @@
  */
 package View;
 
-import Controller.SignUpMemberController;
-import java.util.Arrays;
+import Controller.SignUpController;
 
 /**
  *
@@ -21,8 +20,8 @@ public class Register_Member extends javax.swing.JFrame {
         initComponents();
     }
     
-    SignUpMemberController controller;
-    public Register_Member(SignUpMemberController controller) {
+    SignUpController controller;
+    public Register_Member(SignUpController controller) {
         this.controller = controller;
         initComponents();
     }
