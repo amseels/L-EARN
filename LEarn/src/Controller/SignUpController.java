@@ -9,6 +9,8 @@ import Controller.MappingController.StateTransition;
 import Database.UserConn;
 import Model.User;
 import View.Register_Member;
+import View.Register_Tutor;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.RegularExpression;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,9 +21,12 @@ import java.util.logging.Logger;
  */
 public class SignUpController extends Controller{
     
-    public SignUpController(MappingController mappingController) {
+    public SignUpController(MappingController mappingController, boolean member) {
         super(mappingController);
-        this.view = new Register_Member(this);
+        if(member)
+            this.view = new Register_Member(this);
+        else
+            this.view = new Register_Tutor();
     }
     
     public boolean RegisterUser(String username, String nama, String password, String bio){
