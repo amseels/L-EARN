@@ -12,6 +12,7 @@ import java.sql.*;
  * @author ASUS
  */
 public class Answer {
+
     private Date time;
     private String content;
     private double rating;
