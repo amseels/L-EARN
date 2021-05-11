@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Question;
 import Model.User;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,7 +42,8 @@ public class MappingController {
         QuestionHistory,
         QuestionMember,
         LandpageTutor,
-        QeustionTutor,
+        QuestionTutor,
+        Withdrawal,
         WithdrawalHistory,
         ProfileTutor,
         LandpageAdmin,
@@ -108,8 +110,9 @@ public class MappingController {
         if(state == StateTransition.Quit){
             currentState = StateTransition.Login;
             this.user = null;
-            activeController.Hide();
+            Point loc = activeController.Hide();
             activeController = new LoginController(this);
+            activeController.Show(loc);
             return;
         }
         
@@ -130,9 +133,10 @@ public class MappingController {
         
         switch(currentState){
             case SignUpTutor:
+                activeController = new SignUpController(this, false);
                 break;
             case SignUpMember:
-                activeController = new SignUpController(this);
+                activeController = new SignUpController(this, true);
                 break;
             case LandpageMember:
                 activeController = new MemberController(this);
@@ -140,6 +144,7 @@ public class MappingController {
             case ProfileMember:
                 break;
             case PostQuestionMember:
+                activeController = new PostQuestionController(this);
                 break;
             case SearchResult:
                 break;
@@ -148,8 +153,7 @@ public class MappingController {
             case QuestionMember:
                 break;
             case LandpageTutor:
-                break;
-            case QeustionTutor:
+                activeController = new TutorController(this);
                 break;
             case WithdrawalHistory:
                 break;
@@ -162,12 +166,16 @@ public class MappingController {
                 break;
             case Quit:
                 break;
+            case QuestionTutor:
+                break;
+            case Withdrawal:
+                break;
             default:
                 throw new AssertionError(currentState.name());
 
         }
         
-        last.Hide();
-        activeController.Show();
+        Point loc = last.Hide();
+        activeController.Show(loc);
     }
 }

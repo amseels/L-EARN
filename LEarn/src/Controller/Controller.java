@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import java.awt.Point;
 import javax.swing.JFrame;
 
 /**
@@ -22,7 +23,22 @@ public class Controller {
     public void Show(){
         view.setVisible(true);
     };
-    public void Hide(){
+    
+    public void Show(Point location){
+        view.setLocation(location);
+        view.setVisible(true);
+    };
+    
+    public Point Hide(){
+        Point location = view.getLocation();
         view.dispose();
-    };    
+        return location;
+    };
+
+    protected void ChangeView(JFrame view){
+        view.setVisible(false);
+        Point loc = Hide();
+        this.view = view;
+        Show(loc);        
+    }
 }
