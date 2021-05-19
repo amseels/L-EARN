@@ -30,4 +30,14 @@ public class QuestionConn {
         }
         return question;
     }
+        public static void postQuestion(Question q, String u) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("insert into question (category, content, time, user_id)"+" values(?,?,?,?)");
+        st.setString(1, q.getCategory());
+        st.setString(2, q.getContent());
+        st.setDate(3, q.getTime());
+        st.setString(4, u);
+        
+        st.execute();
+    }
 }

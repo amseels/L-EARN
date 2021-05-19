@@ -30,5 +30,17 @@ public class AnswerConn {
         }
         return answer;
     }
+
+    public static void postAnswer(Answer a, String tid, String qid) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("insert into answer (time, content, rating, tutor_id, question_id)"+" values(?,?,?,?,?)");
+        st.setDate(1, a.getTime());
+        st.setString(2, a.getContent());
+        st.setDouble(3, a.getRating());
+        st.setString(4, tid);
+        st.setString(5, qid);
+       
+        st.execute();
+    }
 }
 

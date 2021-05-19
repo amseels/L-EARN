@@ -86,6 +86,14 @@ public class UserConn {
         return user;
     }
     
+    public static String getUserIdByUsername(String u) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from user where username=?");
+        st.setString(1, u);     
+        ResultSet rs = st.executeQuery();
+        return rs.getString("user_id");
+    }
+    
     public static void postUser(User u) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("insert into user (password, bio, name, username, role)"+" values(?,?,?,?,?)");

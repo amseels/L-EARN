@@ -30,4 +30,22 @@ public class TutorConn {
         }
         return tutor;
     }   
+    public static String getTutorIdByUserId(String u) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from tutor where user_id=?");
+        st.setString(1, u);     
+        ResultSet rs = st.executeQuery();
+        return rs.getString("tutor_id");
+    }
+    
+    public static void postTutor(Tutor t, String uid) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("insert into tutor (eligibility_proof, rating, validation_status, user_id)"+" values(?,?,?,?)");
+        st.setString(1, t.getEligibility_proof());
+        st.setDouble(2, t.getRating());
+        st.setString(3, t.getValidation_status());
+        st.setString(4, uid);
+
+        st.execute();
+    }
 }

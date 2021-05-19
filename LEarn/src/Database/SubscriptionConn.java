@@ -30,4 +30,14 @@ public class SubscriptionConn {
         }
         return subscription;
     }   
+    
+    public static void postSubscription(Subscription s) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("insert into subscription (name, price, validity_periode)"+" values(?,?,?)");
+        st.setString(1, s.getName());
+        st.setDouble(2, s.getPrice());
+        st.setDouble(3, s.getValidity_periode());
+
+        st.execute();
+    }
 }
