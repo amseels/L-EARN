@@ -36,55 +36,55 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton3_MEmber = new javax.swing.JButton();
-        jButton1_SignIn = new javax.swing.JButton();
-        jButton2_Tutor = new javax.swing.JButton();
-        jTextField2_Username = new javax.swing.JTextField();
-        jPasswordField_password = new javax.swing.JPasswordField();
+        B_SignUpMember = new javax.swing.JButton();
+        B_Login = new javax.swing.JButton();
+        B_SignUpTutor = new javax.swing.JButton();
+        TF_Username = new javax.swing.JTextField();
+        TF_Password = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3_MEmber.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (2).png"))); // NOI18N
-        jButton3_MEmber.addActionListener(new java.awt.event.ActionListener() {
+        B_SignUpMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (2).png"))); // NOI18N
+        B_SignUpMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3_MEmberActionPerformed(evt);
+                B_SignUpMemberActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3_MEmber, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 90, 40));
+        jPanel1.add(B_SignUpMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 90, 40));
 
-        jButton1_SignIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 10 (1).png"))); // NOI18N
-        jButton1_SignIn.addActionListener(new java.awt.event.ActionListener() {
+        B_Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 10 (1).png"))); // NOI18N
+        B_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1_SignInActionPerformed(evt);
+                B_LoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1_SignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 341, 110, -1));
+        jPanel1.add(B_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 341, 110, -1));
 
-        jButton2_Tutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (3).png"))); // NOI18N
-        jButton2_Tutor.addActionListener(new java.awt.event.ActionListener() {
+        B_SignUpTutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (3).png"))); // NOI18N
+        B_SignUpTutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2_TutorActionPerformed(evt);
+                B_SignUpTutorActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2_Tutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 100, 40));
+        jPanel1.add(B_SignUpTutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 100, 40));
 
-        jTextField2_Username.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField2_Username.setMaximumSize(new java.awt.Dimension(6, 22));
-        jTextField2_Username.setOpaque(false);
-        jPanel1.add(jTextField2_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 210, 300, 30));
+        TF_Username.setBackground(new java.awt.Color(224, 187, 218));
+        TF_Username.setMaximumSize(new java.awt.Dimension(6, 22));
+        TF_Username.setOpaque(false);
+        jPanel1.add(TF_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 210, 300, 30));
 
-        jPasswordField_password.setBackground(new java.awt.Color(224, 187, 218));
-        jPasswordField_password.setMaximumSize(new java.awt.Dimension(6, 22));
-        jPasswordField_password.setOpaque(false);
-        jPasswordField_password.addActionListener(new java.awt.event.ActionListener() {
+        TF_Password.setBackground(new java.awt.Color(224, 187, 218));
+        TF_Password.setMaximumSize(new java.awt.Dimension(6, 22));
+        TF_Password.setOpaque(false);
+        TF_Password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField_passwordActionPerformed(evt);
+                TF_PasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(jPasswordField_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 290, 300, 30));
+        jPanel1.add(TF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 290, 300, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Sign in (1).png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -104,24 +104,24 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1_SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_SignInActionPerformed
-        String username = jTextField2_Username.getText();
-        String password = jPasswordField_password.getText();
+    private void B_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_LoginActionPerformed
+        String username = TF_Username.getText();
+        String password = TF_Password.getText();
         if(!username.isEmpty() && !password.isEmpty())
             controller.Login(username, password);
-    }//GEN-LAST:event_jButton1_SignInActionPerformed
+    }//GEN-LAST:event_B_LoginActionPerformed
 
-    private void jPasswordField_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_passwordActionPerformed
+    private void TF_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_PasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField_passwordActionPerformed
+    }//GEN-LAST:event_TF_PasswordActionPerformed
 
-    private void jButton3_MEmberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3_MEmberActionPerformed
+    private void B_SignUpMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SignUpMemberActionPerformed
        controller.MoveToSignUp(true);
-    }//GEN-LAST:event_jButton3_MEmberActionPerformed
+    }//GEN-LAST:event_B_SignUpMemberActionPerformed
 
-    private void jButton2_TutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_TutorActionPerformed
+    private void B_SignUpTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SignUpTutorActionPerformed
         controller.MoveToSignUp(false);
-    }//GEN-LAST:event_jButton2_TutorActionPerformed
+    }//GEN-LAST:event_B_SignUpTutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,12 +159,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1_SignIn;
-    private javax.swing.JButton jButton2_Tutor;
-    private javax.swing.JButton jButton3_MEmber;
+    private javax.swing.JButton B_Login;
+    private javax.swing.JButton B_SignUpMember;
+    private javax.swing.JButton B_SignUpTutor;
+    private javax.swing.JPasswordField TF_Password;
+    private javax.swing.JTextField TF_Username;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField_password;
-    private javax.swing.JTextField jTextField2_Username;
     // End of variables declaration//GEN-END:variables
 }
