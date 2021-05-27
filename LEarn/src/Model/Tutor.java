@@ -10,9 +10,12 @@ package Model;
  * @author ASUS
  */
 public class Tutor {
+    private int tutor_id;
     private String eligibility_proof;
     private double rating;
     private String validation_status;
+    
+    public static String[] status = new String[]{"Valid", "non-Valid"};
 
     public Tutor() {
     }
@@ -41,5 +44,12 @@ public class Tutor {
         this.validation_status = validation_status;
     }
     
+    public int getTutor_id() {
+        return tutor_id;
+    }
+
+    public void setTutor_id(int tutor_id) {
+        this.tutor_id = tutor_id;
+    }
     
 }

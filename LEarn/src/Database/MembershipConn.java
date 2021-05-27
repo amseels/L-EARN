@@ -17,7 +17,7 @@ import java.sql.SQLException;
  * @author ASUS
  */
 public class MembershipConn {
-    public Membership getMembershipById(String id) throws SQLException {
+    public static Membership getMembershipById(String id) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from membership where membership_id =?");
         st.setString(1, id);
@@ -31,7 +31,7 @@ public class MembershipConn {
         }
         return membership;
     }
-    public Membership getMembershipByUserId(String id) throws SQLException {
+    public static Membership getMembershipByUserId(String id) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from membership where user_id =?");
         st.setString(1, id);
@@ -45,7 +45,7 @@ public class MembershipConn {
         }
         return membership;
     }
-    public Membership getMembershipBySubsId(String id) throws SQLException {
+    public static Membership getMembershipBySubsId(String id) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from membership where subs_id =?");
         st.setString(1, id);

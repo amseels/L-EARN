@@ -16,6 +16,8 @@ public class Tutor_Payment {
     private Date payment_time;
     private String payment_status;
     private double amount;
+    
+    public static String[] status = new String[]{"REQUESTED", "PAID", "REJECTED"};
 
     public Tutor_Payment() {
     }

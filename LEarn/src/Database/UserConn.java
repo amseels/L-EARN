@@ -53,6 +53,7 @@ public class UserConn {
         ResultSet rs = st.executeQuery();
         User user = new User();
         while  (rs.next()){
+            user.setUserId(rs.getInt("user_id"));
             user.setPassword(rs.getString("password"));
             user.setBio(rs.getString("bio"));
             user.setName(rs.getString("name"));
@@ -77,6 +78,7 @@ public class UserConn {
         ResultSet rs = st.executeQuery();
         User user = new User();
         while  (rs.next()){
+            user.setUserId(rs.getInt("user_id"));
             user.setPassword(rs.getString("password"));
             user.setBio(rs.getString("bio"));
             user.setName(rs.getString("name"));
