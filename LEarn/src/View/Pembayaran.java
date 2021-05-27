@@ -27,10 +27,12 @@ public class Pembayaran extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupSubscription = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jButton2_PaketNgambis = new javax.swing.JButton();
         jButton1_PaketSantai = new javax.swing.JButton();
         jButton4_SelectFile = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jButton5_Next = new javax.swing.JButton();
         jButton3_PaketLangganan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -39,22 +41,45 @@ public class Pembayaran extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2_PaketNgambis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 13 (4).png"))); // NOI18N
-        jPanel1.add(jButton2_PaketNgambis, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 160, 160));
+        jButton2_PaketNgambis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketNgambis.png"))); // NOI18N
+        buttonGroupSubscription.add(jButton2_PaketNgambis);
+        jPanel1.add(jButton2_PaketNgambis, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, 140));
 
-        jButton1_PaketSantai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 8 (2).png"))); // NOI18N
-        jPanel1.add(jButton1_PaketSantai, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 160, 170));
+        jButton1_PaketSantai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketSantai.png"))); // NOI18N
+        buttonGroupSubscription.add(jButton1_PaketSantai);
+        jButton1_PaketSantai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1_PaketSantaiMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton1_PaketSantai, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 130, 140));
 
-        jButton4_SelectFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 16.png"))); // NOI18N
+        jButton4_SelectFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SelectFile_Gray.png"))); // NOI18N
         jPanel1.add(jButton4_SelectFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 130, 30));
 
-        jButton5_Next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 17 (1).png"))); // NOI18N
-        jPanel1.add(jButton5_Next, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 100, 40));
+        jCheckBox1.setBackground(new java.awt.Color(224, 187, 218));
+        jCheckBox1.setText("Saya menyetujui syarat dan ketentuan yang berlaku");
+        jCheckBox1.setToolTipText("");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 35));
 
-        jButton3_PaketLangganan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 15.png"))); // NOI18N
-        jPanel1.add(jButton3_PaketLangganan, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 150, 160));
+        jButton5_Next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Next_Gray.png"))); // NOI18N
+        jPanel1.add(jButton5_Next, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 100, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/pembayaran.png"))); // NOI18N
+        jButton3_PaketLangganan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketLangganan.png"))); // NOI18N
+        buttonGroupSubscription.add(jButton3_PaketLangganan);
+        jButton3_PaketLangganan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3_PaketLanggananActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3_PaketLangganan, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 130, 140));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_Subscription.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 510));
 
@@ -71,6 +96,19 @@ public class Pembayaran extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3_PaketLanggananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3_PaketLanggananActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3_PaketLanggananActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton1_PaketSantaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_PaketSantaiMouseClicked
+        // TODO add your handling code here:
+        jButton1_PaketSantaiMouseClicked.setBorder()
+    }//GEN-LAST:event_jButton1_PaketSantaiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -108,11 +146,13 @@ public class Pembayaran extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupSubscription;
     private javax.swing.JButton jButton1_PaketSantai;
     private javax.swing.JButton jButton2_PaketNgambis;
     private javax.swing.JButton jButton3_PaketLangganan;
     private javax.swing.JButton jButton4_SelectFile;
     private javax.swing.JButton jButton5_Next;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
