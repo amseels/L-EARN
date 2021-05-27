@@ -51,20 +51,23 @@ public class Register_Member extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TF_UsernameMember.setBackground(new java.awt.Color(224, 187, 218));
-        TF_UsernameMember.setOpaque(false);
-        jPanel1.add(TF_UsernameMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 229, 255, 22));
+        jPanel1.add(TF_UsernameMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 225, 270, 35));
 
         TF_NamaLengkapMember.setBackground(new java.awt.Color(224, 187, 218));
-        TF_NamaLengkapMember.setOpaque(false);
-        jPanel1.add(TF_NamaLengkapMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 193, 255, 22));
+        jPanel1.add(TF_NamaLengkapMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 190, 270, 35));
 
         PF_reTypePassword.setBackground(new java.awt.Color(224, 187, 218));
         PF_reTypePassword.setToolTipText("");
-        jPanel1.add(PF_reTypePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 309, 255, 22));
+        jPanel1.add(PF_reTypePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 295, 270, 40));
 
         PF_Password.setBackground(new java.awt.Color(224, 187, 218));
         PF_Password.setToolTipText("");
-        jPanel1.add(PF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 269, 255, 22));
+        PF_Password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_PasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 260, 270, 35));
 
         B_CreateAccountMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_CreateAccount.png"))); // NOI18N
         B_CreateAccountMember.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +87,7 @@ public class Register_Member extends javax.swing.JFrame {
         TF_Biodata.setRows(3);
         jScrollPane1.setViewportView(TF_Biodata);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 347, 255, 70));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 337, 270, 80));
 
         jLabel1.setBackground(new java.awt.Color(224, 187, 218));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_RegisterMember.png"))); // NOI18N
@@ -116,6 +119,10 @@ public class Register_Member extends javax.swing.JFrame {
         if(isValid)
             controller.RegisterUser(username, nama, password, bio);
     }//GEN-LAST:event_B_CreateAccountMemberActionPerformed
+
+    private void PF_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_PasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_PasswordActionPerformed
 
     /**
      * @param args the command line arguments

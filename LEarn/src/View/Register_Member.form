@@ -44,11 +44,10 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="da" green="bb" red="e0" type="rgb"/>
             </Property>
-            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="229" width="255" height="22"/>
+              <AbsoluteConstraints x="395" y="225" width="270" height="35"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -57,11 +56,10 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="da" green="bb" red="e0" type="rgb"/>
             </Property>
-            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="193" width="255" height="22"/>
+              <AbsoluteConstraints x="395" y="190" width="270" height="35"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -74,7 +72,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="309" width="255" height="22"/>
+              <AbsoluteConstraints x="395" y="295" width="270" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -85,9 +83,12 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PF_PasswordActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="269" width="255" height="22"/>
+              <AbsoluteConstraints x="395" y="260" width="270" height="35"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -125,7 +126,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="347" width="255" height="70"/>
+              <AbsoluteConstraints x="395" y="337" width="270" height="80"/>
             </Constraint>
           </Constraints>
 
