@@ -16,6 +16,8 @@ public class Membership {
     private Date start_date;
     private String payment_proof;
     private Date expired_date;
+    
+    public static String[] validation = new String[]{"Valid", "Non-Valid"};
 
     public String getValidation_status() {
         return validation_status;
@@ -50,6 +52,9 @@ public class Membership {
     }
 
     public Membership() {
+        validation_status = validation[1];
+        java.time.LocalDate local = java.time.LocalDate.now();
+        start_date = new Date(local.getYear(), local.getMonthValue(), local.getDayOfMonth());
     }
     
     

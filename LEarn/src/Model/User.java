@@ -10,6 +10,7 @@ package Model;
  * @author ASUS
  */
 public class User {
+    private int userId;
     private String password;
     private String bio;
     private String name;
@@ -58,6 +59,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+    
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public User(String password, String bio, String name, String username, String role) {

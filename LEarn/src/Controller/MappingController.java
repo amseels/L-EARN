@@ -77,6 +77,10 @@ public class MappingController {
     private User user;
     private Controller activeController;
     
+    public User GetCurrentUser(){
+        return user;
+    }
+    
     public void Move(StateTransition state, User user){
         switch(currentState){
             case Login:

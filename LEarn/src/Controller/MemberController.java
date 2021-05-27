@@ -6,12 +6,16 @@
 package Controller;
 
 import Controller.MappingController.StateTransition;
+import Database.MembershipConn;
 import Model.Membership;
 import Model.Question;
 import Search.LuceneManager;
 import View.TBA;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Class controller yang mengatur member page
@@ -22,7 +26,7 @@ public class MemberController extends Controller{
     public MemberController(MappingController mappingController) {
         super(mappingController);
         
-        int idUser = 0;
+        int idUser = mappingController.GetCurrentUser().getUserId();
         if(AuthenticationMember(idUser)){
             // Member Page
             super.view = new TBA();
@@ -37,6 +41,17 @@ public class MemberController extends Controller{
         Membership member = null;
         
         return member != null;
+    }
+    
+    public void PostMemberSubscription(int sid){
+        try {
+            Membership member = new Membership();
+            int uid = mappingController.GetCurrentUser().getUserId();
+            
+            MembershipConn.postMembership(member, Integer.toHexString(sid), Integer.toHexString(uid));
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void SearchByCategory(String category){
