@@ -66,7 +66,7 @@ public class Register_Member extends javax.swing.JFrame {
         PF_Password.setToolTipText("");
         jPanel1.add(PF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 269, 255, 22));
 
-        B_CreateAccountMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 14 (3).png"))); // NOI18N
+        B_CreateAccountMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_CreateAccount.png"))); // NOI18N
         B_CreateAccountMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_CreateAccountMemberActionPerformed(evt);
@@ -87,7 +87,7 @@ public class Register_Member extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 347, 255, 70));
 
         jLabel1.setBackground(new java.awt.Color(224, 187, 218));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Register Member.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_RegisterMember.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
