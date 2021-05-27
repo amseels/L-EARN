@@ -36,53 +36,53 @@ public class Register_Member extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField2_UsernameMember = new javax.swing.JTextField();
-        jTextField1_NamaLengkapMember = new javax.swing.JTextField();
-        jPasswordField = new javax.swing.JPasswordField();
-        jPasswordField_retype = new javax.swing.JPasswordField();
-        jButton1_CreatAccountMember = new javax.swing.JButton();
+        TF_UsernameMember = new javax.swing.JTextField();
+        TF_NamaLengkapMember = new javax.swing.JTextField();
+        PF_reTypePassword = new javax.swing.JPasswordField();
+        PF_Password = new javax.swing.JPasswordField();
+        B_CreateAccountMember = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TF_Biodata = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2_UsernameMember.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField2_UsernameMember.setOpaque(false);
-        jPanel1.add(jTextField2_UsernameMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 229, 255, 22));
+        TF_UsernameMember.setBackground(new java.awt.Color(224, 187, 218));
+        TF_UsernameMember.setOpaque(false);
+        jPanel1.add(TF_UsernameMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 229, 255, 22));
 
-        jTextField1_NamaLengkapMember.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField1_NamaLengkapMember.setOpaque(false);
-        jPanel1.add(jTextField1_NamaLengkapMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 193, 255, 22));
+        TF_NamaLengkapMember.setBackground(new java.awt.Color(224, 187, 218));
+        TF_NamaLengkapMember.setOpaque(false);
+        jPanel1.add(TF_NamaLengkapMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 193, 255, 22));
 
-        jPasswordField.setBackground(new java.awt.Color(224, 187, 218));
-        jPasswordField.setToolTipText("");
-        jPanel1.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 309, 255, 22));
+        PF_reTypePassword.setBackground(new java.awt.Color(224, 187, 218));
+        PF_reTypePassword.setToolTipText("");
+        jPanel1.add(PF_reTypePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 309, 255, 22));
 
-        jPasswordField_retype.setBackground(new java.awt.Color(224, 187, 218));
-        jPasswordField_retype.setToolTipText("");
-        jPanel1.add(jPasswordField_retype, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 269, 255, 22));
+        PF_Password.setBackground(new java.awt.Color(224, 187, 218));
+        PF_Password.setToolTipText("");
+        jPanel1.add(PF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 269, 255, 22));
 
-        jButton1_CreatAccountMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 14 (3).png"))); // NOI18N
-        jButton1_CreatAccountMember.addActionListener(new java.awt.event.ActionListener() {
+        B_CreateAccountMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 14 (3).png"))); // NOI18N
+        B_CreateAccountMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1_CreatAccountMemberActionPerformed(evt);
+                B_CreateAccountMemberActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1_CreatAccountMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 140, 50));
+        jPanel1.add(B_CreateAccountMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 140, 50));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jLabel2.setText("*Tuliskan beberapa hal tentang kamu!");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, -1, 20));
 
-        jTextArea1.setBackground(new java.awt.Color(224, 187, 218));
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(3);
-        jScrollPane1.setViewportView(jTextArea1);
+        TF_Biodata.setBackground(new java.awt.Color(224, 187, 218));
+        TF_Biodata.setColumns(20);
+        TF_Biodata.setLineWrap(true);
+        TF_Biodata.setRows(3);
+        jScrollPane1.setViewportView(TF_Biodata);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 347, 255, 70));
 
@@ -104,18 +104,18 @@ public class Register_Member extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1_CreatAccountMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_CreatAccountMemberActionPerformed
-        String username = jTextField2_UsernameMember.getText();
-        String nama = jTextField1_NamaLengkapMember.getText();
-        String password = jPasswordField.getText();
-        String rePassword = jPasswordField_retype.getText();
-        String bio = jTextArea1.getText();
+    private void B_CreateAccountMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CreateAccountMemberActionPerformed
+        String username = TF_UsernameMember.getText();
+        String nama = TF_NamaLengkapMember.getText();
+        String password = PF_reTypePassword.getText();
+        String rePassword = PF_Password.getText();
+        String bio = TF_Biodata.getText();
         
         boolean isValid = !username.isEmpty() && !nama.isEmpty() 
                 && (password.compareTo(rePassword) == 0);
         if(isValid)
             controller.RegisterUser(username, nama, password, bio);
-    }//GEN-LAST:event_jButton1_CreatAccountMemberActionPerformed
+    }//GEN-LAST:event_B_CreateAccountMemberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,15 +153,15 @@ public class Register_Member extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1_CreatAccountMember;
+    private javax.swing.JButton B_CreateAccountMember;
+    private javax.swing.JPasswordField PF_Password;
+    private javax.swing.JPasswordField PF_reTypePassword;
+    private javax.swing.JTextArea TF_Biodata;
+    private javax.swing.JTextField TF_NamaLengkapMember;
+    private javax.swing.JTextField TF_UsernameMember;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField;
-    private javax.swing.JPasswordField jPasswordField_retype;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1_NamaLengkapMember;
-    private javax.swing.JTextField jTextField2_UsernameMember;
     // End of variables declaration//GEN-END:variables
 }
