@@ -16,6 +16,11 @@ public class Question {
     private String content;
     private Date time;
 
+    public Question(String category, String content) {
+        this.category = category;
+        this.content = content;
+    }
+
     public Question() {
     }
 
