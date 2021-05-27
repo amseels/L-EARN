@@ -3,3 +3,6 @@
 /LEarn/dist/
 LEarn/nbproject/private/private.xml
 Documents/~$PL- L-EARN.docx
+LEarn/nbproject/private/private.properties
+*.properties
+*.xml
