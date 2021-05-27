@@ -9,8 +9,9 @@ package View;
  *
  * @author nabillaaura
  */
-public class Register_Tutor extends javax.swing.JFrame {
 
+public class Register_Tutor extends javax.swing.JFrame {
+    
     /**
      * Creates new form Register_Tutor
      */
@@ -28,45 +29,77 @@ public class Register_Tutor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1_Username = new javax.swing.JTextField();
-        jTextField4_RetypePassword = new javax.swing.JTextField();
-        jTextField3_Password = new javax.swing.JTextField();
-        jTextField2_NamaLengkapTutor = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jButton2_CreateAccount = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        TF_NamaLengkapTutor = new javax.swing.JTextField();
+        TF_Username = new javax.swing.JTextField();
+        PF_Password = new javax.swing.JPasswordField();
+        PF_reTypePassword = new javax.swing.JPasswordField();
+        CB_Bank = new javax.swing.JComboBox();
+        TF_NomorRekening = new javax.swing.JTextField();
+        TF_NamaRekening = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TF_Biodata = new javax.swing.JTextArea();
+        B_CreateAccount = new javax.swing.JButton();
         jLabel1_NamaLengkap = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1_Username.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField1_Username.setOpaque(false);
-        jPanel1.add(jTextField1_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 290, 30));
+        TF_NamaLengkapTutor.setBackground(new java.awt.Color(224, 187, 218));
+        jPanel1.add(TF_NamaLengkapTutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 290, 30));
 
-        jTextField4_RetypePassword.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField4_RetypePassword.setOpaque(false);
-        jPanel1.add(jTextField4_RetypePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 290, 30));
+        TF_Username.setBackground(new java.awt.Color(224, 187, 218));
+        jPanel1.add(TF_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 290, 30));
 
-        jTextField3_Password.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField3_Password.setOpaque(false);
-        jPanel1.add(jTextField3_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 290, 30));
+        PF_Password.setBackground(new java.awt.Color(224, 187, 218));
+        PF_Password.setToolTipText("");
+        PF_Password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_PasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 290, 30));
 
-        jTextField2_NamaLengkapTutor.setBackground(new java.awt.Color(224, 187, 218));
-        jPanel1.add(jTextField2_NamaLengkapTutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 290, 30));
+        PF_reTypePassword.setBackground(new java.awt.Color(224, 187, 218));
+        PF_reTypePassword.setToolTipText("");
+        PF_reTypePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_reTypePasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PF_reTypePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 290, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bank" }));
-        jComboBox1.setToolTipText("");
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 90, 30));
+        CB_Bank.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pilih Bank", "Mandiri", "BCA", "BRI" }));
+        CB_Bank.setToolTipText("");
+        jPanel1.add(CB_Bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 90, 30));
 
-        jButton2_CreateAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 14 (3).png"))); // NOI18N
-        jPanel1.add(jButton2_CreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 140, 50));
+        TF_NomorRekening.setBackground(new java.awt.Color(224, 187, 218));
+        TF_NomorRekening.setText("Nomor Rekening");
+        TF_NomorRekening.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TF_NomorRekeningFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TF_NomorRekeningFocusLost(evt);
+            }
+        });
+        jPanel1.add(TF_NomorRekening, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 190, 30));
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
+        TF_NamaRekening.setBackground(new java.awt.Color(224, 187, 218));
+        jPanel1.add(TF_NamaRekening, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 290, 30));
 
-        jLabel1_NamaLengkap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Register Tutor (1).png"))); // NOI18N
+        TF_Biodata.setBackground(new java.awt.Color(224, 187, 218));
+        TF_Biodata.setColumns(20);
+        TF_Biodata.setLineWrap(true);
+        TF_Biodata.setRows(3);
+        jScrollPane1.setViewportView(TF_Biodata);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 290, 60));
+
+        B_CreateAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_CreateAccount.png"))); // NOI18N
+        jPanel1.add(B_CreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 140, 50));
+
+        jLabel1_NamaLengkap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_RegisterTutor.png"))); // NOI18N
         jLabel1_NamaLengkap.setText("jLabel1");
         jPanel1.add(jLabel1_NamaLengkap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 510));
 
@@ -83,6 +116,28 @@ public class Register_Tutor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PF_reTypePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_reTypePasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_reTypePasswordActionPerformed
+
+    private void PF_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_PasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_PasswordActionPerformed
+
+    private void TF_NomorRekeningFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TF_NomorRekeningFocusGained
+        // TODO add your handling code here:
+        if (TF_NomorRekening.getText().equals("Nomor Rekening")){
+            TF_NomorRekening.setText("");
+        }
+    }//GEN-LAST:event_TF_NomorRekeningFocusGained
+
+    private void TF_NomorRekeningFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TF_NomorRekeningFocusLost
+        // TODO add your handling code here:
+        if (TF_NomorRekening.getText().equals("")){
+            TF_NomorRekening.setText("Nomor Rekening");
+        }
+    }//GEN-LAST:event_TF_NomorRekeningFocusLost
 
     /**
      * @param args the command line arguments
@@ -120,14 +175,17 @@ public class Register_Tutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2_CreateAccount;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton B_CreateAccount;
+    private javax.swing.JComboBox CB_Bank;
+    private javax.swing.JPasswordField PF_Password;
+    private javax.swing.JPasswordField PF_reTypePassword;
+    private javax.swing.JTextArea TF_Biodata;
+    private javax.swing.JTextField TF_NamaLengkapTutor;
+    private javax.swing.JTextField TF_NamaRekening;
+    private javax.swing.JTextField TF_NomorRekening;
+    private javax.swing.JTextField TF_Username;
     private javax.swing.JLabel jLabel1_NamaLengkap;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField1_Username;
-    private javax.swing.JTextField jTextField2_NamaLengkapTutor;
-    private javax.swing.JTextField jTextField3_Password;
-    private javax.swing.JTextField jTextField4_RetypePassword;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
