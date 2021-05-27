@@ -47,7 +47,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        B_SignUpMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (2).png"))); // NOI18N
+        B_SignUpMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_RegistrationMember.png"))); // NOI18N
         B_SignUpMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_SignUpMemberActionPerformed(evt);
@@ -55,7 +55,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(B_SignUpMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 90, 40));
 
-        B_Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 10 (1).png"))); // NOI18N
+        B_Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SignIn.png"))); // NOI18N
         B_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_LoginActionPerformed(evt);
@@ -63,7 +63,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(B_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 341, 110, -1));
 
-        B_SignUpTutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Group 9 (3).png"))); // NOI18N
+        B_SignUpTutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_RegistrationTutor.png"))); // NOI18N
         B_SignUpTutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_SignUpTutorActionPerformed(evt);
@@ -86,7 +86,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(TF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 290, 300, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Sign in (1).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_Login.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 510));
 
