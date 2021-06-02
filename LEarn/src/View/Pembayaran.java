@@ -107,7 +107,7 @@ public class Pembayaran extends javax.swing.JFrame {
 
     private void jButton1_PaketSantaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_PaketSantaiMouseClicked
         // TODO add your handling code here:
-        jButton1_PaketSantaiMouseClicked.setBorder()
+        //jButton1_PaketSantaiMouseClicked.setBorder()
     }//GEN-LAST:event_jButton1_PaketSantaiMouseClicked
 
     /**

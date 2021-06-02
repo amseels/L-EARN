@@ -5,51 +5,40 @@
  */
 package Model;
 
-/**
- *
- * @author ASUS
- */
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class Tutor {
-    private int tutor_id;
-    private String eligibility_proof;
-    private double rating;
-    private String validation_status;
+    
+    public int tutor_id;
+    public InputStream eligibility_proof;
+    public double rating;
+    public String validation_status;
+    public String bank;
+    public String rekening;
+    public String namaRekening;
     
     public static String[] status = new String[]{"Valid", "non-Valid"};
 
     public Tutor() {
     }
-
-    public String getEligibility_proof() {
-        return eligibility_proof;
-    }
-
-    public void setEligibility_proof(String eligibility_proof) {
-        this.eligibility_proof = eligibility_proof;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
-    public String getValidation_status() {
-        return validation_status;
-    }
-
-    public void setValidation_status(String validation_status) {
-        this.validation_status = validation_status;
+    
+    public Tutor(String bank, String rekening, String namaRekening) {
+        this.bank = bank;
+        this.rekening = rekening;
+        this.namaRekening = namaRekening;
+        this.validation_status = status[1];
     }
     
-    public int getTutor_id() {
-        return tutor_id;
+    public void DownloadFile(String path) throws IOException{
+        byte[] buffer = new byte[eligibility_proof.available()];
+        eligibility_proof.read(buffer);
+            
+        File fileDownload = new File(path);
+        OutputStream outStream = new FileOutputStream(fileDownload);
+        outStream.write(buffer);
     }
-
-    public void setTutor_id(int tutor_id) {
-        this.tutor_id = tutor_id;
-    }
-    
 }

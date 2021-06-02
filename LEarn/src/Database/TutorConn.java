@@ -12,39 +12,45 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author ASUS
- */
 public class TutorConn {
-    public Tutor getTutorById(String id) throws SQLException {
+    
+    public static Tutor getTutorById(int id) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from tutor where tutor_id =?");
-        st.setString(1, id);
+        st.setInt(1, id);
         ResultSet rs = st.executeQuery();
         Tutor tutor = new Tutor();
         while  (rs.next()){
-            tutor.setEligibility_proof(rs.getString("eligibility_proof"));
-            tutor.setRating(rs.getDouble("rating"));
-            tutor.setValidation_status(rs.getString("validation_status"));            
+            tutor.eligibility_proof = rs.getBlob("eligibility_proof").getBinaryStream();
+            tutor.rating = rs.getDouble("rating");
+            tutor.validation_status = rs.getString("validation_status");
+            tutor.tutor_id = rs.getInt("tutor_id");
+            tutor.bank = rs.getString("bank");
+            tutor.rekening = rs.getString("rekening");
+            tutor.namaRekening = rs.getString("nama_rekening");
         }
         return tutor;
     }   
-    public static String getTutorIdByUserId(String u) throws SQLException {
+    public static String getTutorIdByUserId(int u) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from tutor where user_id=?");
-        st.setString(1, u);     
+        st.setInt(1, u);     
         ResultSet rs = st.executeQuery();
         return rs.getString("tutor_id");
     }
     
-    public static void postTutor(Tutor t, String uid) throws SQLException {
+    public static void postTutor(Tutor tutor, int uid) throws SQLException {
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("insert into tutor (eligibility_proof, rating, validation_status, user_id)"+" values(?,?,?,?)");
-        st.setString(1, t.getEligibility_proof());
-        st.setDouble(2, t.getRating());
-        st.setString(3, t.getValidation_status());
-        st.setString(4, uid);
+        PreparedStatement st = con.prepareStatement("insert into tutor "
+                + "(eligibility_proof, rating, validation_status, user_id, bank, rekening, nama_rekening)"
+                +" values(?,?,?,?,?,?,?)");
+        st.setBlob(1, tutor.eligibility_proof);
+        st.setDouble(2, tutor.rating);
+        st.setString(3, tutor.validation_status);
+        st.setInt(4, uid);
+        st.setString(5, tutor.bank);
+        st.setString(6, tutor.rekening);
+        st.setString(7, tutor.namaRekening);
 
         st.execute();
     }

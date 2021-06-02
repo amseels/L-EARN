@@ -5,6 +5,15 @@
  */
 package View;
 
+import Controller.SignUpController;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author nabillaaura
@@ -12,12 +21,34 @@ package View;
 
 public class Register_Tutor extends javax.swing.JFrame {
     
+    public final JFileChooser openFileChooser;
+    private File proofFile;
+    private SignUpController controller;
+    
     /**
      * Creates new form Register_Tutor
      */
     public Register_Tutor() {
         initComponents();
+        
+        openFileChooser = new JFileChooser();
+        openFileChooser.setCurrentDirectory(new File("c:\\tmp"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("Image File", "jpg"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("PDF File", "pdf"));
+        openFileChooser.setAcceptAllFileFilterUsed(false);
     }
+    
+    public Register_Tutor(SignUpController controller) {
+        this.controller = controller;
+        initComponents();
+        
+        openFileChooser = new JFileChooser();
+        openFileChooser.setCurrentDirectory(new File("c:\\tmp"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("PDF File", "pdf"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("Image File", "jpg"));
+        openFileChooser.setAcceptAllFileFilterUsed(false);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +70,8 @@ public class Register_Tutor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TF_Biodata = new javax.swing.JTextArea();
         B_CreateAccount = new javax.swing.JButton();
+        jButtonFileUpload = new javax.swing.JButton();
+        jLabelFileUpload = new javax.swing.JLabel();
         jLabel1_NamaLengkap = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,7 +130,23 @@ public class Register_Tutor extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 290, 60));
 
         B_CreateAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_CreateAccount.png"))); // NOI18N
+        B_CreateAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_CreateAccountActionPerformed(evt);
+            }
+        });
         jPanel1.add(B_CreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 140, 50));
+
+        jButtonFileUpload.setText("Upload File");
+        jButtonFileUpload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFileUploadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonFileUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 405, 100, 30));
+
+        jLabelFileUpload.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabelFileUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 405, 150, 30));
 
         jLabel1_NamaLengkap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_RegisterTutor.png"))); // NOI18N
         jLabel1_NamaLengkap.setText("jLabel1");
@@ -138,6 +187,43 @@ public class Register_Tutor extends javax.swing.JFrame {
             TF_NomorRekening.setText("Nomor Rekening");
         }
     }//GEN-LAST:event_TF_NomorRekeningFocusLost
+
+    private void jButtonFileUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFileUploadActionPerformed
+        int returnValue = openFileChooser.showOpenDialog(this);
+        
+        if(returnValue == JFileChooser.APPROVE_OPTION){
+            try{
+                proofFile = openFileChooser.getSelectedFile();
+                jLabelFileUpload.setText(proofFile.getName());
+            }catch(Exception e){
+                jLabelFileUpload.setText("Failed to load PDF file");
+            }
+        }else{
+            jLabelFileUpload.setText("No File Chosen");
+        }
+    }//GEN-LAST:event_jButtonFileUploadActionPerformed
+
+    private void B_CreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CreateAccountActionPerformed
+        String bio = TF_Biodata.getText();
+        String nama = TF_NamaLengkapTutor.getText();
+        String namaRekening = TF_NamaRekening.getText();
+        String norek = TF_NomorRekening.getText();
+        String username = TF_Username.getText();
+        String password = PF_Password.getText();
+        String rePassword = PF_reTypePassword.getText();
+        String bank = String.valueOf(CB_Bank.getSelectedItem());
+        if(nama.isEmpty() || username.isEmpty() || password.compareTo(rePassword) != 0 )
+            return;
+        
+        FileInputStream proofstream = null;
+        try {
+            proofstream = new FileInputStream(proofFile);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Register_Tutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        controller.RegisterTutor(username, nama, password, bio, bank, namaRekening, namaRekening, proofstream);
+        
+    }//GEN-LAST:event_B_CreateAccountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,7 +270,9 @@ public class Register_Tutor extends javax.swing.JFrame {
     private javax.swing.JTextField TF_NamaRekening;
     private javax.swing.JTextField TF_NomorRekening;
     private javax.swing.JTextField TF_Username;
+    private javax.swing.JButton jButtonFileUpload;
     private javax.swing.JLabel jLabel1_NamaLengkap;
+    private javax.swing.JLabel jLabelFileUpload;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

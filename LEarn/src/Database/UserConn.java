@@ -88,12 +88,16 @@ public class UserConn {
         return user;
     }
     
-    public static String getUserIdByUsername(String u) throws SQLException {
+    public static int getUserId(String username, String password) throws SQLException {
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("select * from user where username=?");
-        st.setString(1, u);     
+        PreparedStatement st = con.prepareStatement("select * from user where username=? and password=?");
+        st.setString(1, username);     
+        st.setString(2, password);     
         ResultSet rs = st.executeQuery();
-        return rs.getString("user_id");
+        if(rs.next()){
+            return rs.getInt("user_id");
+        }
+        return -1;        
     }
     
     public static void postUser(User u) throws SQLException {
