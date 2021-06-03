@@ -27,61 +27,126 @@ public class Pembayaran extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupSubscription = new javax.swing.ButtonGroup();
+        BGroup_Subscription = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jButton2_PaketNgambis = new javax.swing.JButton();
-        jButton1_PaketSantai = new javax.swing.JButton();
-        jButton4_SelectFile = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton5_Next = new javax.swing.JButton();
-        jButton3_PaketLangganan = new javax.swing.JButton();
+        B_PaketNgambis = new javax.swing.JButton();
+        B_PaketSantai = new javax.swing.JButton();
+        B_PaketLangganan = new javax.swing.JButton();
+        B_UploadFile = new javax.swing.JButton();
+        CB_Syarat = new javax.swing.JCheckBox();
+        B_Next = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        RadioButton_PaketNgambis = new javax.swing.JRadioButton();
+        RadioButton_PaketLangganan = new javax.swing.JRadioButton();
+        RadioButton_PaketSantai = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2_PaketNgambis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketNgambis.png"))); // NOI18N
-        buttonGroupSubscription.add(jButton2_PaketNgambis);
-        jPanel1.add(jButton2_PaketNgambis, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, 140));
-
-        jButton1_PaketSantai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketSantai.png"))); // NOI18N
-        buttonGroupSubscription.add(jButton1_PaketSantai);
-        jButton1_PaketSantai.addMouseListener(new java.awt.event.MouseAdapter() {
+        B_PaketNgambis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketNgambis.png"))); // NOI18N
+        B_PaketNgambis.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 77, 88), 5, true));
+        B_PaketNgambis.setBorderPainted(false);
+        B_PaketNgambis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1_PaketSantaiMouseClicked(evt);
+                B_PaketNgambisMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1_PaketSantai, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 130, 140));
-
-        jButton4_SelectFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SelectFile_Gray.png"))); // NOI18N
-        jPanel1.add(jButton4_SelectFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 130, 30));
-
-        jCheckBox1.setBackground(new java.awt.Color(224, 187, 218));
-        jCheckBox1.setText("Saya menyetujui syarat dan ketentuan yang berlaku");
-        jCheckBox1.setToolTipText("");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        B_PaketNgambis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                B_PaketNgambisActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 35));
+        B_PaketNgambis.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                B_PaketNgambisPropertyChange(evt);
+            }
+        });
+        jPanel1.add(B_PaketNgambis, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, 140));
 
-        jButton5_Next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Next_Gray.png"))); // NOI18N
-        jPanel1.add(jButton5_Next, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 100, 30));
-
-        jButton3_PaketLangganan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketLangganan.png"))); // NOI18N
-        buttonGroupSubscription.add(jButton3_PaketLangganan);
-        jButton3_PaketLangganan.addActionListener(new java.awt.event.ActionListener() {
+        B_PaketSantai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketSantai.png"))); // NOI18N
+        B_PaketSantai.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 77, 88), 5, true));
+        B_PaketSantai.setBorderPainted(false);
+        B_PaketSantai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_PaketSantaiMouseClicked(evt);
+            }
+        });
+        B_PaketSantai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3_PaketLanggananActionPerformed(evt);
+                B_PaketSantaiActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3_PaketLangganan, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 130, 140));
+        jPanel1.add(B_PaketSantai, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 130, 140));
+
+        B_PaketLangganan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SubscriptionPaketLangganan.png"))); // NOI18N
+        B_PaketLangganan.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(75, 77, 88), 5, true));
+        B_PaketLangganan.setBorderPainted(false);
+        B_PaketLangganan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_PaketLanggananMouseClicked(evt);
+            }
+        });
+        B_PaketLangganan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_PaketLanggananActionPerformed(evt);
+            }
+        });
+        jPanel1.add(B_PaketLangganan, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 130, 140));
+
+        B_UploadFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SelectFile_Gray.png"))); // NOI18N
+        jPanel1.add(B_UploadFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 130, 30));
+
+        CB_Syarat.setBackground(new java.awt.Color(224, 187, 218));
+        CB_Syarat.setText("Saya menyetujui syarat dan ketentuan yang berlaku");
+        CB_Syarat.setToolTipText("");
+        CB_Syarat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_SyaratActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CB_Syarat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 35));
+
+        B_Next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Next_Gray.png"))); // NOI18N
+        B_Next.setBorder(null);
+        B_Next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_NextActionPerformed(evt);
+            }
+        });
+        jPanel1.add(B_Next, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 100, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_Subscription.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 510));
+
+        BGroup_Subscription.add(RadioButton_PaketNgambis);
+        RadioButton_PaketNgambis.setText("jRadioButton1");
+        RadioButton_PaketNgambis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioButton_PaketNgambisActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RadioButton_PaketNgambis, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
+
+        BGroup_Subscription.add(RadioButton_PaketLangganan);
+        RadioButton_PaketLangganan.setText("jRadioButton1");
+        RadioButton_PaketLangganan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioButton_PaketLanggananActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RadioButton_PaketLangganan, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, -1, -1));
+
+        BGroup_Subscription.add(RadioButton_PaketSantai);
+        RadioButton_PaketSantai.setText("jRadioButton1");
+        RadioButton_PaketSantai.setBorderPainted(true);
+        RadioButton_PaketSantai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioButton_PaketSantaiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RadioButton_PaketSantai, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,18 +162,84 @@ public class Pembayaran extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3_PaketLanggananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3_PaketLanggananActionPerformed
+    private void B_PaketLanggananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_PaketLanggananActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3_PaketLanggananActionPerformed
+    }//GEN-LAST:event_B_PaketLanggananActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void CB_SyaratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_SyaratActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_CB_SyaratActionPerformed
 
-    private void jButton1_PaketSantaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_PaketSantaiMouseClicked
+    private void B_PaketSantaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_PaketSantaiMouseClicked
         // TODO add your handling code here:
-        //jButton1_PaketSantaiMouseClicked.setBorder()
-    }//GEN-LAST:event_jButton1_PaketSantaiMouseClicked
+        B_PaketSantai.setBorderPainted(true);
+        B_PaketNgambis.setBorderPainted(false);
+        B_PaketLangganan.setBorderPainted(false);
+        RadioButton_PaketSantai.setSelected(true);
+
+    }//GEN-LAST:event_B_PaketSantaiMouseClicked
+
+    private void B_PaketNgambisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_PaketNgambisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_PaketNgambisActionPerformed
+
+    private void B_PaketNgambisPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_B_PaketNgambisPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_PaketNgambisPropertyChange
+
+    private void B_PaketSantaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_PaketSantaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_PaketSantaiActionPerformed
+
+    private void RadioButton_PaketSantaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButton_PaketSantaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RadioButton_PaketSantaiActionPerformed
+
+    private void RadioButton_PaketNgambisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButton_PaketNgambisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RadioButton_PaketNgambisActionPerformed
+
+    private void RadioButton_PaketLanggananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButton_PaketLanggananActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RadioButton_PaketLanggananActionPerformed
+
+    private void B_PaketNgambisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_PaketNgambisMouseClicked
+        // TODO add your handling code here:
+        B_PaketSantai.setBorderPainted(false);
+        B_PaketNgambis.setBorderPainted(true);
+        B_PaketLangganan.setBorderPainted(false);
+        RadioButton_PaketNgambis.setSelected(true);
+    }//GEN-LAST:event_B_PaketNgambisMouseClicked
+
+    private void B_PaketLanggananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_PaketLanggananMouseClicked
+        // TODO add your handling code here:
+        B_PaketSantai.setBorderPainted(false);
+        B_PaketNgambis.setBorderPainted(false);
+        B_PaketLangganan.setBorderPainted(true);
+        RadioButton_PaketLangganan.setSelected(true);
+    }//GEN-LAST:event_B_PaketLanggananMouseClicked
+
+    private String getPaket(){
+        if (RadioButton_PaketLangganan.isSelected()) {
+            return "Langganan";
+        }
+        else if (RadioButton_PaketNgambis.isSelected()) {
+            return "Ngambis";
+        }
+        if (RadioButton_PaketSantai.isSelected()) {
+            return "Santai";
+        }
+        return "nothing selected";
+    }
+    private void B_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_NextActionPerformed
+        // TODO add your handling code here:
+        String paketLangganan = getPaket();
+        boolean agree = CB_Syarat.isSelected();
+        // UPLOAD //
+        System.out.println(paketLangganan);
+        System.out.println(agree);
+        
+    }//GEN-LAST:event_B_NextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,13 +277,16 @@ public class Pembayaran extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroupSubscription;
-    private javax.swing.JButton jButton1_PaketSantai;
-    private javax.swing.JButton jButton2_PaketNgambis;
-    private javax.swing.JButton jButton3_PaketLangganan;
-    private javax.swing.JButton jButton4_SelectFile;
-    private javax.swing.JButton jButton5_Next;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.ButtonGroup BGroup_Subscription;
+    private javax.swing.JButton B_Next;
+    private javax.swing.JButton B_PaketLangganan;
+    private javax.swing.JButton B_PaketNgambis;
+    private javax.swing.JButton B_PaketSantai;
+    private javax.swing.JButton B_UploadFile;
+    private javax.swing.JCheckBox CB_Syarat;
+    private javax.swing.JRadioButton RadioButton_PaketLangganan;
+    private javax.swing.JRadioButton RadioButton_PaketNgambis;
+    private javax.swing.JRadioButton RadioButton_PaketSantai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
