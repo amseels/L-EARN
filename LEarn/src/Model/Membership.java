@@ -5,6 +5,11 @@
  */
 package Model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.*;
 
 /**
@@ -14,8 +19,8 @@ import java.sql.*;
 public class Membership {
     private String validation_status;
     private Date start_date;
-    private String payment_proof;
     private Date expired_date;
+    public InputStream payment_proof;
     
     public static String[] validation = new String[]{"Valid", "Non-Valid"};
 
@@ -35,14 +40,6 @@ public class Membership {
         this.start_date = start_date;
     }
 
-    public String getPayment_proof() {
-        return payment_proof;
-    }
-
-    public void setPayment_proof(String payment_proof) {
-        this.payment_proof = payment_proof;
-    }
-
     public Date getExpired_date() {
         return expired_date;
     }
@@ -57,5 +54,13 @@ public class Membership {
         start_date = new Date(local.getYear(), local.getMonthValue(), local.getDayOfMonth());
     }
     
+    public void DownloadFile(String path) throws IOException{
+        byte[] buffer = new byte[payment_proof.available()];
+        payment_proof.read(buffer);
+            
+        File fileDownload = new File(path);
+        OutputStream outStream = new FileOutputStream(fileDownload);
+        outStream.write(buffer);
+    }
     
 }

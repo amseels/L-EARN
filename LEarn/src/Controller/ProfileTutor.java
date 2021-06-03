@@ -5,7 +5,11 @@
  */
 package Controller;
 
+import Database.TutorConn;
+import Database.UserConn;
+import Model.User;
 import View.TBA;
+import java.sql.SQLException;
 
 /**
  *
@@ -18,15 +22,21 @@ public class ProfileTutor extends Controller{
         super.view = new TBA();
     }
     
-    public void EditProfile(){
+    public void EditProfile(String password, String bio, String name, String bank, String rekening, String nama_rekening) throws SQLException{
+        User u = super.mappingController.GetCurrentUser();
+        UserConn.updateUser(u,password,bio,name);
+        TutorConn.updateTutor(u, bank, rekening, nama_rekening);
         
+        ChangeView(null);
     }
     
     public void ToEditProfile(){
+        ChangeView(null);
         
     }
     
     public void BackToProfile(){
+        ChangeView(null);
         
     }
 }

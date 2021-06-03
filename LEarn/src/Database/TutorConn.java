@@ -7,6 +7,7 @@ package Database;
 
 import static Database.Conn.getConnection;
 import Model.Tutor;
+import Model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,5 +54,14 @@ public class TutorConn {
         st.setString(7, tutor.namaRekening);
 
         st.execute();
+    }
+    
+    public static void updateTutor(User u, String bank, String rekening, String nama_rekening) throws SQLException{
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("update tutor set "+"bank=?"+"rekening=?"+"nama_rekening=?"+"where userid= ?");
+        st.setString(1, bank);
+        st.setString(2, rekening);
+        st.setString(3, nama_rekening);
+        st.setInt(4, u.getUserId());
     }
 }

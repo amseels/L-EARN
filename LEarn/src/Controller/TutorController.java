@@ -8,6 +8,7 @@ package Controller;
 import Controller.MappingController.StateTransition;
 import Database.QuestionConn;
 import Model.Question;
+import Model.User;
 import Search.LuceneManager;
 import View.TBA;
 import java.sql.SQLException;
@@ -74,5 +75,9 @@ public class TutorController extends Controller{
         }
             
         mappingController.Move(StateTransition.QuestionMember, results);
+    }
+    
+    public void Logout(){
+        mappingController.Move(StateTransition.Quit);
     }
 }
