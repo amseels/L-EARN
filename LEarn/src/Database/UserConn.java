@@ -24,10 +24,10 @@ public class UserConn {
      * @return
      * @throws SQLException
      */
-    public static User getUserById(String uid) throws SQLException {
+    public static User getUserById(int uid) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from user where user_id=?");
-        st.setString(1, uid);
+        st.setInt(1, uid);
         ResultSet rs = st.executeQuery();
         User user = new User();
         while  (rs.next()){
@@ -112,5 +112,13 @@ public class UserConn {
         st.execute();
     }
     
-    
+    public static void updateUser(User u, String password, String bio, String name) throws SQLException{
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("update user set "+"password=?"+"bio=?"+"name=?"+"where userid= ?");
+        st.setString(1, password);
+        st.setString(2, bio);
+        st.setString(3, name);
+        st.setInt(4, u.getUserId());
+    }
+
 }
