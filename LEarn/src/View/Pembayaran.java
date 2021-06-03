@@ -5,6 +5,14 @@
  */
 package View;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author nabillaaura
@@ -14,8 +22,16 @@ public class Pembayaran extends javax.swing.JFrame {
     /**
      * Creates new form Pembayaran
      */
+    public final JFileChooser openFileChooser;
+    private File proofFile;
+    
     public Pembayaran() {
         initComponents();
+        openFileChooser = new JFileChooser();
+        openFileChooser.setCurrentDirectory(new File("c:\\tmp"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("Image File", "jpg"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("PDF File", "pdf"));
+        openFileChooser.setAcceptAllFileFilterUsed(false);
     }
 
     /**
@@ -94,7 +110,14 @@ public class Pembayaran extends javax.swing.JFrame {
         });
         jPanel1.add(B_PaketLangganan, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 130, 140));
 
-        B_UploadFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SelectFile_Gray.png"))); // NOI18N
+        B_UploadFile.setBackground(new java.awt.Color(204, 204, 204));
+        B_UploadFile.setText("Select File");
+        B_UploadFile.setBorder(null);
+        B_UploadFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_UploadFileActionPerformed(evt);
+            }
+        });
         jPanel1.add(B_UploadFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 130, 30));
 
         CB_Syarat.setBackground(new java.awt.Color(224, 187, 218));
@@ -235,11 +258,33 @@ public class Pembayaran extends javax.swing.JFrame {
         // TODO add your handling code here:
         String paketLangganan = getPaket();
         boolean agree = CB_Syarat.isSelected();
-        // UPLOAD //
-        System.out.println(paketLangganan);
-        System.out.println(agree);
+        
+        FileInputStream proofstream = null;
+        try {
+            proofstream = new FileInputStream(proofFile);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Register_Tutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         
     }//GEN-LAST:event_B_NextActionPerformed
+
+    private void B_UploadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_UploadFileActionPerformed
+        // TODO add your handling code here:
+        int returnValue = openFileChooser.showOpenDialog(this);
+        
+        if(returnValue == JFileChooser.APPROVE_OPTION){
+            try{
+                proofFile = openFileChooser.getSelectedFile();
+                B_UploadFile.setText(proofFile.getName());
+            }catch(Exception e){
+                B_UploadFile.setText("Failed to load PDF file");
+            }
+        }else{
+            B_UploadFile.setText("No File Chosen");
+        }
+    }//GEN-LAST:event_B_UploadFileActionPerformed
 
     /**
      * @param args the command line arguments
