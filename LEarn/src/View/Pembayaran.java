@@ -5,14 +5,6 @@
  */
 package View;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 /**
  *
  * @author nabillaaura
@@ -22,16 +14,8 @@ public class Pembayaran extends javax.swing.JFrame {
     /**
      * Creates new form Pembayaran
      */
-    public final JFileChooser openFileChooser;
-    private File proofFile;
-    
     public Pembayaran() {
         initComponents();
-        openFileChooser = new JFileChooser();
-        openFileChooser.setCurrentDirectory(new File("c:\\tmp"));
-        openFileChooser.setFileFilter(new FileNameExtensionFilter("Image File", "jpg"));
-        openFileChooser.setFileFilter(new FileNameExtensionFilter("PDF File", "pdf"));
-        openFileChooser.setAcceptAllFileFilterUsed(false);
     }
 
     /**
@@ -48,7 +32,6 @@ public class Pembayaran extends javax.swing.JFrame {
         B_PaketNgambis = new javax.swing.JButton();
         B_PaketSantai = new javax.swing.JButton();
         B_PaketLangganan = new javax.swing.JButton();
-        Label_UploadFile = new javax.swing.JLabel();
         B_UploadFile = new javax.swing.JButton();
         CB_Syarat = new javax.swing.JCheckBox();
         B_Next = new javax.swing.JButton();
@@ -111,18 +94,8 @@ public class Pembayaran extends javax.swing.JFrame {
         });
         jPanel1.add(B_PaketLangganan, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 130, 140));
 
-        Label_UploadFile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(Label_UploadFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 200, 30));
-
-        B_UploadFile.setBackground(new java.awt.Color(204, 204, 204));
-        B_UploadFile.setText("Select File");
-        B_UploadFile.setBorder(null);
-        B_UploadFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_UploadFileActionPerformed(evt);
-            }
-        });
-        jPanel1.add(B_UploadFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 80, 30));
+        B_UploadFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SelectFile_Gray.png"))); // NOI18N
+        jPanel1.add(B_UploadFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 130, 30));
 
         CB_Syarat.setBackground(new java.awt.Color(224, 187, 218));
         CB_Syarat.setText("Saya menyetujui syarat dan ketentuan yang berlaku");
@@ -132,7 +105,7 @@ public class Pembayaran extends javax.swing.JFrame {
                 CB_SyaratActionPerformed(evt);
             }
         });
-        jPanel1.add(CB_Syarat, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 370, 35));
+        jPanel1.add(CB_Syarat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 35));
 
         B_Next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Next_Gray.png"))); // NOI18N
         B_Next.setBorder(null);
@@ -262,33 +235,11 @@ public class Pembayaran extends javax.swing.JFrame {
         // TODO add your handling code here:
         String paketLangganan = getPaket();
         boolean agree = CB_Syarat.isSelected();
-        
-        FileInputStream proofstream = null;
-        try {
-            proofstream = new FileInputStream(proofFile);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Register_Tutor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
+        // UPLOAD //
+        System.out.println(paketLangganan);
+        System.out.println(agree);
         
     }//GEN-LAST:event_B_NextActionPerformed
-
-    private void B_UploadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_UploadFileActionPerformed
-        // TODO add your handling code here:
-        int returnValue = openFileChooser.showOpenDialog(this);
-        
-        if(returnValue == JFileChooser.APPROVE_OPTION){
-            try{
-                proofFile = openFileChooser.getSelectedFile();
-                Label_UploadFile.setText(proofFile.getName());
-            }catch(Exception e){
-                Label_UploadFile.setText("Failed to load PDF file");
-            }
-        }else{
-            Label_UploadFile.setText("No File Chosen");
-        }
-    }//GEN-LAST:event_B_UploadFileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,7 +284,6 @@ public class Pembayaran extends javax.swing.JFrame {
     private javax.swing.JButton B_PaketSantai;
     private javax.swing.JButton B_UploadFile;
     private javax.swing.JCheckBox CB_Syarat;
-    private javax.swing.JLabel Label_UploadFile;
     private javax.swing.JRadioButton RadioButton_PaketLangganan;
     private javax.swing.JRadioButton RadioButton_PaketNgambis;
     private javax.swing.JRadioButton RadioButton_PaketSantai;
