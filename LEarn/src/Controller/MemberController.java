@@ -7,6 +7,7 @@ package Controller;
 
 import Controller.MappingController.StateTransition;
 import Database.MembershipConn;
+import Database.QuestionConn;
 import Model.Membership;
 import Model.Question;
 import Search.LuceneManager;
@@ -65,6 +66,12 @@ public class MemberController extends Controller{
         // get all Question from database
         List<Question> questions = new ArrayList<>();
         
+        try {
+            questions = QuestionConn.getAllQuestions();
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         LuceneManager manager = LuceneManager.getInstance();
         for(int i = 0; i < questions.size(); i++)
             manager.AddItem(questions.get(i).getContent(), i);
@@ -72,9 +79,8 @@ public class MemberController extends Controller{
         List<Question> results = new ArrayList<>();
         if(manager.SearchResult(word)){
             List<Integer> resultId = manager.ShowResult();
-            resultId.forEach((res) -> {
-                results.add(questions.get(res));
-            });
+            for(Integer id : resultId)
+                results.add(questions.get(id));
         }
             
         mappingController.Move(StateTransition.QuestionMember, results);

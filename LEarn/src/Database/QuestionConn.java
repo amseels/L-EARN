@@ -11,13 +11,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author ASUS
- */
 public class QuestionConn {
-    public Question getQuestionById(String id) throws SQLException {
+    public static Question getQuestionById(String id) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from question where question_id =?");
         st.setString(1, id);
@@ -30,7 +28,26 @@ public class QuestionConn {
         }
         return question;
     }
-        public static void postQuestion(Question q, int u) throws SQLException {
+    
+    public static List<Question> getAllQuestions() throws SQLException{
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from question");
+        ResultSet rs = st.executeQuery();
+        
+        List<Question> questions = new ArrayList<>();
+        while  (rs.next()){
+            Question question = new Question();
+            question.setCategory(rs.getString("category"));
+            question.setContent(rs.getString("content"));
+            question.setTime(rs.getDate("time"));
+            question.question_id = rs.getInt("question_id");
+            question.user_id = rs.getInt("user_id");
+            questions.add(question);
+        }        
+        return questions;
+    }
+    
+    public static void postQuestion(Question q, int u) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("insert into question (category, content, time, user_id)"+" values(?,?,?,?)");
         st.setString(1, q.getCategory());

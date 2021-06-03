@@ -15,6 +15,9 @@ public class Question {
     private String category;
     private String content;
     private Date time;
+    
+    public int user_id;
+    public int question_id;
 
     public Question(String category, String content) {
         this.category = category;

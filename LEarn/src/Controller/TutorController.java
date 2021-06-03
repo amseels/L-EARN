@@ -6,11 +6,15 @@
 package Controller;
 
 import Controller.MappingController.StateTransition;
+import Database.QuestionConn;
 import Model.Question;
 import Search.LuceneManager;
 import View.TBA;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -46,6 +50,12 @@ public class TutorController extends Controller{
         // get all Question from database
         List<Question> questions = new ArrayList<>();
         
+        try {
+            questions = QuestionConn.getAllQuestions();
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         LuceneManager manager = LuceneManager.getInstance();
         for(int i = 0; i < questions.size(); i++)
             manager.AddItem(questions.get(i).getContent(), i);
@@ -53,11 +63,10 @@ public class TutorController extends Controller{
         List<Question> results = new ArrayList<>();
         if(manager.SearchResult(word)){
             List<Integer> resultId = manager.ShowResult();
-            resultId.forEach((res) -> {
-                results.add(questions.get(res));
-            });
+            for(Integer id : resultId)
+                results.add(questions.get(id));
         }
             
-        mappingController.Move(StateTransition.QuestionTutor, results);
-    } 
+        mappingController.Move(StateTransition.QuestionMember, results);
+    }
 }
