@@ -11,7 +11,7 @@ public class MembershipConn {
         
         membership.setValidation_status(rs.getString("validation_status"));
         membership.setStart_date(rs.getDate("start_date"));
-        membership.setPayment_proof(rs.getString("payment_proof"));
+        membership.payment_proof = rs.getBlob("payment_proof").getBinaryStream();;
         membership.setExpired_date(rs.getDate("expired_date"));
         
         return membership;
@@ -24,6 +24,12 @@ public class MembershipConn {
         ResultSet rs = st.executeQuery();
         
         return rs.next() ? getMembershipData(rs): null;
+    }
+    
+    public static Membership getMembershipByDate(String id) throws SQLException {
+        // TODo Get member dengan id tersebut, exp date >= current date dan validation status = Valid
+        
+        return null;
     }
     
     public static Membership getMembershipByUserId(String id) throws SQLException {
@@ -43,7 +49,7 @@ public class MembershipConn {
         return rs.next() ? getMembershipData(rs): null;
     }
     
-    public static void postMembership(Membership m, String sid, String uid) throws SQLException {
+    public static void postMembership(Membership m, int sid, int uid) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("insert into membership "
                 + "(validation_status, start_date, payment_proof, expired_date, subs_id, user_id)"
@@ -51,10 +57,10 @@ public class MembershipConn {
         
         st.setString(1, m.getValidation_status());
         st.setDate(2, m.getStart_date());
-        st.setString(3, m.getPayment_proof());
+        st.setBlob(3, m.payment_proof);
         st.setDate(4, m.getExpired_date());
-        st.setString(5, sid);        
-        st.setString(6, uid);
+        st.setInt(5, sid);        
+        st.setInt(6, uid);
 
         st.execute();
     }

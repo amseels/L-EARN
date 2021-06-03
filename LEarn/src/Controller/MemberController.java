@@ -12,6 +12,7 @@ import Model.Membership;
 import Model.Question;
 import Search.LuceneManager;
 import View.TBA;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +45,13 @@ public class MemberController extends Controller{
         return member != null;
     }
     
-    public void PostMemberSubscription(int sid){
+    public void PostMemberSubscription(int subsid, InputStream paymentFile){
         try {
             Membership member = new Membership();
+            member.payment_proof = paymentFile;
             int uid = mappingController.GetCurrentUser().getUserId();
             
-            MembershipConn.postMembership(member, Integer.toHexString(sid), Integer.toHexString(uid));
+            MembershipConn.postMembership(member, subsid, uid);
         } catch (SQLException ex) {
             Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -105,5 +107,9 @@ public class MemberController extends Controller{
     
     public void ProfileMember(){
         mappingController.Move(StateTransition.ProfileMember);
+    }
+    
+    public void Logout(){
+        mappingController.Move(StateTransition.Quit);
     }
 }
