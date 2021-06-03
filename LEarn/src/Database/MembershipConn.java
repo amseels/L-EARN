@@ -31,9 +31,8 @@ public class MembershipConn {
         // TODo Get member dengan id tersebut, exp date <= current date dan validation status = Valid
         java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("select * from membership where user_id =? and expired_date<=?");
+        PreparedStatement st = con.prepareStatement("select * from membership where user_id =? and expired_date<=CURRENT_DATE()");
         st.setString(1, id);
-        st.setDate(2,date);
         ResultSet rs = st.executeQuery();
         return getMembershipData(rs);
     }
