@@ -70,7 +70,7 @@ public class Register_Tutor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TF_Biodata = new javax.swing.JTextArea();
         B_CreateAccount = new javax.swing.JButton();
-        jButtonFileUpload = new javax.swing.JButton();
+        B_UploadFile = new javax.swing.JButton();
         jLabelFileUpload = new javax.swing.JLabel();
         jLabel1_NamaLengkap = new javax.swing.JLabel();
 
@@ -137,16 +137,17 @@ public class Register_Tutor extends javax.swing.JFrame {
         });
         jPanel1.add(B_CreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 140, 50));
 
-        jButtonFileUpload.setText("Upload File");
-        jButtonFileUpload.addActionListener(new java.awt.event.ActionListener() {
+        B_UploadFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_SelectFile_Purple.png"))); // NOI18N
+        B_UploadFile.setText("Upload File");
+        B_UploadFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFileUploadActionPerformed(evt);
+                B_UploadFileActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonFileUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 405, 100, 30));
+        jPanel1.add(B_UploadFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 100, 30));
 
         jLabelFileUpload.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLabelFileUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 405, 150, 30));
+        jPanel1.add(jLabelFileUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 130, 30));
 
         jLabel1_NamaLengkap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_RegisterTutor.png"))); // NOI18N
         jLabel1_NamaLengkap.setText("jLabel1");
@@ -188,7 +189,7 @@ public class Register_Tutor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TF_NomorRekeningFocusLost
 
-    private void jButtonFileUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFileUploadActionPerformed
+    private void B_UploadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_UploadFileActionPerformed
         int returnValue = openFileChooser.showOpenDialog(this);
         
         if(returnValue == JFileChooser.APPROVE_OPTION){
@@ -201,7 +202,7 @@ public class Register_Tutor extends javax.swing.JFrame {
         }else{
             jLabelFileUpload.setText("No File Chosen");
         }
-    }//GEN-LAST:event_jButtonFileUploadActionPerformed
+    }//GEN-LAST:event_B_UploadFileActionPerformed
 
     private void B_CreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CreateAccountActionPerformed
         String bio = TF_Biodata.getText();
@@ -262,6 +263,7 @@ public class Register_Tutor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_CreateAccount;
+    private javax.swing.JButton B_UploadFile;
     private javax.swing.JComboBox CB_Bank;
     private javax.swing.JPasswordField PF_Password;
     private javax.swing.JPasswordField PF_reTypePassword;
@@ -270,7 +272,6 @@ public class Register_Tutor extends javax.swing.JFrame {
     private javax.swing.JTextField TF_NamaRekening;
     private javax.swing.JTextField TF_NomorRekening;
     private javax.swing.JTextField TF_Username;
-    private javax.swing.JButton jButtonFileUpload;
     private javax.swing.JLabel jLabel1_NamaLengkap;
     private javax.swing.JLabel jLabelFileUpload;
     private javax.swing.JPanel jPanel1;
