@@ -43,6 +43,12 @@ public class TutorController extends Controller{
         // get all Question from database by category
         List<Question> questions = new ArrayList<>();
         
+        try {
+            questions = QuestionConn.getAllQuestionsByCategory(category);
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         mappingController.Move(StateTransition.QuestionTutor, questions);
     }
     

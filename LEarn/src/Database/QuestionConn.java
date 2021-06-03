@@ -36,15 +36,32 @@ public class QuestionConn {
         
         List<Question> questions = new ArrayList<>();
         while  (rs.next()){
-            Question question = new Question();
-            question.setCategory(rs.getString("category"));
-            question.setContent(rs.getString("content"));
-            question.setTime(rs.getDate("time"));
-            question.question_id = rs.getInt("question_id");
-            question.user_id = rs.getInt("user_id");
-            questions.add(question);
+            questions.add(getQuestionData(rs));
         }        
         return questions;
+    }
+    
+    public static List<Question> getAllQuestionsByCategory(String category) throws SQLException{
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from question where category =?");
+        st.setString(1, category);
+        ResultSet rs = st.executeQuery();
+        
+        List<Question> questions = new ArrayList<>();
+        while  (rs.next()){
+            questions.add(getQuestionData(rs));
+        }        
+        return questions;
+    }
+    
+    private static Question getQuestionData(ResultSet rs) throws SQLException{
+        Question question = new Question();
+        question.setCategory(rs.getString("category"));
+        question.setContent(rs.getString("content"));
+        question.setTime(rs.getDate("time"));
+        question.question_id = rs.getInt("question_id");
+        question.user_id = rs.getInt("user_id");
+        return question;
     }
     
     public static void postQuestion(Question q, int u) throws SQLException {
