@@ -3,6 +3,7 @@ package Database;
 import static Database.Conn.getConnection;
 import Model.Membership;
 import java.sql.*;
+import java.util.*;
 
 public class MembershipConn {
     
@@ -27,9 +28,14 @@ public class MembershipConn {
     }
     
     public static Membership getMembershipByDate(String id) throws SQLException {
-        // TODo Get member dengan id tersebut, exp date >= current date dan validation status = Valid
-        
-        return null;
+        // TODo Get member dengan id tersebut, exp date <= current date dan validation status = Valid
+        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from membership where user_id =? and expired_date<=?");
+        st.setString(1, id);
+        st.setDate(2,date);
+        ResultSet rs = st.executeQuery();
+        return getMembershipData(rs);
     }
     
     public static Membership getMembershipByUserId(String id) throws SQLException {
