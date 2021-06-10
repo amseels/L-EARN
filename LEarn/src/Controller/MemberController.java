@@ -11,7 +11,7 @@ import Database.QuestionConn;
 import Model.Membership;
 import Model.Question;
 import Search.LuceneManager;
-import View.TBA;
+import View.*;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class MemberController extends Controller{
         int idUser = mappingController.GetCurrentUser().getUserId();
         if(AuthenticationMember(idUser)){
             // Member Page
-            super.view = new TBA();
+            super.view = new LandpageMember(this);
         }else{
             // Subscription Plan page
             super.view = new TBA();
