@@ -28,7 +28,24 @@ public class MappingController {
         activeController.Show();
     }
     
+    public MappingController(boolean usedGui){
+        this.activeController = new LoginController(this);
+        
+        if(usedGui)
+            activeController.Show();
+        else
+            activeController.Hide();
+    }
+    
     private StateTransition currentState = StateTransition.Login;
+
+    public void setCurrentState(StateTransition currentState) {
+        this.currentState = currentState;
+    }
+
+    public StateTransition getCurrentState() {
+        return currentState;
+    }
     
     public enum StateTransition 
     {
