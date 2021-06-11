@@ -31,7 +31,7 @@ public class MemberController extends Controller{
         int idUser = mappingController.GetCurrentUser().getUserId();
         if(AuthenticationMember(idUser)){
             // Member Page
-            super.view = new LandpageMember(this);
+            super.view = new TBA();
         }else{
             // Subscription Plan page
             super.view = new TBA();
@@ -99,6 +99,10 @@ public class MemberController extends Controller{
         List<Question> questions = new ArrayList<>();
         
         mappingController.Move(StateTransition.QuestionHistory, questions);
+    }
+    
+    public void Home(){
+        mappingController.Move(StateTransition.LandpageMember);
     }
     
     public void PostQuestion(){
