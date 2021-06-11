@@ -397,7 +397,7 @@ public class LandpageMember extends javax.swing.JFrame {
                 B_AddQuestionActionPerformed(evt);
             }
         });
-        jPanel1.add(B_AddQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, -1, -1));
+        jPanel1.add(B_AddQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 430, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_LandpageMember.png"))); // NOI18N
         jLabel1.setText("jLabel1");
