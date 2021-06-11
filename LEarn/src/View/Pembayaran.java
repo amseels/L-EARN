@@ -32,6 +32,10 @@ public class Pembayaran extends javax.swing.JFrame {
         openFileChooser.setFileFilter(new FileNameExtensionFilter("Image File", "jpg"));
         openFileChooser.setFileFilter(new FileNameExtensionFilter("PDF File", "pdf"));
         openFileChooser.setAcceptAllFileFilterUsed(false);
+        RadioButton_PaketLangganan.setVisible(false);
+        RadioButton_PaketSantai.setVisible(false);
+        RadioButton_PaketNgambis.setVisible(false);
+
     }
 
     /**
@@ -269,8 +273,6 @@ public class Pembayaran extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Register_Tutor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
         
     }//GEN-LAST:event_B_NextActionPerformed
 
