@@ -24,7 +24,6 @@ public class LandpageTutor extends javax.swing.JFrame {
         
         String nama = "nuril";
         Label_Username.setText(nama);
-        WithdrawalPopUp.setVisible(false);
     }
 
     /**
@@ -550,7 +549,6 @@ public class LandpageTutor extends javax.swing.JFrame {
 
     private void B_TarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_TarikActionPerformed
         // TODO add your handling code here:
-        WithdrawalPopUp.setVisible(true);
     }//GEN-LAST:event_B_TarikActionPerformed
 
     private void B_Kategori_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_1ActionPerformed
