@@ -10,6 +10,7 @@ import Database.MembershipConn;
 import Database.QuestionConn;
 import Model.Membership;
 import Model.Question;
+import Model.User;
 import Search.LuceneManager;
 import View.*;
 import java.io.InputStream;
@@ -29,10 +30,11 @@ public class MemberController extends Controller{
     public MemberController(MappingController mappingController) {
         super(mappingController);
         
-        int idUser = mappingController.GetCurrentUser().getUserId();
+        User user= mappingController.GetCurrentUser();
+        int idUser = user.getUserId();
         if(AuthenticationMember(idUser)){
             // Member Page
-            super.view = new LandpageMember(this);
+            super.view = new LandpageMember(this, user.getName());
         }else{
             // Subscription Plan page
             super.view = new Pembayaran(this);
@@ -60,6 +62,7 @@ public class MemberController extends Controller{
             int uid = mappingController.GetCurrentUser().getUserId();
             
             MembershipConn.postMembership(member, subsid, uid);
+            mappingController.Move(StateTransition.LandpageMember);
         } catch (Exception ex) {
             Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
         }

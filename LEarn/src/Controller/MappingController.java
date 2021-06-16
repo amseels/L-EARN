@@ -87,7 +87,11 @@ public class MappingController {
                 new Transition(StateTransition.Login, StateTransition.LandpageMember),
                 new Transition(StateTransition.Login, StateTransition.LandpageTutor),
                 new Transition(StateTransition.SignUpMember, StateTransition.LandpageMember),
-                new Transition(StateTransition.SignUpTutor, StateTransition.Login)
+                new Transition(StateTransition.LandpageMember, StateTransition.LandpageMember),
+                new Transition(StateTransition.LandpageMember, StateTransition.SearchResult),
+                new Transition(StateTransition.LandpageMember, StateTransition.QuestionHistory),
+                new Transition(StateTransition.LandpageMember, StateTransition.PostQuestionMember),
+                new Transition(StateTransition.LandpageMember, StateTransition.ProfileMember)
         )
         );
     
@@ -163,6 +167,7 @@ public class MappingController {
                 activeController = new MemberController(this);
                 break;
             case ProfileMember:
+                activeController = new ProfileMember(this);
                 break;
             case PostQuestionMember:
                 activeController = new PostQuestionController(this);

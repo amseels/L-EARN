@@ -25,12 +25,12 @@ public class LandpageMember extends javax.swing.JFrame {
     /**
      * Creates new form Kategori
      */
-    public LandpageMember(MemberController controller) {
+    public LandpageMember(MemberController controller, String name) {
         initComponents();
         this.controller = controller;
         Panel_Menu_Profil.setVisible(false);
         //SET NAMA
-        Label_Username.setText("Jangan Lupa Ganti");
+        Label_Username.setText(name);
     }
     public LandpageMember() {
         initComponents();
@@ -483,7 +483,7 @@ public class LandpageMember extends javax.swing.JFrame {
 
     private void B_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_HomeActionPerformed
         // TODO add your handling code here:
-//        controller.Home();
+        controller.Home();
     }//GEN-LAST:event_B_HomeActionPerformed
 
     private void B_HomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_HomeMouseEntered
@@ -499,7 +499,7 @@ public class LandpageMember extends javax.swing.JFrame {
 
     private void B_ProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ProfilActionPerformed
         // TODO add your handling code here:
-//        controller.ProfileMember();
+        controller.ProfileMember();
     }//GEN-LAST:event_B_ProfilActionPerformed
 
     private void Panel_Menu_ProfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Menu_ProfilMouseEntered
@@ -553,18 +553,18 @@ public class LandpageMember extends javax.swing.JFrame {
 
     private void B_AddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AddQuestionActionPerformed
         // TODO add your handling code here:
-//        controller.PostQuestion();
+        controller.PostQuestion();
     }//GEN-LAST:event_B_AddQuestionActionPerformed
 
     private void B_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_LogoutActionPerformed
         // TODO add your handling code here:
         int keluar = JOptionPane.YES_NO_OPTION;
-        System.out.println(keluar);
+        controller.Logout();
     }//GEN-LAST:event_B_LogoutActionPerformed
 
     private void B_PertanyaankuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_PertanyaankuActionPerformed
         // TODO add your handling code here:
-//        controller.ShowQuestionHistory();
+        controller.ShowQuestionHistory();
     }//GEN-LAST:event_B_PertanyaankuActionPerformed
 
     private void B_Kategori_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_1ActionPerformed
