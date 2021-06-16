@@ -22,6 +22,7 @@ public class MappingController {
     private User user;
     private Controller activeController;
     public String category;
+    public String word;
     
     public User GetCurrentUser(){
         return user;
@@ -129,9 +130,17 @@ public class MappingController {
         Move(state);
     }
     
+    public void MoveByKeyword(StateTransition state, List<Question> questions, String word){
+        this.questions = questions;
+        this.word = word;
+        this.category = "";
+        Move(state);
+    }
+    
     public void Move(StateTransition state, List<Question> questions, String category){
         this.questions = questions;
         this.category = category;
+        this.word = "";
         Move(state);
     }
     

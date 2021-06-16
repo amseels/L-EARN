@@ -5,8 +5,10 @@
  */
 package View;
 
+import Controller.PostQuestionController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +16,15 @@ import javax.swing.BorderFactory;
  */
 public class PostQuestions extends javax.swing.JFrame {
 
+    PostQuestionController controller;
+
+    public PostQuestions(PostQuestionController controller, String name) {
+        this.controller = controller;
+        initComponents();
+        Panel_Menu_Profil.setVisible(false);
+        Label_Username.setText(name);
+    }    
+    
     /**
      * Creates new form PostQuestions
      */
@@ -443,6 +454,7 @@ public class PostQuestions extends javax.swing.JFrame {
 
     private void B_KirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_KirimActionPerformed
         // TODO add your handling code here:
+        controller.PostQuestion(CB_KategoriPertanyaan.getSelectedItem().toString(),TF_JudulPertanyaan.getText(), TA_ContentPertanyaan.getText());
     }//GEN-LAST:event_B_KirimActionPerformed
 
     private void TA_ContentPertanyaanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TA_ContentPertanyaanMouseEntered
