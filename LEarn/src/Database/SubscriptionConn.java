@@ -17,10 +17,10 @@ import java.sql.SQLException;
  * @author ASUS
  */
 public class SubscriptionConn {
-    public Subscription getSubscriptionById(String id) throws SQLException {
+    public static Subscription getSubscriptionById(int id) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from subscription where subs_id =?");
-        st.setString(1, id);
+        st.setInt(1, id);
         ResultSet rs = st.executeQuery();
         Subscription subscription = new Subscription();
         while  (rs.next()){
