@@ -5,7 +5,12 @@
  */
 package View;
 
+import Controller.QuestionMemberController;
+import Model.Answer;
+import Model.Question;
 import java.awt.Color;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
@@ -15,6 +20,18 @@ import javax.swing.JOptionPane;
  */
 public class DetailQuestion extends javax.swing.JFrame {
 
+    QuestionMemberController controller;
+    Question question;
+    Answer answer;
+    String tutorName;
+
+    public DetailQuestion(QuestionMemberController controller, Question question, Answer answer, String tutorName) {
+        this.controller = controller;
+        this.question = question;
+        this.answer = answer;
+        this.tutorName = tutorName;
+    }    
+    
     /**
      * Creates new form DetailQuestion
      */
@@ -27,23 +44,26 @@ public class DetailQuestion extends javax.swing.JFrame {
         initQuestion();
     }
     public void initQuestion(){
-        String judul_pertanyaan = "ini judul";
-        String content_pertanyaan = "ini content";
-        String content_tanggal = "Sabtu, 24 April 2021";
-        boolean isAnswered = true;
+        String judul_pertanyaan = question.title;
+        String content_pertanyaan = question.getContent();
+        Format dateFormat = new SimpleDateFormat("EEE, dd/MM/yyyy");
+        String content_tanggal = dateFormat.format(question.getTime());
+        boolean isAnswered = answer != null;
         
         Question_Title.setText(judul_pertanyaan);
         Question_Content.setText(content_pertanyaan);
         Question_Tanggal.setText(content_tanggal);
+        B_Kategori.setText(question.getCategory());
         
         if (isAnswered){
             initAnswer();
         }
     }
     public void initAnswer(){
-        String tanggal_jawab = "Minggu,25 April 2021";
-        String nama_tutor = "Anas Rasyid";
-        String content_answer = "ini content jawaban";
+        Format dateFormat = new SimpleDateFormat("EEE, dd/MM/yyyy");
+        String tanggal_jawab = dateFormat.format(answer.getTime());
+        String nama_tutor = tutorName;
+        String content_answer = answer.getContent();
         
         Label_Answered.setVisible(true);
         Panel_Answer.setVisible(true);
@@ -539,6 +559,7 @@ public class DetailQuestion extends javax.swing.JFrame {
 
     private void B_KategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_KategoriActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori.getText());
     }//GEN-LAST:event_B_KategoriActionPerformed
 
     /**

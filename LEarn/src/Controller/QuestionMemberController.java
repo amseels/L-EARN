@@ -7,8 +7,10 @@ package Controller;
 
 import Database.AnswerConn;
 import Database.QuestionConn;
+import Database.TutorConn;
 import Model.*;
 import Search.LuceneManager;
+import View.DetailQuestion;
 import View.SearchKategory;
 import View.SearchRelevantQuestion;
 import java.sql.SQLException;
@@ -68,10 +70,30 @@ public class QuestionMemberController extends Controller{
 
     public void ShowAnswerQuestion(int id){
         Question question = questions.get(id);
-        Answer answer = AnswerConn.getAnswerByQuestionId(question.question_id);
+        Answer answer = null;
+        String tutorName = "";
+        try {
+            answer = AnswerConn.getAnswerByQuestionId(question.question_id);
+            tutorName = TutorConn.getTutorName(answer.tutor_id);
+        } catch (SQLException ex) {
+            //Logger.getLogger(QuestionMemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         // Show Detail Answer view
-        ChangeView(null);
+        ChangeView(new DetailQuestion(this, question, answer, tutorName));
+    }
+    
+    public void SearchByCategory(String category){
+        // get all Question from database by category
+        List<Question> questions = new ArrayList<>();
+        
+        try {
+            questions = QuestionConn.getAllQuestionsByCategory(category);
+        } catch (SQLException ex) {
+            //Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        mappingController.Move(MappingController.StateTransition.QuestionMember, questions, category);
     }
     
     public void SearchByWord(String word){

@@ -64,4 +64,17 @@ public class TutorConn {
         st.setString(3, nama_rekening);
         st.setInt(4, u.getUserId());
     }
+    
+    public static String getTutorName(int answer_id) throws SQLException{
+        String syntax = "SELECT name, answer_id FROM answer\n"
+                + "join tutor on answer.tutor_id = tutor.tutor_id\n"
+                +"join user on tutor.user_id = user.user_id"
+                +"where answer_id=?";
+        
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement(syntax);
+        st.setInt(1, answer_id);
+        ResultSet rs = st.executeQuery();
+        return rs.next() ? rs.getString("name") : "";
+    }
 }

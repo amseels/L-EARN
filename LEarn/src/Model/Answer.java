@@ -16,6 +16,10 @@ public class Answer {
     private Date time;
     private String content;
     private double rating;
+    
+    public int tutor_id;  
+    public int answer_id;  
+    public int question_id;  
 
     public Answer() {
     }
