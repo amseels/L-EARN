@@ -13,18 +13,24 @@ import javax.swing.JOptionPane;
  *
  * @author hp
  */
-public class LandpageTutor extends javax.swing.JFrame {
+public class WithdrawalPopUp extends javax.swing.JFrame {
 
     /**
      * Creates new form DetailQuestion
      */
-    public LandpageTutor() {
+    public WithdrawalPopUp() {
         initComponents();
         Panel_Menu_Profil.setVisible(false);
         
+        int maxAmount = 100000;
         String nama = "nuril";
+        String namaRekening = "Nuril bismillah kaya";
+        String namaBank = "BNI Syariah - 123131";
+        
         Label_Username.setText(nama);
-        WithdrawalPopUp.setVisible(false);
+        Label_NamaRekening.setText(namaRekening);
+        Label_Bank.setText(namaBank);
+        Spinner_Amount.setModel(new javax.swing.SpinnerNumberModel(maxAmount, 0, maxAmount, 10000));
     }
 
     /**
@@ -38,6 +44,16 @@ public class LandpageTutor extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
+        WithdrawalPopUp = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        Spinner_Amount = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        Label_NamaRekening = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Label_Bank = new javax.swing.JLabel();
+        CB_Syarat = new javax.swing.JCheckBox();
+        B_Next = new javax.swing.JButton();
+        B_Cancel = new javax.swing.JButton();
         Panel_Menu_Profil = new javax.swing.JPanel();
         B_Profil = new javax.swing.JButton();
         B_Logout = new javax.swing.JButton();
@@ -47,22 +63,6 @@ public class LandpageTutor extends javax.swing.JFrame {
         B_ProfilMenu = new javax.swing.JButton();
         B_Home = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1_NamaTutor = new javax.swing.JTextField();
-        jButton1_User = new javax.swing.JButton();
-        jTextField2_Saldo = new javax.swing.JTextField();
-        B_Tarik = new javax.swing.JButton();
-        Panel_Kategori = new javax.swing.JPanel();
-        B_Kategori_1 = new javax.swing.JButton();
-        B_Kategori_2 = new javax.swing.JButton();
-        B_Kategori_3 = new javax.swing.JButton();
-        B_Kategori_4 = new javax.swing.JButton();
-        B_Kategori_5 = new javax.swing.JButton();
-        B_Kategori_6 = new javax.swing.JButton();
-        B_Kategori_7 = new javax.swing.JButton();
-        B_Kategori_8 = new javax.swing.JButton();
-        TF_Search = new javax.swing.JTextField();
-        B_Search = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +74,120 @@ public class LandpageTutor extends javax.swing.JFrame {
             }
         });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        WithdrawalPopUp.setBackground(new java.awt.Color(255, 248, 248));
+
+        jPanel3.setBackground(new java.awt.Color(29, 4, 54));
+
+        Spinner_Amount.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Spinner_Amount.setModel(new javax.swing.SpinnerNumberModel(0, null, null, 10000));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(Spinner_Amount, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Spinner_Amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Pembayaran akan masuk ke rekening");
+
+        Label_NamaRekening.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Label_NamaRekening.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label_NamaRekening.setText("Nuril Kaunaini");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("atas nama");
+
+        Label_Bank.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Label_Bank.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label_Bank.setText("BNI - 0811011923");
+
+        CB_Syarat.setBackground(new java.awt.Color(255, 248, 248));
+        CB_Syarat.setText("Dengan ini saya menyatakan bahwa data yang dimasukan sudah sesuai");
+        CB_Syarat.setToolTipText("");
+        CB_Syarat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_SyaratActionPerformed(evt);
+            }
+        });
+
+        B_Next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Next_default.png"))); // NOI18N
+        B_Next.setPreferredSize(new java.awt.Dimension(116, 33));
+        B_Next.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                B_NextMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                B_NextMouseExited(evt);
+            }
+        });
+        B_Next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_NextActionPerformed(evt);
+            }
+        });
+
+        B_Cancel.setText("Urungkan");
+
+        javax.swing.GroupLayout WithdrawalPopUpLayout = new javax.swing.GroupLayout(WithdrawalPopUp);
+        WithdrawalPopUp.setLayout(WithdrawalPopUpLayout);
+        WithdrawalPopUpLayout.setHorizontalGroup(
+            WithdrawalPopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WithdrawalPopUpLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addGroup(WithdrawalPopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(Label_NamaRekening, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label_Bank, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WithdrawalPopUpLayout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addGroup(WithdrawalPopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(WithdrawalPopUpLayout.createSequentialGroup()
+                        .addComponent(B_Cancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(B_Next, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CB_Syarat))
+                .addGap(17, 17, 17))
+        );
+        WithdrawalPopUpLayout.setVerticalGroup(
+            WithdrawalPopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WithdrawalPopUpLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label_Bank, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label_NamaRekening, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(CB_Syarat, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(WithdrawalPopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(B_Next, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Cancel))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(WithdrawalPopUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 440, 380));
 
         Panel_Menu_Profil.setBackground(new java.awt.Color(255, 248, 248));
         Panel_Menu_Profil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -243,182 +357,6 @@ public class LandpageTutor extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(224, 187, 218));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextField1_NamaTutor.setBackground(new java.awt.Color(224, 187, 218));
-        jTextField1_NamaTutor.setText("Nama Tutor");
-        jPanel2.add(jTextField1_NamaTutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 120, 30));
-        jPanel2.add(jButton1_User, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 40, 80, 50));
-
-        jTextField2_Saldo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField2_Saldo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2_Saldo.setText("523000");
-        jTextField2_Saldo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2_SaldoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField2_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 200, 40));
-
-        B_Tarik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Tarik_default.png"))); // NOI18N
-        B_Tarik.setPreferredSize(new java.awt.Dimension(116, 33));
-        B_Tarik.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                B_TarikMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                B_TarikMouseExited(evt);
-            }
-        });
-        B_Tarik.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_TarikActionPerformed(evt);
-            }
-        });
-        jPanel2.add(B_Tarik, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
-
-        Panel_Kategori.setBackground(new java.awt.Color(224, 187, 218));
-        Panel_Kategori.setLayout(new java.awt.GridBagLayout());
-
-        B_Kategori_1.setBackground(new java.awt.Color(255, 255, 255));
-        B_Kategori_1.setFont(B_Kategori_1.getFont().deriveFont(B_Kategori_1.getFont().getStyle() & ~java.awt.Font.BOLD, B_Kategori_1.getFont().getSize()+7));
-        B_Kategori_1.setText("Kalkulus");
-        B_Kategori_1.setPreferredSize(new java.awt.Dimension(180, 150));
-        B_Kategori_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Kategori_1ActionPerformed(evt);
-            }
-        });
-        Panel_Kategori.add(B_Kategori_1, new java.awt.GridBagConstraints());
-
-        B_Kategori_2.setBackground(new java.awt.Color(255, 255, 255));
-        B_Kategori_2.setFont(B_Kategori_2.getFont().deriveFont(B_Kategori_2.getFont().getStyle() & ~java.awt.Font.BOLD, B_Kategori_2.getFont().getSize()+7));
-        B_Kategori_2.setText("Struktur Data");
-        B_Kategori_2.setPreferredSize(new java.awt.Dimension(180, 150));
-        B_Kategori_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Kategori_2ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        Panel_Kategori.add(B_Kategori_2, gridBagConstraints);
-
-        B_Kategori_3.setBackground(new java.awt.Color(255, 255, 255));
-        B_Kategori_3.setFont(B_Kategori_3.getFont().deriveFont(B_Kategori_3.getFont().getStyle() & ~java.awt.Font.BOLD, B_Kategori_3.getFont().getSize()+7));
-        B_Kategori_3.setText("DAP");
-        B_Kategori_3.setPreferredSize(new java.awt.Dimension(180, 150));
-        B_Kategori_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Kategori_3ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        Panel_Kategori.add(B_Kategori_3, gridBagConstraints);
-
-        B_Kategori_4.setBackground(new java.awt.Color(255, 255, 255));
-        B_Kategori_4.setFont(B_Kategori_4.getFont().deriveFont(B_Kategori_4.getFont().getStyle() & ~java.awt.Font.BOLD, B_Kategori_4.getFont().getSize()+7));
-        B_Kategori_4.setText("Bahasa Inggris");
-        B_Kategori_4.setPreferredSize(new java.awt.Dimension(180, 150));
-        B_Kategori_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Kategori_4ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        Panel_Kategori.add(B_Kategori_4, gridBagConstraints);
-
-        B_Kategori_5.setBackground(new java.awt.Color(255, 255, 255));
-        B_Kategori_5.setFont(B_Kategori_5.getFont().deriveFont(B_Kategori_5.getFont().getStyle() & ~java.awt.Font.BOLD, B_Kategori_5.getFont().getSize()+7));
-        B_Kategori_5.setText("PBD");
-        B_Kategori_5.setPreferredSize(new java.awt.Dimension(180, 150));
-        B_Kategori_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Kategori_5ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        Panel_Kategori.add(B_Kategori_5, gridBagConstraints);
-
-        B_Kategori_6.setBackground(new java.awt.Color(255, 255, 255));
-        B_Kategori_6.setFont(B_Kategori_6.getFont().deriveFont(B_Kategori_6.getFont().getStyle() & ~java.awt.Font.BOLD, B_Kategori_6.getFont().getSize()+7));
-        B_Kategori_6.setText("PBO");
-        B_Kategori_6.setPreferredSize(new java.awt.Dimension(180, 150));
-        B_Kategori_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Kategori_6ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        Panel_Kategori.add(B_Kategori_6, gridBagConstraints);
-
-        B_Kategori_7.setBackground(new java.awt.Color(255, 255, 255));
-        B_Kategori_7.setFont(B_Kategori_7.getFont().deriveFont(B_Kategori_7.getFont().getStyle() & ~java.awt.Font.BOLD, B_Kategori_7.getFont().getSize()+7));
-        B_Kategori_7.setText("TBA");
-        B_Kategori_7.setPreferredSize(new java.awt.Dimension(180, 150));
-        B_Kategori_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Kategori_7ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 0;
-        Panel_Kategori.add(B_Kategori_7, gridBagConstraints);
-
-        B_Kategori_8.setBackground(new java.awt.Color(255, 255, 255));
-        B_Kategori_8.setFont(B_Kategori_8.getFont().deriveFont(B_Kategori_8.getFont().getStyle() & ~java.awt.Font.BOLD, B_Kategori_8.getFont().getSize()+7));
-        B_Kategori_8.setText("COA");
-        B_Kategori_8.setPreferredSize(new java.awt.Dimension(180, 150));
-        B_Kategori_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Kategori_8ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 2;
-        Panel_Kategori.add(B_Kategori_8, gridBagConstraints);
-
-        jPanel2.add(Panel_Kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 750, 310));
-
-        TF_Search.setBorder(null);
-        jPanel2.add(TF_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 370, 40));
-
-        B_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Search_default.png"))); // NOI18N
-        B_Search.setBorder(null);
-        B_Search.setMaximumSize(new java.awt.Dimension(67, 37));
-        B_Search.setPreferredSize(new java.awt.Dimension(70, 34));
-        B_Search.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                B_SearchMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                B_SearchMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                B_SearchMouseExited(evt);
-            }
-        });
-        B_Search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_SearchActionPerformed(evt);
-            }
-        });
-        jPanel2.add(B_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 67, 34));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Pertanyaan yang belum terjawab");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
-
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -548,84 +486,24 @@ public class LandpageTutor extends javax.swing.JFrame {
         Panel_Menu_Profil.setVisible(false);
     }//GEN-LAST:event_jPanel1MouseEntered
 
-    private void B_TarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_TarikActionPerformed
+    private void CB_SyaratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_SyaratActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_SyaratActionPerformed
+
+    private void B_NextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_NextMouseEntered
+        // TODO add your handling code here:
+        B_Next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Next_hover.png")));
+    }//GEN-LAST:event_B_NextMouseEntered
+
+    private void B_NextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_NextMouseExited
+        // TODO add your handling code here:
+        B_Next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Next_default.png")));
+    }//GEN-LAST:event_B_NextMouseExited
+
+    private void B_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_NextActionPerformed
         // TODO add your handling code here:
         WithdrawalPopUp.setVisible(true);
-    }//GEN-LAST:event_B_TarikActionPerformed
-
-    private void B_Kategori_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_1ActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByCategory(B_Kategori_1.getText());
-    }//GEN-LAST:event_B_Kategori_1ActionPerformed
-
-    private void B_Kategori_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_2ActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByCategory(B_Kategori_2.getText());
-    }//GEN-LAST:event_B_Kategori_2ActionPerformed
-
-    private void B_Kategori_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_3ActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByCategory(B_Kategori_3.getText());
-    }//GEN-LAST:event_B_Kategori_3ActionPerformed
-
-    private void B_Kategori_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_4ActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByCategory(B_Kategori_4.getText());
-    }//GEN-LAST:event_B_Kategori_4ActionPerformed
-
-    private void B_Kategori_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_5ActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByCategory(B_Kategori_5.getText());
-    }//GEN-LAST:event_B_Kategori_5ActionPerformed
-
-    private void B_Kategori_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_6ActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByCategory(B_Kategori_6.getText());
-    }//GEN-LAST:event_B_Kategori_6ActionPerformed
-
-    private void B_Kategori_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_7ActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByCategory(B_Kategori_7.getText());
-    }//GEN-LAST:event_B_Kategori_7ActionPerformed
-
-    private void B_Kategori_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_8ActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByCategory(B_Kategori_8.getText());
-    }//GEN-LAST:event_B_Kategori_8ActionPerformed
-
-    private void B_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_SearchMouseClicked
-        // TODO add your handling code here:
-        //        B_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Search_clicked.png")));
-    }//GEN-LAST:event_B_SearchMouseClicked
-
-    private void B_SearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_SearchMouseEntered
-        // TODO add your handling code here:
-        B_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Search_hover.png")));
-    }//GEN-LAST:event_B_SearchMouseEntered
-
-    private void B_SearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_SearchMouseExited
-        // TODO add your handling code here:
-        B_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Search_default.png")));
-    }//GEN-LAST:event_B_SearchMouseExited
-
-    private void B_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SearchActionPerformed
-        // TODO add your handling code here:
-        controller.SearchByWord(TF_Search.getText());
-    }//GEN-LAST:event_B_SearchActionPerformed
-
-    private void jTextField2_SaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2_SaldoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2_SaldoActionPerformed
-
-    private void B_TarikMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_TarikMouseEntered
-        // TODO add your handling code here:
-        B_Tarik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Tarik_hover.png")));
-    }//GEN-LAST:event_B_TarikMouseEntered
-
-    private void B_TarikMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_TarikMouseExited
-        // TODO add your handling code here:
-        B_Tarik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Tarik_default.png")));
-    }//GEN-LAST:event_B_TarikMouseExited
+    }//GEN-LAST:event_B_NextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -644,14 +522,22 @@ public class LandpageTutor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LandpageTutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawalPopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LandpageTutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawalPopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LandpageTutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawalPopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LandpageTutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawalPopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -664,37 +550,31 @@ public class LandpageTutor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LandpageTutor().setVisible(true);
+                new WithdrawalPopUp().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Cancel;
     private javax.swing.JButton B_Home;
-    private javax.swing.JButton B_Kategori_1;
-    private javax.swing.JButton B_Kategori_2;
-    private javax.swing.JButton B_Kategori_3;
-    private javax.swing.JButton B_Kategori_4;
-    private javax.swing.JButton B_Kategori_5;
-    private javax.swing.JButton B_Kategori_6;
-    private javax.swing.JButton B_Kategori_7;
-    private javax.swing.JButton B_Kategori_8;
     private javax.swing.JButton B_Logout;
+    private javax.swing.JButton B_Next;
     private javax.swing.JButton B_Pembayaran;
     private javax.swing.JButton B_Profil;
     private javax.swing.JButton B_ProfilMenu;
-    private javax.swing.JButton B_Search;
-    private javax.swing.JButton B_Tarik;
+    private javax.swing.JCheckBox CB_Syarat;
+    private javax.swing.JLabel Label_Bank;
+    private javax.swing.JLabel Label_NamaRekening;
     private javax.swing.JLabel Label_Username;
-    private javax.swing.JPanel Panel_Kategori;
     private javax.swing.JPanel Panel_Menu_Profil;
     private javax.swing.JPanel Panel_Navbar;
-    private javax.swing.JTextField TF_Search;
-    private javax.swing.JButton jButton1_User;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSpinner Spinner_Amount;
+    private javax.swing.JPanel WithdrawalPopUp;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1_NamaTutor;
-    private javax.swing.JTextField jTextField2_Saldo;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
