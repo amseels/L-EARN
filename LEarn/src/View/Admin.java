@@ -103,6 +103,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setText("Id User 1\nNuril Kaunaini Rofiatunnajah\n@username\nbio\n");
         jTextArea1.setPreferredSize(new java.awt.Dimension(400, 200));
         jScrollPane3.setViewportView(jTextArea1);
 
