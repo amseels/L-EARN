@@ -114,11 +114,12 @@ public class UserConn {
     
     public static void updateUser(User u, String password, String bio, String name) throws SQLException{
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("update user set "+"password=?"+"bio=?"+"name=?"+"where userid= ?");
+        PreparedStatement st = con.prepareStatement("update user set password=? ,bio=? , name=? where user_id=?;");
         st.setString(1, password);
         st.setString(2, bio);
         st.setString(3, name);
         st.setInt(4, u.getUserId());
+        st.executeUpdate();
     }
 
 }

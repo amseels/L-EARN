@@ -13,6 +13,7 @@ import Database.UserConn;
 import Model.Membership;
 import Model.Question;
 import Model.Subscription;
+import View.EditProfileMember;
 import View.ShowProfileMember;
 import View.TBA;
 import java.sql.SQLException;
@@ -41,19 +42,25 @@ public class ProfileMemberController extends Controller{
         super.view = new ShowProfileMember(this);
     }
     
-    public void EditProfile(String password, String bio, String name) throws SQLException{
+    public void EditProfile(String password, String bio, String name){
         User u = super.mappingController.GetCurrentUser();
-        UserConn.updateUser(u,password,bio,name);
+        try {
+            UserConn.updateUser(u,password,bio,name);
+            user = UserConn.getUserById(u.getUserId());
+            super.mappingController.SetCurrentUser(user);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProfileMemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        ChangeView(null);
+        ChangeView(new ShowProfileMember(this));
     }
     
     public void ToEditProfile(){
-        ChangeView(null);
+        ChangeView(new EditProfileMember(this));
     }
     
     public void BackToProfile(){
-        ChangeView(null);   
+        ChangeView(new ShowProfileMember(this));   
     }
     
     public void Home(){

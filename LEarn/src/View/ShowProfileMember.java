@@ -26,9 +26,7 @@ public class ShowProfileMember extends javax.swing.JFrame {
         initProfile();
         Label_Username.setText(controller.user.getName());
         Panel_Menu_Profil.setVisible(false);
-    }
-    
-    
+    }  
     
     /**
      * Creates new form DetailQuestion
@@ -298,6 +296,11 @@ public class ShowProfileMember extends javax.swing.JFrame {
                 B_EditProfileMouseExited(evt);
             }
         });
+        B_EditProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_EditProfileActionPerformed(evt);
+            }
+        });
         jPanel2.add(B_EditProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, -1, -1));
 
         jScrollPane1.setBorder(null);
@@ -457,6 +460,11 @@ public class ShowProfileMember extends javax.swing.JFrame {
         // TODO add your handling code here:
         B_EditProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_EditProfile.png")));
     }//GEN-LAST:event_B_EditProfileMouseExited
+
+    private void B_EditProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_EditProfileActionPerformed
+        // TODO add your handling code here:
+        controller.ToEditProfile();
+    }//GEN-LAST:event_B_EditProfileActionPerformed
 
     /**
      * @param args the command line arguments

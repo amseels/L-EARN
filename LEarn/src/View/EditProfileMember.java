@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ProfileMemberController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,19 @@ import javax.swing.JOptionPane;
  */
 public class EditProfileMember extends javax.swing.JFrame {
 
+    ProfileMemberController controller;
+
+    public EditProfileMember(ProfileMemberController controller) {
+        this.controller = controller;
+        
+        initComponents();
+        initProfile();
+        Panel_Menu_Profil.setVisible(false);
+        
+        String nama = controller.user.getName();
+        Label_Username.setText(nama);
+    }
+    
     /**
      * Creates new form DetailQuestion
      */
@@ -23,14 +37,14 @@ public class EditProfileMember extends javax.swing.JFrame {
         initProfile();
         Panel_Menu_Profil.setVisible(false);
         
-        String nama = "nuril";
+        String nama = controller.user.getName();
         Label_Username.setText(nama);
     }
     public void initProfile(){
-        String nama = "Nuril K";
-        String username = "nurilkeceabis";
-        String biodata = "Bismillah yuk TA lulus yuk semester depan bisa bisa";
-        String password = "inipassword";
+        String nama = controller.user.getName();
+        String username = controller.user.getUsername();
+        String biodata = controller.user.getBio();
+        String password = controller.user.getPassword();
         
         TF_NamaLengkap.setText(nama);
         Label_Username2.setText('@'+username);
@@ -346,6 +360,11 @@ public class EditProfileMember extends javax.swing.JFrame {
                 B_SubmitMouseExited(evt);
             }
         });
+        B_Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_SubmitActionPerformed(evt);
+            }
+        });
         jPanel2.add(B_Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/Background_EditProfileMember.png"))); // NOI18N
@@ -490,6 +509,17 @@ public class EditProfileMember extends javax.swing.JFrame {
         // TODO add your handling code here:
         B_Submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Submit.png")));
     }//GEN-LAST:event_B_SubmitMouseExited
+
+    private void B_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SubmitActionPerformed
+        String name = TF_NamaLengkap.getText();
+        String bio = TA_Biodata.getText();
+        String password = PF_Password.getText();
+        String rePassword = PF_reTypePassword.getText();
+        
+        if(password.compareTo(rePassword) == 0){
+            controller.EditProfile(password, bio, name);
+        }
+    }//GEN-LAST:event_B_SubmitActionPerformed
 
     /**
      * @param args the command line arguments

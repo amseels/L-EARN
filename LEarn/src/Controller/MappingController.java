@@ -27,6 +27,10 @@ public class MappingController {
     public User GetCurrentUser(){
         return user;
     }
+    
+    public void SetCurrentUser(User user){
+        this.user = user;
+    }
 
     /**
      * Constructor dari kelas mapping controller
