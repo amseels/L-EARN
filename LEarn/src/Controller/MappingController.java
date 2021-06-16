@@ -93,11 +93,19 @@ public class MappingController {
                 new Transition(StateTransition.Login, StateTransition.LandpageMember),
                 new Transition(StateTransition.Login, StateTransition.LandpageTutor),
                 new Transition(StateTransition.SignUpMember, StateTransition.LandpageMember),
+                new Transition(StateTransition.SignUpTutor, StateTransition.Login),
                 new Transition(StateTransition.LandpageMember, StateTransition.LandpageMember),
                 new Transition(StateTransition.LandpageMember, StateTransition.QuestionMember),
                 new Transition(StateTransition.LandpageMember, StateTransition.QuestionHistory),
                 new Transition(StateTransition.LandpageMember, StateTransition.PostQuestionMember),
-                new Transition(StateTransition.LandpageMember, StateTransition.ProfileMember)
+                new Transition(StateTransition.LandpageMember, StateTransition.ProfileMember),
+                new Transition(StateTransition.QuestionMember, StateTransition.LandpageMember),
+                new Transition(StateTransition.QuestionMember, StateTransition.QuestionHistory),
+                new Transition(StateTransition.QuestionMember, StateTransition.QuestionMember),
+                new Transition(StateTransition.QuestionMember, StateTransition.ProfileMember),
+                new Transition(StateTransition.PostQuestionMember, StateTransition.LandpageMember),
+                new Transition(StateTransition.PostQuestionMember, StateTransition.QuestionHistory),
+                new Transition(StateTransition.PostQuestionMember, StateTransition.ProfileMember)
         )
         );
     

@@ -18,12 +18,15 @@ public class SearchKategory extends javax.swing.JFrame {
 
     private QuestionMemberController controller;
 
-    public SearchKategory(QuestionMemberController controller) {
+    public SearchKategory(QuestionMemberController controller, String name) {
         this.controller = controller;
         initComponents();
         Label_Kategori.setText(controller.category);
         Panel_Menu_Profil.setVisible(false);
         displayQuestion();
+        Panel_Menu_Profil.setVisible(false);
+        //SET NAMA
+        Label_Username.setText(name);
     }
     /**
      * Creates new form SearchKategory

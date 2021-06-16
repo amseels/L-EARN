@@ -376,6 +376,11 @@ public class LandpageMember extends javax.swing.JFrame {
                 B_SearchMouseExited(evt);
             }
         });
+        B_Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_SearchActionPerformed(evt);
+            }
+        });
         jPanel1.add(B_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 67, 34));
 
         TF_Search.setBorder(null);
@@ -571,34 +576,42 @@ public class LandpageMember extends javax.swing.JFrame {
 
     private void B_Kategori_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_1ActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori_1.getText());
     }//GEN-LAST:event_B_Kategori_1ActionPerformed
 
     private void B_Kategori_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_2ActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori_2.getText());
     }//GEN-LAST:event_B_Kategori_2ActionPerformed
 
     private void B_Kategori_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_3ActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori_3.getText());
     }//GEN-LAST:event_B_Kategori_3ActionPerformed
 
     private void B_Kategori_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_4ActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori_4.getText());
     }//GEN-LAST:event_B_Kategori_4ActionPerformed
 
     private void B_Kategori_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_5ActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori_5.getText());
     }//GEN-LAST:event_B_Kategori_5ActionPerformed
 
     private void B_Kategori_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_6ActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori_6.getText());
     }//GEN-LAST:event_B_Kategori_6ActionPerformed
 
     private void B_Kategori_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_7ActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori_7.getText());
     }//GEN-LAST:event_B_Kategori_7ActionPerformed
 
     private void B_Kategori_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_8ActionPerformed
         // TODO add your handling code here:
+        controller.SearchByCategory(B_Kategori_8.getText());
     }//GEN-LAST:event_B_Kategori_8ActionPerformed
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
@@ -606,6 +619,11 @@ public class LandpageMember extends javax.swing.JFrame {
         Panel_Menu_Profil.setVisible(false);
 
     }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void B_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SearchActionPerformed
+        // TODO add your handling code here:
+        controller.SearchByWord(TF_Search.getText());
+    }//GEN-LAST:event_B_SearchActionPerformed
               
     /**
      * @param args the command line arguments

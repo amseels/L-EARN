@@ -18,11 +18,13 @@ public class SearchRelevantQuestion extends javax.swing.JFrame {
     
     QuestionMemberController controller;
 
-    public SearchRelevantQuestion(QuestionMemberController controller) {
+    public SearchRelevantQuestion(QuestionMemberController controller, String name) {
         this.controller = controller;
         initComponents();
         Panel_Menu_Profil.setVisible(false);
         displayQuestion();
+        //SET NAMA
+        Label_Username.setText(name);
     }
     
     /**
@@ -143,6 +145,11 @@ public class SearchRelevantQuestion extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 B_SearchMouseExited(evt);
+            }
+        });
+        B_Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_SearchActionPerformed(evt);
             }
         });
         jPanel1.add(B_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 67, 34));
@@ -778,6 +785,11 @@ public class SearchRelevantQuestion extends javax.swing.JFrame {
         // TODO add your handling code here:
         B_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Search_default.png")));
     }//GEN-LAST:event_B_SearchMouseExited
+
+    private void B_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SearchActionPerformed
+        // TODO add your handling code here:
+        controller.SearchByWord(TF_Search.getText());
+    }//GEN-LAST:event_B_SearchActionPerformed
 
     /**
      * @param args the command line arguments
