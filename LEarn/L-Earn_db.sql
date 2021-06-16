@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2021 at 11:35 AM
+-- Generation Time: Jun 16, 2021 at 07:37 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -68,11 +68,19 @@ INSERT INTO `membership` (`membership_id`, `validation_status`, `start_date`, `p
 
 CREATE TABLE `question` (
   `question_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `category` varchar(45) NOT NULL,
   `content` varchar(45) NOT NULL,
   `time` datetime NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `question`
+--
+
+INSERT INTO `question` (`question_id`, `title`, `category`, `content`, `time`, `user_id`) VALUES
+(1, 'Test', 'Test Question', 'COA', '2021-06-16 00:00:00', 3);
 
 -- --------------------------------------------------------
 
@@ -156,7 +164,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `password`, `bio`, `name`, `username`, `role`) VALUES
 (1, '123456', 'ara', 'Anas', 'anas', 'member'),
-(3, '123', '', 'ara', 'ara', 'member'),
+(3, '123', 'ada', 'ara', 'ara', 'member'),
 (8, '123', 'SMA', 'fatiha', 'fatiha', 'tutor'),
 (9, '123456', 'Master Admin', 'Nuril', 'nuril', 'admin');
 
@@ -233,7 +241,7 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subscription`
