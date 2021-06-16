@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Model.User;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Berisi function get yang berkaitan dengan class User
@@ -121,5 +123,24 @@ public class UserConn {
         st.setInt(4, u.getUserId());
         st.executeUpdate();
     }
+    
 
+    public static List<User> getAllUsers() throws SQLException{
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from user");
+        ResultSet rs = st.executeQuery();
+        
+        List<User> users = new ArrayList<>();
+        User user = new User();
+        while  (rs.next()){
+            user.setUserId(rs.getInt("user_id"));
+            user.setPassword(rs.getString("password"));
+            user.setBio(rs.getString("bio"));
+            user.setName(rs.getString("name"));
+            user.setUsername(rs.getString("username"));
+            user.setRole(rs.getString("role"));
+            users.add(user);
+        }        
+        return users;
+    }
 }

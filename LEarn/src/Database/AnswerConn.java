@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,6 +26,7 @@ public class AnswerConn {
         answer.setTime(rs.getDate("time"));
         answer.setContent(rs.getString("content"));
         answer.setRating(rs.getDouble("rating"));
+        answer.setVerified(rs.getString("verified"));
         
         answer.answer_id = rs.getInt("answer_id");
         answer.tutor_id = rs.getInt("tutor_id");
@@ -60,6 +63,18 @@ public class AnswerConn {
         st.setString(5, qid);
        
         st.execute();
+    }
+
+    public static List<Answer> getAllAnswers() throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from answer");
+        ResultSet rs = st.executeQuery();
+        
+        List<Answer> answers = new ArrayList<>();
+        while  (rs.next()){
+            answers.add(getAnswerData(rs));
+        }        
+        return answers;
     }
 }
 
