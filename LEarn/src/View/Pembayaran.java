@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.MemberController;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,9 +26,22 @@ public class Pembayaran extends javax.swing.JFrame {
     public final JFileChooser openFileChooser;
     private File proofFile;
     
+    private MemberController controller;
+
+    public Pembayaran(MemberController controller) {
+        this.controller = controller;
+        initComponents();
+        openFileChooser = new JFileChooser();
+        Initialize();
+    }
+    
     public Pembayaran() {
         initComponents();
         openFileChooser = new JFileChooser();
+        Initialize();
+    }
+    
+    private void Initialize(){
         openFileChooser.setCurrentDirectory(new File("c:\\tmp"));
         openFileChooser.setFileFilter(new FileNameExtensionFilter("Image File", "jpg"));
         openFileChooser.setFileFilter(new FileNameExtensionFilter("PDF File", "pdf"));
@@ -35,8 +49,7 @@ public class Pembayaran extends javax.swing.JFrame {
         RadioButton_PaketLangganan.setVisible(false);
         RadioButton_PaketSantai.setVisible(false);
         RadioButton_PaketNgambis.setVisible(false);
-
-    }
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -270,8 +283,13 @@ public class Pembayaran extends javax.swing.JFrame {
         FileInputStream proofstream = null;
         try {
             proofstream = new FileInputStream(proofFile);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Register_Tutor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            //Logger.getLogger(Register_Tutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(agree && paketLangganan.compareTo("nothing selected") != 0 && proofstream != null){
+            controller.PostMemberSubscription(paketLangganan, proofstream);
+        }else{
+            
         }
         
     }//GEN-LAST:event_B_NextActionPerformed

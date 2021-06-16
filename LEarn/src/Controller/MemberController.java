@@ -15,6 +15,7 @@ import View.*;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,28 +32,35 @@ public class MemberController extends Controller{
         int idUser = mappingController.GetCurrentUser().getUserId();
         if(AuthenticationMember(idUser)){
             // Member Page
-            super.view = new TBA();
+            super.view = new LandpageMember(this);
         }else{
             // Subscription Plan page
-            super.view = new TBA();
+            super.view = new Pembayaran(this);
         }
     }
 
     private boolean AuthenticationMember(int id){
         // Get Membership from database
         Membership member = null;
-        
+        try {
+            member = MembershipConn.getMembershipByDate(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return member != null;
     }
     
-    public void PostMemberSubscription(int subsid, InputStream paymentFile){
+    public void PostMemberSubscription(String subs, InputStream paymentFile){
+        List<String> subsType = Arrays.asList("Santai", "Ngambis", "Langganan");
+        
+        int subsid = subsType.indexOf(subs) + 1;
         try {
             Membership member = new Membership();
             member.payment_proof = paymentFile;
             int uid = mappingController.GetCurrentUser().getUserId();
             
             MembershipConn.postMembership(member, subsid, uid);
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
