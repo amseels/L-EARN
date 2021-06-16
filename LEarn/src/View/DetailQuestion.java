@@ -80,12 +80,12 @@ public class DetailQuestion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         Panel_Menu_Profil = new javax.swing.JPanel();
         B_Profil = new javax.swing.JButton();
         B_Logout = new javax.swing.JButton();
         Label_Username = new javax.swing.JLabel();
+        B_Delete = new javax.swing.JButton();
         Panel_Navbar = new javax.swing.JPanel();
         B_Pertanyaanku = new javax.swing.JButton();
         B_ProfilMenu = new javax.swing.JButton();
@@ -104,19 +104,9 @@ public class DetailQuestion extends javax.swing.JFrame {
         Answer_Tutor = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         Answer_Content = new javax.swing.JTextArea();
+        Spinner_Rate = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         Question_Tanggal = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -201,6 +191,26 @@ public class DetailQuestion extends javax.swing.JFrame {
         );
 
         jPanel1.add(Panel_Menu_Profil, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, -1, -1));
+
+        B_Delete.setBackground(new java.awt.Color(29, 4, 54));
+        B_Delete.setForeground(new java.awt.Color(29, 4, 54));
+        B_Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Delete2_default.png"))); // NOI18N
+        B_Delete.setBorder(null);
+        B_Delete.setBorderPainted(false);
+        B_Delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                B_DeleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                B_DeleteMouseExited(evt);
+            }
+        });
+        B_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_DeleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(B_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, -1, -1));
 
         Panel_Navbar.setBackground(new java.awt.Color(224, 187, 218));
         Panel_Navbar.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
@@ -363,30 +373,37 @@ public class DetailQuestion extends javax.swing.JFrame {
         Answer_Content.setBorder(null);
         jScrollPane3.setViewportView(Answer_Content);
 
+        Spinner_Rate.setModel(new javax.swing.SpinnerNumberModel(5, 1, 5, 1));
+
         javax.swing.GroupLayout Panel_AnswerLayout = new javax.swing.GroupLayout(Panel_Answer);
         Panel_Answer.setLayout(Panel_AnswerLayout);
         Panel_AnswerLayout.setHorizontalGroup(
             Panel_AnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_AnswerLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(Panel_AnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Panel_AnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Panel_AnswerLayout.createSequentialGroup()
-                        .addComponent(Answer_Tutor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addGroup(Panel_AnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Answer_Tutor)
+                            .addGroup(Panel_AnswerLayout.createSequentialGroup()
+                                .addComponent(Answer_Date)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Spinner_Rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(Panel_AnswerLayout.createSequentialGroup()
-                        .addComponent(Answer_Date)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(194, 194, 194))
-            .addGroup(Panel_AnswerLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                        .addGap(64, 64, 64)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         Panel_AnswerLayout.setVerticalGroup(
             Panel_AnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_AnswerLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(Answer_Date)
+                .addGroup(Panel_AnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel_AnswerLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(Answer_Date))
+                    .addGroup(Panel_AnswerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Spinner_Rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Answer_Tutor)
                 .addGap(18, 18, 18)
@@ -562,6 +579,25 @@ public class DetailQuestion extends javax.swing.JFrame {
         controller.SearchByCategory(B_Kategori.getText());
     }//GEN-LAST:event_B_KategoriActionPerformed
 
+    private void B_DeleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_DeleteMouseEntered
+        // TODO add your handling code here:
+        B_Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Delete2_hover.png")));
+    }//GEN-LAST:event_B_DeleteMouseEntered
+
+    private void B_DeleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_DeleteMouseExited
+        // TODO add your handling code here:
+        B_Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icon/B_Delete2.png")));
+    }//GEN-LAST:event_B_DeleteMouseExited
+
+    private void B_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_DeleteActionPerformed
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.showConfirmDialog (null, "Anda yakin ingin menghapus pertanyaan ini?","Hapus Pertanyaan",JOptionPane.YES_NO_OPTION);
+        if(dialogButton == JOptionPane.YES_OPTION) {
+            // HAPUS
+        }
+        else {remove(dialogButton);}
+    }//GEN-LAST:event_B_DeleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -604,6 +640,7 @@ public class DetailQuestion extends javax.swing.JFrame {
     private javax.swing.JTextArea Answer_Content;
     private javax.swing.JLabel Answer_Date;
     private javax.swing.JLabel Answer_Tutor;
+    private javax.swing.JButton B_Delete;
     private javax.swing.JButton B_Home;
     private javax.swing.JButton B_Kategori;
     private javax.swing.JButton B_Logout;
@@ -618,11 +655,11 @@ public class DetailQuestion extends javax.swing.JFrame {
     private javax.swing.JTextArea Question_Content;
     private javax.swing.JLabel Question_Tanggal;
     private javax.swing.JLabel Question_Title;
+    private javax.swing.JSpinner Spinner_Rate;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
