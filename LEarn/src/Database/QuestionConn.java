@@ -22,6 +22,7 @@ public class QuestionConn {
         ResultSet rs = st.executeQuery();
         Question question = new Question();
         while  (rs.next()){
+            question.title = rs.getString("title");
             question.setCategory(rs.getString("category"));
             question.setContent(rs.getString("content"));
             question.setTime(rs.getDate("time"));       
@@ -69,6 +70,7 @@ public class QuestionConn {
     
     private static Question getQuestionData(ResultSet rs) throws SQLException{
         Question question = new Question();
+        question.title = rs.getString("title");
         question.setCategory(rs.getString("category"));
         question.setContent(rs.getString("content"));
         question.setTime(rs.getDate("time"));

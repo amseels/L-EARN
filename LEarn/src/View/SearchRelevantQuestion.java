@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.QuestionMemberController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -14,7 +15,16 @@ import javax.swing.JOptionPane;
  * @author hp
  */
 public class SearchRelevantQuestion extends javax.swing.JFrame {
+    
+    QuestionMemberController controller;
 
+    public SearchRelevantQuestion(QuestionMemberController controller) {
+        this.controller = controller;
+        initComponents();
+        Panel_Menu_Profil.setVisible(false);
+        displayQuestion();
+    }
+    
     /**
      * Creates new form SearchRelevantQuestion
      */
@@ -27,8 +37,8 @@ public class SearchRelevantQuestion extends javax.swing.JFrame {
         int numQuestion = 5; //MAX 10, kalau mau ditambah harus copy paste dulu
         for (int i = 0; i < numQuestion; i++){
             //SETTING SETIAP PERTANYAAN
-            String judul_pertanyaan = "Judul Baru " + Integer.toString(i);
-            String content = "CONTENT LOREM IPSUM";
+            String judul_pertanyaan = controller.questions.get(i).title + Integer.toString(i);
+            String content = controller.questions.get(i).getContent();
             boolean answered = true;
             
 //           DISPLAY SETTING BEGIN

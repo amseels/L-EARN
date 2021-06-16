@@ -12,10 +12,12 @@ import java.sql.*;
  * @author ASUS
  */
 public class Question {
+    
     private String category;
     private String content;
     private Date time;
     
+    public String title;
     public int user_id;
     public int question_id;
 
