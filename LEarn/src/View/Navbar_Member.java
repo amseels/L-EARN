@@ -21,6 +21,9 @@ public class Navbar_Member extends javax.swing.JFrame {
     public Navbar_Member() {
         initComponents();
         Panel_Menu_Profil.setVisible(false);
+        
+        String nama = "nuril";
+        Label_Username.setText(nama);
     }
 
     /**
