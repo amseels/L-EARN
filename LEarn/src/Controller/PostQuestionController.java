@@ -24,12 +24,12 @@ public class PostQuestionController extends Controller{
     
     public PostQuestionController(MappingController mappingController) {
         super(mappingController);
-        super.view = new TBA();
+        super.view = new PostQuestions(this, mappingController.GetCurrentUser().getName());
     }
     
-    public void PostQuestion(String question, String category){
+    public void PostQuestion(String category, String title, String question){
         // post quetion to database
-        Question questionObj = new Question(question, category);
+        Question questionObj = new Question(question, category, title);
         int uid = mappingController.GetCurrentUser().getUserId();
         try {
             QuestionConn.postQuestion(questionObj, uid);

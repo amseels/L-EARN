@@ -25,11 +25,13 @@ public class QuestionMemberController extends Controller{
 
     public String category;
     public List<Question> questions;
+    public String word;
     
     public QuestionMemberController(MappingController mappingController) {
         super(mappingController);
         category = mappingController.category;
         questions = mappingController.questions;
+        word = mappingController.word;
         
         if(category.compareTo("") == 0)
             super.view = new SearchRelevantQuestion(this, mappingController.GetCurrentUser().getName());
@@ -93,6 +95,6 @@ public class QuestionMemberController extends Controller{
                 results.add(questions.get(id));
         }
             
-        mappingController.Move(MappingController.StateTransition.QuestionMember, results, "");
+        mappingController.MoveByKeyword(MappingController.StateTransition.QuestionMember, results, word);
     }
 }
