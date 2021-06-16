@@ -5,7 +5,6 @@
  */
 package View;
 
-import Controller.PostQuestionController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -16,19 +15,6 @@ import javax.swing.JOptionPane;
  */
 public class EditQuestion extends javax.swing.JFrame {
 
-    PostQuestionController controller;
-
-    public EditQuestion(PostQuestionController controller, String name) {
-        this.controller = controller;
-        initComponents();
-        Panel_Menu_Profil.setVisible(false);
-        Label_Username.setText(name);
-        
-        // SET TEXT
-        CB_KategoriPertanyaan.setSelectedIndex(1);
-        TF_JudulPertanyaan.setText("Ini judul");
-        TA_ContentPertanyaan.setText("Ini content");
-    }    
     
     /**
      * Creates new form PostQuestions
@@ -36,6 +22,13 @@ public class EditQuestion extends javax.swing.JFrame {
     public EditQuestion() {
         initComponents();
         Panel_Menu_Profil.setVisible(false);
+        String name = "nuril";
+        Label_Username.setText(name);
+        
+        // SET TEXT
+        CB_KategoriPertanyaan.setSelectedIndex(1);
+        TF_JudulPertanyaan.setText("Ini judul");
+        TA_ContentPertanyaan.setText("Ini content");
     }
     
     /**
