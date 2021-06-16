@@ -5,7 +5,10 @@
  */
 package View;
 
+import Controller.ProfileMemberController;
 import java.awt.Color;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
@@ -15,6 +18,18 @@ import javax.swing.JOptionPane;
  */
 public class ShowProfileMember extends javax.swing.JFrame {
 
+    ProfileMemberController controller;
+
+    public ShowProfileMember(ProfileMemberController controller) {
+        this.controller = controller;
+        initComponents();
+        initProfile();
+        Label_Username.setText(controller.user.getName());
+        Panel_Menu_Profil.setVisible(false);
+    }
+    
+    
+    
     /**
      * Creates new form DetailQuestion
      */
@@ -24,11 +39,12 @@ public class ShowProfileMember extends javax.swing.JFrame {
         Panel_Menu_Profil.setVisible(false);
     }
     public void initProfile(){
-        String nama = "Nuril K";
-        String username = "nurilkeceabis";
-        String biodata = "Bismillah yuk TA lulus yuk semester depan bisa bisa";
-        String paket = "Paket Ngambis / 170.000";
-        String expired_date = "27 Agustus 2050";
+        String nama = controller.user.getName();
+        String username = controller.user.getUsername();
+        String biodata = controller.user.getBio();
+        String paket = controller.subscription.getName() + " / " + controller.subscription.getPrice();
+        Format dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+        String expired_date = dateFormat.format(controller.membership.getExpired_date());
         
         Label_Nama.setText(nama);
         Label_Username2.setText('@'+username);

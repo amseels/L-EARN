@@ -17,6 +17,8 @@ public class MembershipConn {
         if(usedPaymet)
             membership.payment_proof = rs.getBlob("payment_proof").getBinaryStream();
         
+        membership.subs_id = rs.getInt("subs_id");
+        
         return membership;
     }
     
