@@ -747,6 +747,11 @@ public class QuestionHistory extends javax.swing.JFrame {
                 B_Delete_9MouseExited(evt);
             }
         });
+        B_Delete_9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_Delete_9ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 20;
@@ -994,6 +999,10 @@ public class QuestionHistory extends javax.swing.JFrame {
     private void B_Delete_10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Delete_10MouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_B_Delete_10MouseExited
+
+    private void B_Delete_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Delete_9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_Delete_9ActionPerformed
 
     /**
      * @param args the command line arguments
