@@ -558,8 +558,10 @@ public class LandpageMember extends javax.swing.JFrame {
 
     private void B_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_LogoutActionPerformed
         // TODO add your handling code here:
-        int keluar = JOptionPane.YES_NO_OPTION;
-        controller.Logout();
+        int dialogButton = JOptionPane.showConfirmDialog (null, "Anda yakin akan keluar?","Keluar",JOptionPane.YES_NO_OPTION);
+        if(dialogButton == JOptionPane.YES_OPTION) {
+            controller.Logout();}
+        else {remove(dialogButton);}
     }//GEN-LAST:event_B_LogoutActionPerformed
 
     private void B_PertanyaankuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_PertanyaankuActionPerformed
