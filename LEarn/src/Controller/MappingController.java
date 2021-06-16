@@ -18,7 +18,14 @@ import java.util.List;
  */
 public class MappingController {
 
-    private List<Question> questions;
+    public List<Question> questions;
+    private User user;
+    private Controller activeController;
+    public String category;
+    
+    public User GetCurrentUser(){
+        return user;
+    }
 
     /**
      * Constructor dari kelas mapping controller
@@ -55,7 +62,6 @@ public class MappingController {
         LandpageMember,
         ProfileMember,
         PostQuestionMember,
-        SearchResult,
         QuestionHistory,
         QuestionMember,
         LandpageTutor,
@@ -88,19 +94,12 @@ public class MappingController {
                 new Transition(StateTransition.Login, StateTransition.LandpageTutor),
                 new Transition(StateTransition.SignUpMember, StateTransition.LandpageMember),
                 new Transition(StateTransition.LandpageMember, StateTransition.LandpageMember),
-                new Transition(StateTransition.LandpageMember, StateTransition.SearchResult),
+                new Transition(StateTransition.LandpageMember, StateTransition.QuestionMember),
                 new Transition(StateTransition.LandpageMember, StateTransition.QuestionHistory),
                 new Transition(StateTransition.LandpageMember, StateTransition.PostQuestionMember),
                 new Transition(StateTransition.LandpageMember, StateTransition.ProfileMember)
         )
         );
-    
-    private User user;
-    private Controller activeController;
-    
-    public User GetCurrentUser(){
-        return user;
-    }
     
     public void Move(StateTransition state, User user){
         switch(currentState){
@@ -122,8 +121,9 @@ public class MappingController {
         Move(state);
     }
     
-    public void Move(StateTransition state, List<Question> questions){
+    public void Move(StateTransition state, List<Question> questions, String category){
         this.questions = questions;
+        this.category = category;
         Move(state);
     }
     
@@ -172,11 +172,11 @@ public class MappingController {
             case PostQuestionMember:
                 activeController = new PostQuestionController(this);
                 break;
-            case SearchResult:
-                break;
             case QuestionHistory:
+                activeController = new QuestionHistoryControlle(this);
                 break;
             case QuestionMember:
+                activeController = new QuestionMemberController(this);
                 break;
             case LandpageTutor:
                 activeController = new TutorController(this);
@@ -184,8 +184,10 @@ public class MappingController {
             case WithdrawalHistory:
                 break;
             case ProfileTutor:
+                activeController = new ProfileTutor(this);
                 break;
             case LandpageAdmin:
+                activeController = new AdminController(this);
                 break;
             case Login:
                 activeController = new LoginController(this);
@@ -193,6 +195,7 @@ public class MappingController {
             case Quit:
                 break;
             case QuestionTutor:
+                activeController = new QuestionTutorController(this);
                 break;
             case Withdrawal:
                 break;

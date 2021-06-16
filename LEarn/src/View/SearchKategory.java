@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.MemberController;
+import Controller.QuestionMemberController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -16,6 +16,15 @@ import javax.swing.JOptionPane;
  */
 public class SearchKategory extends javax.swing.JFrame {
 
+    private QuestionMemberController controller;
+
+    public SearchKategory(QuestionMemberController controller) {
+        this.controller = controller;
+        initComponents();
+        Label_Kategori.setText(controller.category);
+        Panel_Menu_Profil.setVisible(false);
+        displayQuestion();
+    }
     /**
      * Creates new form SearchKategory
      */
@@ -26,11 +35,11 @@ public class SearchKategory extends javax.swing.JFrame {
         displayQuestion();
     }
     public void displayQuestion(){
-        int numQuestion = 5; //MAX 10, kalau mau ditambah harus copy paste dulu
+        int numQuestion = Math.min(controller.questions.size(), 5); //MAX 10, kalau mau ditambah harus copy paste dulu
         for (int i = 0; i < numQuestion; i++){
             //SETTING SETIAP PERTANYAAN
-            String judul_pertanyaan = "Judul Baru " + Integer.toString(i);
-            String content = "CONTENT LOREM IPSUM";
+            String judul_pertanyaan = "Question " + Integer.toString(i);
+            String content = controller.questions.get(i).getContent();
             boolean answered = true;
             
 //           DISPLAY SETTING BEGIN

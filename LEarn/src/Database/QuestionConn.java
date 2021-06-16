@@ -41,6 +41,19 @@ public class QuestionConn {
         return questions;
     }
     
+    public static List<Question> getAllQuestions(int uid) throws SQLException{
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from question where user_id=?");
+        st.setInt(1, uid);
+        ResultSet rs = st.executeQuery();
+        
+        List<Question> questions = new ArrayList<>();
+        while  (rs.next()){
+            questions.add(getQuestionData(rs));
+        }        
+        return questions;
+    }
+    
     public static List<Question> getAllQuestionsByCategory(String category) throws SQLException{
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("select * from question where category =?");

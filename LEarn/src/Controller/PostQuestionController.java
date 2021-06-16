@@ -6,10 +6,13 @@
 package Controller;
 
 import Controller.MappingController.StateTransition;
+import Database.AnswerConn;
 import Database.QuestionConn;
+import Model.Answer;
 import Model.Question;
 import View.*;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,5 +43,30 @@ public class PostQuestionController extends Controller{
     
     public void BackToLandpage(){
         mappingController.Move(StateTransition.LandpageMember);
+    }
+
+    public void Home(){
+        mappingController.Move(MappingController.StateTransition.LandpageMember);
+    }
+
+    public void ProfileMember(){
+        mappingController.Move(MappingController.StateTransition.ProfileMember);
+    }
+    
+    public void Logout(){
+        mappingController.Move(MappingController.StateTransition.Quit);
+    }
+
+    public void ShowQuestionHistory(){
+        // get all user question from database
+        int uid = mappingController.GetCurrentUser().getUserId();
+        List<Question> questions = null;
+        try {
+            questions = QuestionConn.getAllQuestions(uid);
+        } catch (SQLException ex) {
+            //Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        mappingController.Move(MappingController.StateTransition.QuestionHistory, questions, "");
     }
 }

@@ -6,23 +6,14 @@
 package Controller;
 
 import Controller.MappingController.StateTransition;
-import Database.MembershipConn;
-import Database.QuestionConn;
-import Database.SubscriptionConn;
-import Model.Membership;
-import Model.Question;
-import Model.Subscription;
-import Model.User;
+import Database.*;
+import Model.*;
 import Search.LuceneManager;
 import View.*;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
+import java.util.logging.*;
 
 /**
  * Class controller yang mengatur member page
@@ -33,7 +24,7 @@ public class MemberController extends Controller{
     public MemberController(MappingController mappingController) {
         super(mappingController);
         
-        User user= mappingController.GetCurrentUser();
+        User user = mappingController.GetCurrentUser();
         int idUser = user.getUserId();
         if(AuthenticationMember(idUser)){
             // Member Page
@@ -87,7 +78,7 @@ public class MemberController extends Controller{
             Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        mappingController.Move(StateTransition.QuestionMember, questions);
+        mappingController.Move(StateTransition.QuestionMember, questions, category);
     }
     
     public void SearchByWord(String word){
@@ -111,14 +102,20 @@ public class MemberController extends Controller{
                 results.add(questions.get(id));
         }
             
-        mappingController.Move(StateTransition.QuestionMember, results);
+        mappingController.Move(StateTransition.QuestionMember, results, "");
     }
     
     public void ShowQuestionHistory(){
         // get all user question from database
-        List<Question> questions = new ArrayList<>();
+        int uid = mappingController.GetCurrentUser().getUserId();
+        List<Question> questions = null;
+        try {
+            questions = QuestionConn.getAllQuestions(uid);
+        } catch (SQLException ex) {
+            //Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        mappingController.Move(StateTransition.QuestionHistory, questions);
+        mappingController.Move(StateTransition.QuestionHistory, questions, "");
     }
     
     public void Home(){

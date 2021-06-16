@@ -50,7 +50,7 @@ public class TutorController extends Controller{
             Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        mappingController.Move(StateTransition.QuestionTutor, questions);
+        mappingController.Move(StateTransition.QuestionTutor, questions, category);
     }
     
     public void SearchByWord(String word){
@@ -74,7 +74,7 @@ public class TutorController extends Controller{
                 results.add(questions.get(id));
         }
             
-        mappingController.Move(StateTransition.QuestionMember, results);
+        mappingController.Move(StateTransition.QuestionMember, results, "");
     }
     
     public void Logout(){
