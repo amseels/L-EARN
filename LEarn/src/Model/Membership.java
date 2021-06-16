@@ -22,6 +22,8 @@ public class Membership {
     private Date expired_date;
     public InputStream payment_proof;
     
+    public int subs_id;
+    
     public static String[] validation = new String[]{"Valid", "Non-Valid"};
 
     public String getValidation_status() {
