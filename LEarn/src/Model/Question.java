@@ -21,9 +21,10 @@ public class Question {
     public int user_id;
     public int question_id;
 
-    public Question(String category, String content) {
+    public Question(String category, String content, String title) {
         this.category = category;
         this.content = content;
+        this.title = title;
     }
 
     public Question() {

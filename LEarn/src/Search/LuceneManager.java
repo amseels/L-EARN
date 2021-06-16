@@ -122,7 +122,7 @@ public class LuceneManager {
                 isFound = hits.length > 0;
             }
         } catch (ParseException | IOException ex) {
-            Logger.getLogger(LuceneManager.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(LuceneManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         hasSeacrh = true;
         return isFound;

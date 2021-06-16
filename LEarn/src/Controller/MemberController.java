@@ -102,7 +102,7 @@ public class MemberController extends Controller{
                 results.add(questions.get(id));
         }
             
-        mappingController.Move(StateTransition.QuestionMember, results, "");
+        mappingController.MoveByKeyword(StateTransition.QuestionMember, results, word);
     }
     
     public void ShowQuestionHistory(){

@@ -25,6 +25,7 @@ public class SearchRelevantQuestion extends javax.swing.JFrame {
         displayQuestion();
         //SET NAMA
         Label_Username.setText(name);
+        TF_Search.setText(controller.word);
     }
     
     /**
@@ -36,7 +37,7 @@ public class SearchRelevantQuestion extends javax.swing.JFrame {
         displayQuestion();
     }
     public void displayQuestion(){
-        int numQuestion = 5; //MAX 10, kalau mau ditambah harus copy paste dulu
+        int numQuestion = Math.min(controller.questions.size(), 5);//MAX 10, kalau mau ditambah harus copy paste dulu
         for (int i = 0; i < numQuestion; i++){
             //SETTING SETIAP PERTANYAAN
             String judul_pertanyaan = controller.questions.get(i).title + Integer.toString(i);
