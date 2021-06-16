@@ -16,6 +16,7 @@ public class Answer {
     private Date time;
     private String content;
     private double rating;
+    private String verified;
     
     public int tutor_id;  
     public int answer_id;  
@@ -47,6 +48,15 @@ public class Answer {
     public void setRating(double rating) {
         this.rating = rating;
     }
+
+    public String getVerified() {
+        return verified;
+    }
+
+    public void setVerified(String verified) {
+        this.verified = verified;
+    }
+
     
     
 }

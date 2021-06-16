@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -42,5 +44,22 @@ public class Tutor_PaymentConn {
         st.setString(5, tid);
 
         st.execute();
+    }
+    
+    public static List<Tutor_Payment> getAllPayment() throws SQLException{
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from tutor_payment");
+        ResultSet rs = st.executeQuery();
+        
+        List<Tutor_Payment> payments = new ArrayList<>();
+        Tutor_Payment payment = new Tutor_Payment();
+        while  (rs.next()){
+            payment.setInput_time(rs.getDate("input_time"));
+            payment.setPayment_time(rs.getDate("input_time"));
+            payment.setPayment_status(rs.getString("payment_status"));
+            payment.setAmount(rs.getDouble("amount"));
+            payments.add(payment);
+        }
+        return payments;
     }
 }
