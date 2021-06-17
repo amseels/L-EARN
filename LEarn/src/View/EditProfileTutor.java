@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ProfileTutorController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,29 @@ import javax.swing.JOptionPane;
  */
 public class EditProfileTutor extends javax.swing.JFrame {
 
+    ProfileTutorController controller;
+
+    public EditProfileTutor(ProfileTutorController controller) {
+        this.controller = controller;
+        initComponents();
+        Panel_Menu_Profil.setVisible(false);
+        
+        String nama = controller.user.getName();
+        Label_Username.setText(nama);
+        
+        
+        TF_NamaLengkap.setText(controller.user.getName());
+        TA_Biodata.setText(controller.user.getBio());
+        PF_Password.setText(controller.user.getPassword());
+        PF_reTypePassword.setText(controller.user.getPassword());
+        
+        TF_Bank.setText(controller.tutor.bank);
+        TF_NomorRekening.setText(controller.tutor.rekening);
+        TF_NamaRekening.setText(controller.tutor.namaRekening);
+    }
+    
+    
+    
     /**
      * Creates new form DetailQuestion
      */
@@ -551,9 +575,10 @@ public class EditProfileTutor extends javax.swing.JFrame {
         String bio = TA_Biodata.getText();
         String password = PF_Password.getText();
         String rePassword = PF_reTypePassword.getText();
-
+        String nomorRekening = TF_NomorRekening.getText();
+        String namaRekening = TF_NamaRekening.getText();
         if(password.compareTo(rePassword) == 0){
-            controller.EditProfile(password, bio, name);
+            controller.EditProfile(password, bio, name, nomorRekening, namaRekening);
         }
     }//GEN-LAST:event_B_SubmitActionPerformed
 

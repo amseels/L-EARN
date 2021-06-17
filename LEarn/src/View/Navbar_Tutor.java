@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.TutorController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Navbar_Tutor extends javax.swing.JFrame {
 
+    TutorController controller;
     /**
      * Creates new form DetailQuestion
      */

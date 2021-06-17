@@ -113,7 +113,22 @@ public class MappingController {
                 new Transition(StateTransition.PostQuestionMember, StateTransition.ProfileMember),
                 new Transition(StateTransition.ProfileMember, StateTransition.LandpageMember),
                 new Transition(StateTransition.ProfileMember, StateTransition.QuestionHistory),
-                new Transition(StateTransition.ProfileMember, StateTransition.ProfileMember)
+                new Transition(StateTransition.ProfileMember, StateTransition.ProfileMember),
+                new Transition(StateTransition.LandpageTutor, StateTransition.LandpageTutor),
+                new Transition(StateTransition.LandpageTutor, StateTransition.QuestionTutor),
+                new Transition(StateTransition.LandpageTutor, StateTransition.WithdrawalHistory),
+                new Transition(StateTransition.LandpageTutor, StateTransition.Withdrawal),
+                new Transition(StateTransition.LandpageTutor, StateTransition.ProfileTutor),
+                new Transition(StateTransition.ProfileTutor, StateTransition.ProfileTutor),
+                new Transition(StateTransition.ProfileTutor, StateTransition.LandpageTutor),
+                new Transition(StateTransition.ProfileTutor, StateTransition.WithdrawalHistory),
+                new Transition(StateTransition.WithdrawalHistory, StateTransition.ProfileTutor),
+                new Transition(StateTransition.WithdrawalHistory, StateTransition.LandpageTutor),
+                new Transition(StateTransition.WithdrawalHistory, StateTransition.WithdrawalHistory),
+                new Transition(StateTransition.Withdrawal, StateTransition.ProfileTutor),
+                new Transition(StateTransition.Withdrawal, StateTransition.LandpageTutor),
+                new Transition(StateTransition.Withdrawal, StateTransition.WithdrawalHistory),
+                new Transition(StateTransition.LandpageAdmin, StateTransition.LandpageAdmin)
         )
         );
     
@@ -206,9 +221,10 @@ public class MappingController {
                 activeController = new TutorController(this);
                 break;
             case WithdrawalHistory:
+                activeController = new WithdrawalHistoryController(this);
                 break;
             case ProfileTutor:
-                activeController = new ProfileTutor(this);
+                activeController = new ProfileTutorController(this);
                 break;
             case LandpageAdmin:
                 activeController = new AdminController(this);
@@ -222,6 +238,7 @@ public class MappingController {
                 activeController = new QuestionTutorController(this);
                 break;
             case Withdrawal:
+                activeController = new WithdrawalController(this);
                 break;
             default:
                 throw new AssertionError(currentState.name());

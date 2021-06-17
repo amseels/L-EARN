@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.QuestionMemberController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class EditQuestion extends javax.swing.JFrame {
 
+    QuestionMemberController controller;
     
     /**
      * Creates new form PostQuestions
