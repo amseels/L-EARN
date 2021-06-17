@@ -40,6 +40,24 @@ public class TutorConn {
         return rs.getString("tutor_id");
     }
     
+    public static Tutor getTutorByUserId(int u) throws SQLException {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from tutor where user_id=?");
+        st.setInt(1, u);     
+        ResultSet rs = st.executeQuery();
+       Tutor tutor = new Tutor();
+        while  (rs.next()){
+            tutor.eligibility_proof = rs.getBlob("eligibility_proof").getBinaryStream();
+            tutor.rating = rs.getDouble("rating");
+            tutor.validation_status = rs.getString("validation_status");
+            tutor.tutor_id = rs.getInt("tutor_id");
+            tutor.bank = rs.getString("bank");
+            tutor.rekening = rs.getString("rekening");
+            tutor.namaRekening = rs.getString("nama_rekening");
+        }
+        return tutor;
+    }
+    
     public static void postTutor(Tutor tutor, int uid) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("insert into tutor "
