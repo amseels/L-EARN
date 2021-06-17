@@ -34,14 +34,14 @@ public class Tutor_PaymentConn {
         return tutor_Payment;
     }
     
-    public static void postTutor_Payment(Tutor_Payment t, String tid) throws SQLException {
+    public static void postTutor_Payment(Tutor_Payment t, int tid) throws SQLException {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("insert into tutor_payment (input_time, payment_time, payment_status, amount, tutor_id)"+" values(?,?,?,?,?)");
         st.setDate(1, t.getInput_time());
         st.setDate(2, t.getPayment_time());
         st.setString(3, t.getPayment_status());        
         st.setDouble(4, t.getAmount());
-        st.setString(5, tid);
+        st.setInt(5, tid);
 
         st.execute();
     }

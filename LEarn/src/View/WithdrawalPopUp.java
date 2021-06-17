@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.WithdrawalController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,26 @@ import javax.swing.JOptionPane;
  */
 public class WithdrawalPopUp extends javax.swing.JFrame {
 
+    WithdrawalController controller;
+
+    public WithdrawalPopUp(WithdrawalController controller, String name) {
+        this.controller = controller;
+        initComponents();
+        Panel_Menu_Profil.setVisible(false);
+        
+        int maxAmount = 100000;
+        String nama = name;
+        String namaRekening = controller.tutor.namaRekening;
+        String namaBank = controller.tutor.bank + " - " + controller.tutor.rekening;
+        
+        Label_Username.setText(nama);
+        Label_NamaRekening.setText(namaRekening);
+        Label_Bank.setText(namaBank);
+        Spinner_Amount.setModel(new javax.swing.SpinnerNumberModel(maxAmount, 0, maxAmount, 10000));
+    }
+    
+    
+    
     /**
      * Creates new form DetailQuestion
      */
@@ -41,7 +62,6 @@ public class WithdrawalPopUp extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         WithdrawalPopUp = new javax.swing.JPanel();
@@ -141,6 +161,11 @@ public class WithdrawalPopUp extends javax.swing.JFrame {
         });
 
         B_Cancel.setText("Urungkan");
+        B_Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_CancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout WithdrawalPopUpLayout = new javax.swing.GroupLayout(WithdrawalPopUp);
         WithdrawalPopUp.setLayout(WithdrawalPopUpLayout);
@@ -156,7 +181,7 @@ public class WithdrawalPopUp extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WithdrawalPopUpLayout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(WithdrawalPopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(WithdrawalPopUpLayout.createSequentialGroup()
                         .addComponent(B_Cancel)
@@ -184,7 +209,7 @@ public class WithdrawalPopUp extends javax.swing.JFrame {
                 .addGroup(WithdrawalPopUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(B_Next, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B_Cancel))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(WithdrawalPopUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 440, 380));
@@ -503,7 +528,14 @@ public class WithdrawalPopUp extends javax.swing.JFrame {
     private void B_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_NextActionPerformed
         // TODO add your handling code here:
         WithdrawalPopUp.setVisible(true);
+        
     }//GEN-LAST:event_B_NextActionPerformed
+
+    private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
+        // TODO add your handling code here:
+        controller.Home();
+        controller.PostWithdrawal(Spinner_Amount.getValue().toString());
+    }//GEN-LAST:event_B_CancelActionPerformed
 
     /**
      * @param args the command line arguments

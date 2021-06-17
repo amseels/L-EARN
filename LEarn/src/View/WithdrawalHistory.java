@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.WithdrawalHistoryController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class WithdrawalHistory extends javax.swing.JFrame {
 
+    WithdrawalHistoryController controller;
     /**
      * Creates new form DetailQuestion
      */
