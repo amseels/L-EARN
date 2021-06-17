@@ -35,6 +35,7 @@ public class QuestionMemberController extends Controller{
         questions = mappingController.questions;
         word = mappingController.word;
         
+        
         if(category.compareTo("") == 0)
             super.view = new SearchRelevantQuestion(this, mappingController.GetCurrentUser().getName());
         else

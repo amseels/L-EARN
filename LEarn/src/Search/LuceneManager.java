@@ -77,9 +77,10 @@ public class LuceneManager {
         if(hasSeacrh){
             index = new RAMDirectory();
             hasSeacrh = false;
+            result = new ArrayList<>();
         }
             
-        AddItem(question, indexQuestion);
+        AddItemToSearch(question, indexQuestion);
     }
     
     /**
@@ -91,6 +92,7 @@ public class LuceneManager {
         if(hasSeacrh){
             index = new RAMDirectory();
             hasSeacrh = false;
+            result = new ArrayList<>();
         }
         
         for(int i = 0; i < item.size(); i++){
@@ -150,6 +152,8 @@ public class LuceneManager {
             idQuestion.add(key);
         }
         );
+        
+        hasSeacrh = true;
         
         return idQuestion;
     }

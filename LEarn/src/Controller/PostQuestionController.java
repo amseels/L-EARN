@@ -29,7 +29,7 @@ public class PostQuestionController extends Controller{
     
     public void PostQuestion(String category, String title, String question){
         // post quetion to database
-        Question questionObj = new Question(question, category, title);
+        Question questionObj = new Question(category, question, title);;
         int uid = mappingController.GetCurrentUser().getUserId();
         try {
             QuestionConn.postQuestion(questionObj, uid);

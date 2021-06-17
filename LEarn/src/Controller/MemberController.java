@@ -101,7 +101,7 @@ public class MemberController extends Controller{
             for(Integer id : resultId)
                 results.add(questions.get(id));
         }
-            
+                    
         mappingController.MoveByKeyword(StateTransition.QuestionMember, results, word);
     }
     

@@ -41,7 +41,7 @@ public class SearchKategory extends javax.swing.JFrame {
         int numQuestion = Math.min(controller.questions.size(), 5); //MAX 10, kalau mau ditambah harus copy paste dulu
         for (int i = 0; i < numQuestion; i++){
             //SETTING SETIAP PERTANYAAN
-            String judul_pertanyaan = controller.questions.get(i).title + Integer.toString(i);
+            String judul_pertanyaan = controller.questions.get(i).title;
             String content = controller.questions.get(i).getContent();
             boolean answered = true;
             
