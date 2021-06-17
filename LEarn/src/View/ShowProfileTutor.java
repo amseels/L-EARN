@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ProfileTutorController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,22 @@ import javax.swing.JOptionPane;
  */
 public class ShowProfileTutor extends javax.swing.JFrame {
 
+    ProfileTutorController controller;
+
+    public ShowProfileTutor(ProfileTutorController controller) {
+        this.controller = controller;
+        initComponents();
+        Panel_Menu_Profil.setVisible(false);
+        
+        String nama = controller.user.getName();
+        Label_Username.setText(nama);
+        Label_Biodata.setText(controller.user.getBio());
+        Label_Nama.setText(nama);
+        Label_Username3.setText(controller.user.getUsername());
+        Label_RekeningUser.setText(controller.tutor.bank + " - " + controller.tutor.namaRekening);
+        Label_NamaUserBank.setText("a.n. " + controller.tutor.namaRekening);
+    }    
+    
     /**
      * Creates new form DetailQuestion
      */
@@ -34,7 +51,6 @@ public class ShowProfileTutor extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         Panel_Menu_Profil = new javax.swing.JPanel();
@@ -48,9 +64,9 @@ public class ShowProfileTutor extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         B_EditProfile = new javax.swing.JButton();
         Label_Nama = new javax.swing.JLabel();
-        Label_Username2 = new javax.swing.JLabel();
+        Label_NamaUserBank = new javax.swing.JLabel();
         Label_Username3 = new javax.swing.JLabel();
-        Label_Username4 = new javax.swing.JLabel();
+        Label_RekeningUser = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Label_Biodata = new javax.swing.JTextArea();
         Background = new javax.swing.JLabel();
@@ -257,20 +273,20 @@ public class ShowProfileTutor extends javax.swing.JFrame {
         Label_Nama.setText("Nama Tutor");
         jPanel2.add(Label_Nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 230, -1));
 
-        Label_Username2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Label_Username2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Label_Username2.setText("a. n. Nuril Kaunaini");
-        jPanel2.add(Label_Username2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 230, -1));
+        Label_NamaUserBank.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Label_NamaUserBank.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Label_NamaUserBank.setText("a. n. Nuril Kaunaini");
+        jPanel2.add(Label_NamaUserBank, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 230, -1));
 
         Label_Username3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Label_Username3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Label_Username3.setText("@nurilkaunainir");
         jPanel2.add(Label_Username3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 230, -1));
 
-        Label_Username4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Label_Username4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Label_Username4.setText("Bank BNI - 130100101");
-        jPanel2.add(Label_Username4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 230, -1));
+        Label_RekeningUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Label_RekeningUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Label_RekeningUser.setText("Bank BNI - 130100101");
+        jPanel2.add(Label_RekeningUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 230, -1));
 
         jScrollPane1.setBorder(null);
 
@@ -483,10 +499,10 @@ public class ShowProfileTutor extends javax.swing.JFrame {
     private javax.swing.JLabel Background;
     private javax.swing.JTextArea Label_Biodata;
     private javax.swing.JLabel Label_Nama;
+    private javax.swing.JLabel Label_NamaUserBank;
+    private javax.swing.JLabel Label_RekeningUser;
     private javax.swing.JLabel Label_Username;
-    private javax.swing.JLabel Label_Username2;
     private javax.swing.JLabel Label_Username3;
-    private javax.swing.JLabel Label_Username4;
     private javax.swing.JPanel Panel_Menu_Profil;
     private javax.swing.JPanel Panel_Navbar;
     private javax.swing.JPanel jPanel1;

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.MemberController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Navbar_Member extends javax.swing.JFrame {
 
+    MemberController controller;
     /**
      * Creates new form DetailQuestion
      */

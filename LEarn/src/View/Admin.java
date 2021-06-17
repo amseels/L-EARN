@@ -5,12 +5,23 @@
  */
 package View;
 
+import Controller.AdminController;
+
 /**
  *
  * @author hp
  */
 public class Admin extends javax.swing.JFrame {
 
+    AdminController controller;
+
+    public Admin(AdminController controller) {
+        this.controller = controller;
+        initComponents();
+    }
+    
+    
+    
     /**
      * Creates new form Admin
      */
@@ -417,6 +428,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        controller.Logout();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
