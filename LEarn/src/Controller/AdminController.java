@@ -30,7 +30,7 @@ public class AdminController extends Controller{
     
     public AdminController(MappingController mappingController) {
         super(mappingController);
-        super.view = new Admin();
+        super.view = new Admin(this);
     }
     
     public void UserVerification(){
@@ -108,5 +108,9 @@ public class AdminController extends Controller{
         PreparedStatement st = con.prepareStatement("delete from answer where answer_id=?;");
         st.setInt(1, id);
         st.execute();
+    }
+    
+    public void Logout(){
+        mappingController.Move(MappingController.StateTransition.Quit);
     }
 }
