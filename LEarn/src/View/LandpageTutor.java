@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.TutorController;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -15,6 +16,19 @@ import javax.swing.JOptionPane;
  */
 public class LandpageTutor extends javax.swing.JFrame {
 
+    TutorController controller;
+
+    public LandpageTutor(TutorController controller) {
+        this.controller = controller;
+        initComponents();
+        Panel_Menu_Profil.setVisible(false);
+        
+        String nama = controller.user.getName();
+        Label_Username.setText(nama);
+    }
+    
+    
+    
     /**
      * Creates new form DetailQuestion
      */
@@ -549,6 +563,7 @@ public class LandpageTutor extends javax.swing.JFrame {
 
     private void B_TarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_TarikActionPerformed
         // TODO add your handling code here:
+        controller.Withdrawal();
     }//GEN-LAST:event_B_TarikActionPerformed
 
     private void B_Kategori_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Kategori_1ActionPerformed

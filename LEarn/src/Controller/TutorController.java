@@ -10,6 +10,7 @@ import Database.QuestionConn;
 import Model.Question;
 import Model.User;
 import Search.LuceneManager;
+import View.LandpageTutor;
 import View.TBA;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,9 +24,11 @@ import java.util.logging.Logger;
  */
 public class TutorController extends Controller{
     
+    public User user;
     public TutorController(MappingController mappingController) {
         super(mappingController);
-        super.view = new TBA();
+        user = mappingController.GetCurrentUser();
+        super.view = new LandpageTutor(this);
     }
     
     public void ProfileTutor(){
@@ -74,10 +77,14 @@ public class TutorController extends Controller{
                 results.add(questions.get(id));
         }
             
-        mappingController.Move(StateTransition.QuestionMember, results, "");
+        mappingController.Move(StateTransition.QuestionTutor, results, "");
     }
     
     public void Logout(){
         mappingController.Move(StateTransition.Quit);
+    }
+
+    public void Home() {
+        mappingController.Move(MappingController.StateTransition.LandpageTutor);
     }
 }
